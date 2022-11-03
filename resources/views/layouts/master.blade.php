@@ -7,9 +7,8 @@
 <!-- Sidebar Start -->
 @include('layouts.sidebar')
 
-<main>
-   @yield('content')
-</main>
+<!-- content -->
+@yield('content')
 
 <!-- Footer Start -->
 @include('layouts.footer')
