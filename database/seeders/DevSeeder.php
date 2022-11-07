@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
 
 class DevSeeder extends Seeder
 {
@@ -140,6 +141,25 @@ class DevSeeder extends Seeder
             'dikemaskini_pada' => Carbon::now()->format('Y-m-d H:i:s'),
             'is_hidden' => 0,
             'row_status' => 1,
+        ]);
+
+        \App\Models\User::create([
+            'name' => 'superadmin',
+            'email' => 'superadmin@app.com',
+            'password' => Hash::make('password'),
+            'no_ic' => '1234567',
+            'jenis_pengguna_id' => 1,
+            'no_telefon' => '23423423',
+            'jawatan_id' => 1,
+            'jabatan_id' => 1,
+            'gred_jawatan_id' => 1,
+            //'kementerian' => $data['kementerian'],
+            'bahagian_id' => 1,
+            'negeri_id' => 1,
+            'daerah_id' => 1,
+            'catatan' => 'descriptiopj',
+            'dibuat_pada' => Carbon::now()->format('Y-m-d H:i:s'),
+            'dikemaskini_pada' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
     }
 }
