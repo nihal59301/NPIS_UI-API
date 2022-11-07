@@ -156,6 +156,3 @@
       </div>
    @endsection
 
-   @section('scripts')
-   <script src="assets/js/main.js"></script>
-   @endsection

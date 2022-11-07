@@ -7,20 +7,20 @@
                         <!-- Logo light -->
                         <a href="index.html" class="logo-light">
                             <span class="logo-lg">
-                                <img src="assets/images/logo.png" alt="logo" height="22">
+                                <img src="{{ asset('images/logo.png') }}" alt="logo" height="22">
                             </span>
                             <span class="logo-sm">
-                                <img src="assets/images/logo-sm.png" alt="small logo" height="22">
+                                <img src="{{ asset('images/logo-sm.png') }}" alt="small logo" height="22">
                             </span>
                         </a>
 
                         <!-- Logo Dark -->
                         <a href="index.html" class="logo-dark">
                             <span class="logo-lg">
-                                <img src="assets/images/logo-dark.png" alt="dark logo" height="22">
+                                <img src="{{ asset('images/logo-dark.png') }}" alt="dark logo" height="22">
                             </span>
                             <span class="logo-sm">
-                                <img src="assets/images/logo-dark-sm.png" alt="small logo" height="22">
+                                <img src="{{ asset('images/logo-dark-sm.png') }}" alt="small logo" height="22">
                             </span>
                         </a>
                     </div>
@@ -117,7 +117,7 @@
                             <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false"
                                 aria-expanded="false">
                                 <span class="account-user-avatar"> 
-                                    <img src="assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
+                                    <img src="{{ asset('images/users/avatar-1.jpg') }}" alt="user-image" class="rounded-circle">
                                 </span>
                                 <span>
                                     <span class="account-user-name">Aiman Daniel</span>
