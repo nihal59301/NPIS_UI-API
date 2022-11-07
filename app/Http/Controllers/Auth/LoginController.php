@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -36,5 +38,40 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    /**
+     * Send the response after the user was authenticated.
+     * Remove the other sessions of this user.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    protected function sendLoginResponse(Request $request)
+    {
+        $rules = ['Captcha' => 'required|captcha'];
+        $validator = validator()->make(request()->all(), $rules);        
+        if ($validator->fails()) {
+            $this->guard()->logout();
+
+            $request->session()->invalidate();
+
+            throw ValidationException::withMessages([
+                'Captcha' => ['Invalid Captcha'],
+            ]);       
+        }else {
+            $request->session()->regenerate();
+
+            $this->clearLoginAttempts($request);
+
+            if ($request->ajax() || $request->wantsJson()) {
+                return response()->json([
+                    'user' => $this->guard()->user(),
+                ]);
+            }
+
+            return $this->authenticated($request, $this->guard()->user())
+                ?: redirect()->intended($this->redirectPath());
+        }
+        
     }
 }

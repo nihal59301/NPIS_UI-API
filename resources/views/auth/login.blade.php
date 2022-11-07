@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{url('login')}}">
                         @csrf
 
                         <div class="row mb-3">
@@ -38,6 +38,31 @@
                                 @enderror
                             </div>
                         </div>
+
+                        <div class="row mb-3">
+                            <label for="Captchaimg" class="col-md-4 col-form-label text-md-end">{{ __('Captcha') }}</label>
+
+                            <div class="col-md-6 captchaimg">
+                                <span>{!! captcha_img() !!}</span>
+                                <button type="button" class="btn btn-danger" class="reload" id="reload">
+                                &#x21bb;
+                                </button>                                                                
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="Captcha" class="col-md-4 col-form-label text-md-end">{{ __('Enter Captcha') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="Captcha" type="tetx" class="form-control @error('Captcha') is-invalid @enderror" name="Captcha" value="{{ old('Captcha') }}" required autocomplete="Captcha" autofocus>
+
+                                @error('Captcha')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>                        
 
                         <div class="row mb-3">
                             <div class="col-md-6 offset-md-4">
@@ -70,4 +95,20 @@
         </div>
     </div>
 </div>
+@push('scripts')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $('#reload').click(function () {        
+        $.ajax({
+            type: 'GET',
+            url: 'reload-captcha',
+            success: function (data) {
+                console.log(data)
+                $(".captchaimg span").html(data.captcha);
+            }
+        });
+    });
+</script>
+@endpush
 @endsection
+
