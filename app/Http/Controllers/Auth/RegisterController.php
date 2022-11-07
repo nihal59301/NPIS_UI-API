@@ -4,10 +4,14 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\Models\User;
+use App\Models\tempUser;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Registered;
+use Carbon\Carbon;
 
 class RegisterController extends Controller
 {
@@ -42,6 +46,44 @@ class RegisterController extends Controller
     }
 
     /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        $jabatans = \App\Models\refJabatan::get();
+        $bahagians = \App\Models\refBahagian::get();
+        $negeris = \App\Models\refNegeri::get();
+        $daerahs = \App\Models\refdaerah::get();
+        $jawatans = \App\Models\refJawatan::get();
+        $gredJawatans = \App\Models\refGredJawatan::get();
+        return view('auth.register',compact('jabatans','bahagians','negeris','daerahs','jawatans','gredJawatans'));
+    }
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        session()->flash('message', 'Pendaftaran Berjaya. Sila tunggu  approval dari kaki tangan untuk log masuk'); 
+
+        return redirect('login');
+
+        // $this->guard()->login($user);
+
+        // return $this->registered($request, $user)
+        //                 ?: redirect($this->redirectPath());
+    }
+
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
@@ -50,9 +92,19 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'nama' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'no_kod_penganalan' => ['required', 'string',  'max:255'],
+            //'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'kategori' => ['required', 'integer', 'max:255'],
+            'no_telefon' => ['required', 'string', 'max:255'],
+            'jawatan' => ['required', 'string', 'max:255'],
+            'jabatan' => ['required', 'string', 'max:255'],
+            'gred' => ['required', 'string', 'max:255'],
+            'kementerian' => ['required', 'integer', 'max:255'],
+            'bahagian' => ['required', 'integer', 'max:255'],
+            'negeri' => ['required', 'integer', 'max:255'],
+            'daerah' => ['required', 'integer', 'max:255']
         ]);
     }
 
@@ -64,10 +116,23 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+        return tempUser::create([
+            'name' => $data['nama'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'password' => Hash::make('password'),
+            'no_ic' => $data['no_kod_penganalan'],            
+            'jenis_pengguna_id' => $data['kategori'],
+            'no_telefon' => $data['no_telefon'],
+            'jawatan_id' => $data['jawatan'],
+            'jabatan_id' => $data['jabatan'],
+            'gred_jawatan_id' => $data['gred'],
+            //'kementerian' => $data['kementerian'],
+            'bahagian_id' => $data['bahagian'],
+            'negeri_id' => $data['negeri'],
+            'daerah_id' => $data['daerah'],
+            'catatan' => $data['catatan'],
+            'dibuat_pada' => Carbon::now()->format('Y-m-d H:i:s'),
+            'dikemaskini_pada' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
     }
 }

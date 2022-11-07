@@ -1,7 +1,6 @@
-
-
-    @extends('layouts.master')
+@extends('layouts.master')
         @section('content')
+      
             <div class="content-page">
                 <div class="content">
 
@@ -27,6 +26,9 @@
                                             </a>
                                         </form>
                                     </div>
+                                    @if(Session::has('message'))
+                                        <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+                                    @endif
                                     <h4 class="page-title">Dashboard</h4>
                                 </div>
                             </div>
