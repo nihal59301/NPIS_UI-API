@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('no_telefon')->nullable();
+            $table->string('catatan')->nullable();
             $table->foreignId('jenis_pengguna_id')->constrained('ref_jenis_pengguna');
             $table->foreignId('agensi_id')->constrained('ref_agensi');
             $table->foreignId('jawatan_id')->constrained('ref_jawatan');
