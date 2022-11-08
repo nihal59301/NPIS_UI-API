@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
+use App\DataTables\UsersDataTable;
 
 class UserController extends Controller
 {
@@ -29,9 +30,10 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(UsersDataTable $dataTable)
     {
         //
+        return $dataTable->render('users.index');
     }
 
     /**
