@@ -26,4 +26,6 @@ Route::resource('users', UserController::class);
 Route::get('/contact-form', [CaptchaServiceController::class, 'index']);
 Route::post('/captcha-validation', [CaptchaServiceController::class, 'capthcaFormValidate']);
 Route::get('/reload-captcha', [CaptchaServiceController::class, 'reloadCaptcha']);
+Route::get('/user/first/reset', [UserController::class, 'firstReset'])->name('first.reset');
+Route::post('/user/first/update', [UserController::class, 'firstResetUpdate'])->name('first.reset.update');
 

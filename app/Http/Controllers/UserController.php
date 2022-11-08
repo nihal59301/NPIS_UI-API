@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -77,6 +79,44 @@ class UserController extends Controller
     {
         //
     }
+
+    /**
+     * reset during first time login
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function firstReset()
+    {
+        //
+        $email = Auth::user()->email;        
+        return view('auth.passwords.first',compact('email'));
+    }    
+
+
+    public function firstResetUpdate(Request $request)
+    {
+        //
+        Validator::make($request->all(), [
+            'email' => 'required|email',
+            'password' => 'required|confirmed|min:6'])->validate();
+        
+        $user = Auth::user();
+        
+        $user->password = Hash::make($request->password);
+
+        $user->setRememberToken(Str::random(60));
+
+        $user->first_time = 0;
+
+        $user->save();
+
+        //event(new PasswordReset($user));
+
+        Auth::guard()->login($user);
+        
+        return redirect()->route('home');
+    }    
 
     /**
      * Show the form for editing the specified resource.

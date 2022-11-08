@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -58,19 +59,26 @@ class LoginController extends Controller
             throw ValidationException::withMessages([
                 'Captcha' => ['Invalid Captcha'],
             ]);       
-        }else {
-            $request->session()->regenerate();
+        }else {            
+            $firstTime = Auth::user()->first_time;
+            
+            if($firstTime) {                
+                return redirect()->route('first.reset');
+            }else {
+                $request->session()->regenerate();
 
-            $this->clearLoginAttempts($request);
+                $this->clearLoginAttempts($request);
 
-            if ($request->ajax() || $request->wantsJson()) {
-                return response()->json([
-                    'user' => $this->guard()->user(),
-                ]);
+                if ($request->ajax() || $request->wantsJson()) {
+                    return response()->json([
+                        'user' => $this->guard()->user(),
+                    ]);
+                }
+
+                return $this->authenticated($request, $this->guard()->user())
+                    ?: redirect()->intended($this->redirectPath());
             }
-
-            return $this->authenticated($request, $this->guard()->user())
-                ?: redirect()->intended($this->redirectPath());
+            
         }
         
     }
