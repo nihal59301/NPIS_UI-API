@@ -23,8 +23,10 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('users', UserController::class);
+Route::get('/temp/users', [UserController::class, 'indexTemp'])->name('users.temp.index');
 Route::get('/contact-form', [CaptchaServiceController::class, 'index']);
 Route::post('/captcha-validation', [CaptchaServiceController::class, 'capthcaFormValidate']);
+Route::get('/user/approval/{id}', [UserController::class, 'userApproval'])->name('user.approval');
 Route::get('/reload-captcha', [CaptchaServiceController::class, 'reloadCaptcha']);
 Route::get('/user/first/reset', [UserController::class, 'firstReset'])->name('first.reset');
 Route::post('/user/first/update', [UserController::class, 'firstResetUpdate'])->name('first.reset.update');

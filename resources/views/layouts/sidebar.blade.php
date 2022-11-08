@@ -61,10 +61,13 @@
                                         <a href="#">Profil Pengguna</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('users.index')}}">Pengesahan Pengguna Baharu</a>
+                                        <a href="{{route('users.temp.index')}}">Pengesahan Pengguna Baharu</a>
                                     </li>
                                     <li>
-                                        <a href="#">Daftar Pengguna Baru</a>
+                                        <a href="{{route('users.index')}}">Pengguna Applikasi</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('users.create') }}">Daftar Pengguna Baru</a>
                                     </li>
                                     <li>
                                         <a href="#">Selenggara Portal</a>

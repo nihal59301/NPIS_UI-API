@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use App\DataTables\UsersDataTable;
+use App\DataTables\TempUsersDataTable;
+use DataTables;
 
 class UserController extends Controller
 {
@@ -32,9 +34,29 @@ class UserController extends Controller
      */
     public function index(UsersDataTable $dataTable)
     {
-        //
         return $dataTable->render('users.index');
     }
+
+    public function indexTemp(TempUsersDataTable $dataTable)
+    {
+        return $dataTable->render('users.temp');
+    }
+
+    // public function index(Request $request)
+    // {
+    //     //
+    //     //if ($request->ajax()) {
+    //         $data = \App\Models\User::get();
+    //         return Datatables::of($data)
+    //             ->addIndexColumn()
+    //             ->addColumn('action', function($row){
+    //                 $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
+    //                 return $actionBtn;
+    //             })
+    //             ->rawColumns(['action'])
+    //             ->make(true);
+    //     //}
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -163,9 +185,10 @@ class UserController extends Controller
     public function userApproval($id)
     {
         //
-        $tempUser = \App\Models\Users::whereId($id)->first();
+        $tempUser = \App\Models\tempUser::whereId($id)->first();
+        
         User::create([
-            'name' => $tempUser->nama,
+            'name' => $tempUser->name,
             'email' => $tempUser->email,
             'password' => $tempUser->password,
             'no_ic' => $tempUser->no_ic,          
@@ -179,12 +202,15 @@ class UserController extends Controller
             'negeri_id' => $tempUser->negeri_id,
             'daerah_id' => $tempUser->daerah_id,
             'catatan' => $tempUser->catatan,
+            'first_time' => $tempUser->first_time,
+            'status_pengguna_id' => $tempUser->status_pengguna_id,
             'dibuat_pada' => Carbon::now()->format('Y-m-d H:i:s'),
             'dibuat_oleh' => Auth::user()->id,
             'dikemaskini_pada' => Auth::user()->id,
             'dikemaskini_pada' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
 
+        $tempUser->delete();
         session()->flash('message', 'Approval for User Berjaya.'); 
 
         return redirect('home');

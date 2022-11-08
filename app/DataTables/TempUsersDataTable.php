@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\User;
+use App\Models\TempUser;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -12,7 +12,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class UsersDataTable extends DataTable
+class TempUsersDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -26,18 +26,19 @@ class UsersDataTable extends DataTable
             ->addColumn('action', function ($user) {
                 $url = route('user.approval',[$user]);
                 //return '<form action="route()" method="POST"><input type="hidden" class="form-control" id="userId" name="userId"> '
-                return '<a href="" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> View</a>';
+                return '<a href="'.$url.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Approve</a>';
             })
             ->setRowId('id');
+            
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\User $model
+     * @param \App\Models\TempUser $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(User $model): QueryBuilder
+    public function query(TempUser $model): QueryBuilder
     {
         return $model->newQuery();
     }
@@ -50,7 +51,7 @@ class UsersDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('users-table')
+                    ->setTableId('tempusers-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     //->dom('Bfrtip')
@@ -74,21 +75,18 @@ class UsersDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            
+            // Column::computed('action')
             //       ->exportable(false)
             //       ->printable(false)
             //       ->width(60)
             //       ->addClass('text-center'),
-            // Column::make('id'),            
-            Column::make(['data' => 'name', 'name' => 'name', 'title' => 'Nama']),
-            Column::make(['data' => 'no_ic', 'name' => 'no_ic', 'title' => 'No. Kad Pengenalan']),
-            Column::make(['data' => 'email', 'name' => 'email', 'title' => 'Emel']),
-            Column::make(['data' => 'jabatan_id', 'name' => 'jabatan_id', 'title' => 'Jabatan']),
-            Column::make(['data' => 'jawatan_id', 'name' => 'jawatan_id', 'title' => 'Jawatan']),
-            Column::make(['data' => 'status_pengguna_id', 'name' => 'status_pengguna_id', 'title' => 'Aktif/Tidak Aktif']),
-            Column::computed('action'),
-            // Column::make('created_at'),
-            // Column::make('updated_at'),
+                  Column::make(['data' => 'name', 'name' => 'name', 'title' => 'Nama']),
+                  Column::make(['data' => 'no_ic', 'name' => 'no_ic', 'title' => 'No. Kad Pengenalan']),
+                  Column::make(['data' => 'email', 'name' => 'email', 'title' => 'Emel']),
+                  Column::make(['data' => 'jabatan_id', 'name' => 'jabatan_id', 'title' => 'Jabatan']),
+                  Column::make(['data' => 'jawatan_id', 'name' => 'jawatan_id', 'title' => 'Jawatan']),
+                  Column::make(['data' => 'status_pengguna_id', 'name' => 'status_pengguna_id', 'title' => 'Aktif/Tidak Aktif']),
+                  Column::computed('action'),
         ];
     }
 
@@ -99,6 +97,6 @@ class UsersDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'Users_' . date('YmdHis');
+        return 'TempUsers_' . date('YmdHis');
     }
 }
