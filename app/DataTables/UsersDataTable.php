@@ -75,13 +75,13 @@ class UsersDataTable extends DataTable
             //       ->printable(false)
             //       ->width(60)
             //       ->addClass('text-center'),
-            // Column::make('id'),
-            Column::make('name'),
-            Column::make('no_ic'),
-            Column::make('email'),
-            Column::make('jabatan_id'),
-            Column::make('jawatan_id'),
-            Column::make('row_status'),
+            // Column::make('id'),            
+            Column::make(['data' => 'name', 'name' => 'name', 'title' => 'Nama']),
+            Column::make(['data' => 'no_ic', 'name' => 'no_ic', 'title' => 'No. Kad Pengenalan']),
+            Column::make(['data' => 'email', 'name' => 'email', 'title' => 'Emel']),
+            Column::make(['data' => 'jabatan_id', 'name' => 'jabatan_id', 'title' => 'Jabatan']),
+            Column::make(['data' => 'jawatan_id', 'name' => 'jawatan_id', 'title' => 'Jawatan']),
+            Column::make(['data' => 'row_status', 'name' => 'row_status', 'title' => 'Aktif/Tidak Aktif']),
             // Column::make('created_at'),
             // Column::make('updated_at'),
         ];
