@@ -12,6 +12,41 @@ window.axios = axios;
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
+// Install with 'npm i js-cookie'. A library that helps you manage cookies 
+// (or just build your own).
+import Cookies from 'js-cookie';
+
+// Create axios instance with base url and credentials support
+export const axiosInstance = axios.create({
+    baseURL: 'http://localhost:8000',
+    withCredentials: true,
+});
+
+// Request interceptor. Runs before your request reaches the server
+const onRequest = (config) => {
+    // If http method is `post | put | delete` and XSRF-TOKEN cookie is 
+    // not present, call '/sanctum/csrf-cookie' to set CSRF token, then 
+    // proceed with the initial response
+    if ((
+            config.method == 'post' || 
+            config.method == 'put' ||
+            config.method == 'get' || 
+            config.method == 'delete'
+            /* other methods you want to add here */
+        ) &&
+        !Cookies.get('XSRF-TOKEN')) {
+        return setCSRFToken()
+            .then(response => config);
+    }
+    return config;
+}
+
+// A function that calls '/api/csrf-cookie' to set the CSRF cookies. The 
+// default is 'sanctum/csrf-cookie' but you can configure it to be anything.
+const setCSRFToken = () => {
+    return axiosInstance.get('/sanctum/csrf-cookie'); // resolves to '/api/csrf-cookie'.
+}
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
