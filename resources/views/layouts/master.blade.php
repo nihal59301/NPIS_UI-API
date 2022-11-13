@@ -1,17 +1,17 @@
 <!-- Header Start -->
-@include('layouts.header')
+@include('layouts.header_latest')
 
-<!-- Topbar Start -->
-@include('layouts.topbar')
 
 <!-- Sidebar Start -->
-@include('layouts.sidebar')
+@include('layouts.sidebar_latest')
+
+<!-- Topbar Start -->
+@include('layouts.topbar_latest')
+
 
 <!-- content -->
 @yield('content')
 
 <!-- Footer Start -->
-@include('layouts.footer')
+@include('layouts.footer_latest')
 
-<!-- END wrapper -->
-@include('layouts.theme')

@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +17,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('login');
 });
+Route::get('/forget-password',[UserProfileController::class, 'forgetpassword']);
+Route::get('/userlist', [UserProfileController::class, 'userlist']);
+Route::get('/user_profile', [UserProfileController::class, 'userprofile']);
+Route::get('/pengasahan-pengguna-baharu', [UserController::class, 'newUserValidation']);
+ 
