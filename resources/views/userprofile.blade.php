@@ -387,7 +387,7 @@ $(document).ready(function() {
     var list_user_api='';
     var update_user_api='';
 
-    if(tmp_user!='table_users')
+    if(tmp_user=='table_users')
     {
          list_user_api = api_url+"api/user/details/"+user_id;
          update_user_api = api_url+"updateUser/";
