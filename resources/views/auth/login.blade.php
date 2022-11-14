@@ -1,9 +1,40 @@
 @extends('layouts.app')
+@push('scripts')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src={{"assets/js/jquery.min.js"}}></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/forge/0.8.2/forge.all.min.js"></script>
+<script>
 
+var onReturnCallback = function(response) {        
+    if(response){
+        $("#login").prop('disabled', false);                     
+    }
+          
+    }
+</script>
+<script type="text/javascript">
+    $('#reload').click(function () {        
+        $.ajax({
+            type: 'GET',
+            url: 'reload-captcha',
+            success: function (data) {
+                console.log(data)
+                $(".captchaimg span").html(data.captcha);
+            }
+        });
+    });
+</script>
+@endpush
 @section('content')
 @if(Session::has('message'))
 <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
 @endif
+
+@php
+ $site_key="6Lf15AIjAAAAAKxm4CT0LqHFV7E953ubT27lGPOb";
+ $secret_key="6Lf15AIjAAAAACSnuR1tzEqSUPTAES27KJptXmro";  
+@endphp
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -42,7 +73,11 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        <div class="mt-2 mb-2">
+                            <div class="g-recaptcha" data-sitekey={{$site_key}} data-callback="onReturnCallback"  name="g-recaptcha-response"></div>
+                        </div>
+
+                        <!-- <div class="row mb-3">
                             <label for="Captchaimg" class="col-md-4 col-form-label text-md-end">{{ __('Captcha') }}</label>
 
                             <div class="col-md-6 captchaimg">
@@ -65,7 +100,7 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>                        
+                        </div>                         -->
 
                         <div class="row mb-3">
                             <div class="col-md-6 offset-md-4">
@@ -81,7 +116,7 @@
 
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button id="login" type="submit" class="btn btn-primary" disabled>
                                     {{ __('Log Masuk') }}
                                 </button>
 
@@ -98,20 +133,6 @@
         </div>
     </div>
 </div>
-@push('scripts')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript">
-    $('#reload').click(function () {        
-        $.ajax({
-            type: 'GET',
-            url: 'reload-captcha',
-            success: function (data) {
-                console.log(data)
-                $(".captchaimg span").html(data.captcha);
-            }
-        });
-    });
-</script>
-@endpush
+
 @endsection
 

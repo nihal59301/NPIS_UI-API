@@ -49,22 +49,23 @@ class LoginController extends Controller
      */
     protected function sendLoginResponse(Request $request)
     {
-        $rules = ['Captcha' => 'required|captcha'];
-        $validator = validator()->make(request()->all(), $rules);        
-        if ($validator->fails()) {
-            $this->guard()->logout();
+        // $rules = ['Captcha' => 'required|captcha'];
+        // $validator = validator()->make(request()->all(), $rules);        
+        // if ($validator->fails()) {
+        //     $this->guard()->logout();
 
-            $request->session()->invalidate();
+        //     $request->session()->invalidate();
 
-            throw ValidationException::withMessages([
-                'Captcha' => ['Invalid Captcha'],
-            ]);       
-        }else {            
+        //     throw ValidationException::withMessages([
+        //         'Captcha' => ['Invalid Captcha'],
+        //     ]);       
+        // }else {            
             $firstTime = Auth::user()->first_time;
             
             if($firstTime) {                
                 return redirect()->route('first.reset');
             }else {
+                $token = $request->user()->createToken('user_token_' . Auth::user()->id);
                 $request->session()->regenerate();
 
                 $this->clearLoginAttempts($request);
@@ -75,11 +76,33 @@ class LoginController extends Controller
                     ]);
                 }
 
+                // foreach (Auth::user()->tokens as $token) {
+                //     //
+                //     dump($token);
+                // }
+                // dd('done');
                 return $this->authenticated($request, $this->guard()->user())
                     ?: redirect()->intended($this->redirectPath());
             }
             
-        }
+        //}
         
+    }
+
+        /**
+     * Log the user out of the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function logout(Request $request)
+    {
+
+        Auth::user()->tokens()->delete();
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        return redirect('/');
     }
 }

@@ -34,7 +34,8 @@ class UserController extends Controller
      */
     public function index(UsersDataTable $dataTable)
     {
-        return $dataTable->render('users.index');
+        return view('userlist');
+        //return $dataTable->render('users.index');
     }
 
     public function indexTemp(TempUsersDataTable $dataTable)

@@ -55,7 +55,7 @@ class RegisterController extends Controller
         $jabatans = \App\Models\refJabatan::get();
         $bahagians = \App\Models\refBahagian::get();
         $negeris = \App\Models\refNegeri::get();
-        $daerahs = \App\Models\refdaerah::get();
+        $daerahs = \App\Models\refDaerah::get();
         $jawatans = \App\Models\refJawatan::get();
         $gredJawatans = \App\Models\refGredJawatan::get();
         return view('auth.register',compact('jabatans','bahagians','negeris','daerahs','jawatans','gredJawatans'));

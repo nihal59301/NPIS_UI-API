@@ -31,3 +31,7 @@ Route::get('/reload-captcha', [CaptchaServiceController::class, 'reloadCaptcha']
 Route::get('/user/first/reset', [UserController::class, 'firstReset'])->name('first.reset');
 Route::post('/user/first/update', [UserController::class, 'firstResetUpdate'])->name('first.reset.update');
 
+// Route::get('/userlist', [UserProfileController::class, 'userlist']);
+// Route::get('/user_profile', [UserProfileController::class, 'userprofile']);
+// Route::get('/pengasahan-pengguna-baharu', [UserController::class, 'newUserValidation']);
+
