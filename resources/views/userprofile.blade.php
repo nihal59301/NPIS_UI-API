@@ -85,37 +85,37 @@
                         <input type="hidden" id="api_url" value={{env('API_URL')}}>
                         <input type="hidden" id="token" value={{env('TOKEN')}}>
                         <input type="hidden" id="user_type" value="table_users">
-                        <input type="hidden" id="user_id"name="id" value="1">
+                        <input type="hidden" id="user_id" name="id" value="">
 
                             <div class="form-row d-md-flex justify-content-between">
                                 <div class="form-group col-md-6" id="profile">
                                 <label for="nama" class="text-primary">Nama</label>
-                                <input type="text" class="form-control" id="name" placeholder="">
+                                <input type="text" class="form-control" id="name" name="nama" placeholder="">
                                 </div>
                                 <div class="form-group col-md-6" id="profile">
                                 <label for="no_kod_penganalan" class="text-primary">No. Kad Pengenalan</label>
-                                <input type="text" class="form-control" id="no_kod_penganalan" placeholder="">
+                                <input type="text" class="form-control" id="no_kod_penganalan" name="no_kod_penganalan" placeholder="">
                                 </div>
                             </div>
                             <div class="form-row d-md-flex justify-content-between">
                                 <div class="form-group col-md-6" id="profile">
                                 <label for="no_telefon" class="text-primary">No Telefon</label>
-                                <input type="text" class="form-control" id="no_telefon" placeholder="">
+                                <input type="text" class="form-control" id="no_telefon" name="no_telefon" placeholder="">
                                 </div>
                                 <div class="form-group col-md-6" id="profile">
                                 <label for="emel_rasmi" class="text-primary">Emel Rasmi</label>
-                                <input type="text" class="form-control" id="emel_rasmi" placeholder="">
+                                <input type="text" class="form-control" id="emel_rasmi" name="emel_rasmi" placeholder="">
                                 </div>
                             </div>
                             <div class="form-row d-md-flex justify-content-between">
                                 <div class="form-group col-md-6" id="profile">
                                 <label for="jawatan" class="text-primary">Jabatan</label>
-                                <select id="jawatan" class="form-control">
+                                <select id="jawatan" class="form-control" name="jawatan">
                                 </select>
                                 </div>
                                 <div class="form-group col-md-6" id="profile">
                                 <label for="gred" class="text-primary">Gred</label>
-                                <select id="gred" class="form-control">
+                                <select id="gred" class="form-control" name="gred">
                                 </select>
                                 </div>
                             </div>
@@ -127,38 +127,38 @@
                             <div class="form-row d-md-flex justify-content-between">
                                 <div class="form-group col-md-6" id="profile">
                                 <label for="Jabatan" class="text-primary">Jawatan</label>
-                                <select id="Jabatan" class="form-control">
+                                <select id="Jabatan" class="form-control" name="jabatan">
                                 </select>
                                 </div>
                                 <div class="form-group col-md-6" id="profile">
                                     <label for="bahagian" class="text-primary">Bahagian</label>
-                                    <select id="bahagian" class="form-control">
+                                    <select id="bahagian" class="form-control" name="bahagian">
                                     </select>
                                 </div>
                             </div>
                             <div class="form-row d-md-flex justify-content-between">
                                 <div class="form-group col-md-6" id="profile">
                                 <label for="negeri" class="text-primary">Negeri</label>
-                                <select id="negeri" class="form-control">
+                                <select id="negeri" class="form-control" name="negeri">
                                 </select>
                                 </div>
                                 <div class="form-group col-md-6" id="profile">
                                 <label for="daerah" class="text-primary">Doerah</label>
-                                <select id="daerah" class="form-control">
+                                <select id="daerah" class="form-control" name="daerah">
                                 </select>
                                 </div>
                             </div>
                             <div class="form-row d-md-flex justify-content-between">
                                 <div class="form-group col-md-6" id="profile">
                                 <label for="inputEmail4" class="text-primary">Status</label>
-                                <select id="inputState" class="form-control">
+                                <select id="inputState" class="form-control" name="status">
                                     <option value="0">Tidak Aktif</option>
                                     <option value="1">Aktif</option>                                
                                 </select>
                                 </div>
                                 <div class="form-group col-md-6" id="profile">
                                 <label for="catatan" class="text-primary">Catatan</label>
-                                <textarea class="form-control" rows="5" id="catatan"></textarea>
+                                <textarea class="form-control" rows="5" id="catatan" name="catatan"></textarea>
                                 </div>
                             </div>
                             <div class="form-row d-md-flex justify-content-between" id="doku_sec" style="display:none !important;">
@@ -381,23 +381,28 @@ $(document).ready(function() {
 
     
 
-    var tmp_user =  document.getElementById("user_type").value;
-    var user_id =  document.getElementById("user_id").value;
+    var tmp_user =  localStorage.getItem('user_type'); console.log(tmp_user);
+    var user_id =  localStorage.getItem('user_id'); console.log(user_id);
 
     var list_user_api='';
     var update_user_api='';
-
-    if(tmp_user=='table_users')
+    var data_update='';
+    if(tmp_user!='temp_user')
     {
          list_user_api = api_url+"api/user/details/"+user_id;
          update_user_api = api_url+"updateUser/";
+         data_update = $('#update_user_form').serialize();
     }
     else
     {
         list_user_api = api_url+"api/user/details/temp/"+user_id;
         update_user_api = api_url+"api/user/approval/";
+        data_update = {'id':user_id};
+
     }
-   // console.log(list_user_api);
+    var jsonString = JSON.stringify(data_update);
+
+   //console.log(jsonString);
     $.ajax({
         type: "GET",
         url: list_user_api,
@@ -450,28 +455,38 @@ $(document).ready(function() {
         }
     });
 
-    $('.save').click(function(){ console.log($('#update_user_form').serialize());
+    $('.save').click(function(){ console.log(data_update);
         $.ajax({
             type: 'POST',
             url: update_user_api,
-            data: $('#update_user_form').serialize(), 
-            success: function(response) { console.log(response)
-                $("#exampleModalCenter").modal('show');
-                if(tmp_user=='table_users')
-                {
-                    document.getElementById("user_pop-up").style.display = 'block';
-                    document.getElementById("tmp_user_pop-up").style.display = 'none';
-                }
-                else
-                {
-                    document.getElementById("user_pop-up").style.display = 'none';
-                    document.getElementById("tmp_user_pop-up").style.display = 'block';
+            data: jsonString, 
+            success: function(response) { console.log(response.code)
+                if(response.code=='200'){
+                    $("#exampleModalCenter").modal('show');
+                    if(tmp_user=='table_users')
+                    {
+                        document.getElementById("user_pop-up").style.display = 'block';
+                        document.getElementById("tmp_user_pop-up").style.display = 'none';
+                    }
+                    else
+                    {
+                        document.getElementById("user_pop-up").style.display = 'none';
+                        document.getElementById("tmp_user_pop-up").style.display = 'block';
+                    }
                 }
             }
         });
     });
     $('.close').click(function(){
         $("#exampleModalCenter").modal('hide');
+        if(tmp_user!='table_users')
+        {
+             window.location.href = "{{ url('/pengasahan-pengguna-baharu')}}";
+        }
+        else
+        {
+            window.location.href = "{{ url('/users')}}";
+        }
     });
 });
 </script>
