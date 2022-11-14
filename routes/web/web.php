@@ -35,3 +35,12 @@ Route::post('/user/first/update', [UserController::class, 'firstResetUpdate'])->
 // Route::get('/user_profile', [UserProfileController::class, 'userprofile']);
 // Route::get('/pengasahan-pengguna-baharu', [UserController::class, 'newUserValidation']);
 
+Route::get('/user-profile', function () {
+    return view('userprofile');
+})->name('userprofile');
+
+Route::get('/daftar-pengguna-baharu', function () {
+    return view('add_new_user');
+})->name('add_new_user');
+ 
+
