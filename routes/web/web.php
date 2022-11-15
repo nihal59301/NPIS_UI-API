@@ -38,14 +38,15 @@ Route::get('/user/first/reset', [UserController::class, 'firstReset'])->name('fi
 Route::post('/user/first/update', [UserController::class, 'firstResetUpdate'])->name('first.reset.update');
 Route::get('/user/logout', [LoginController::class, 'logout'])->name('user.logout');
 
+Route::get('/user-profile/{id}', [UserController::class, 'userProfile'])->name('user.profile');
 
 Route::get('/pengasahan-pengguna-baharu', function () {
     return view('new_user_validation');
 })->name('new_user_validation');
 
-Route::get('/user-profile', function () {
-    return view('userprofile');
-})->name('userprofile');
+// Route::get('/user-profile', function () {
+//     return view('userprofile');
+// })->name('userprofile');
 
 //Route::get('/user_profile', [UserController::class, 'view_user']);
 
