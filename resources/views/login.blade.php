@@ -6,8 +6,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/forge/0.8.2/forge.all.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 @php
- $site_key="6Lfto-8iAAAAAH_Z0bck7F3XtBBvPN6-Jbj44rib";
- $secret_key="6Lfto-8iAAAAAE_EqMEmYoBf-dyXWGfknA7b254N";
+ $site_key="6LfewgkjAAAAAENUC3_Jv6odsc-cga2arJtWcwus";
+ $secret_key="6LfewgkjAAAAANPoh7qEaDRoN337gttpj5l-EJa1";
 @endphp
 <body id="login">
     <section>

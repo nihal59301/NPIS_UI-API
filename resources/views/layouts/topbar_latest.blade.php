@@ -33,6 +33,8 @@
                   <div class="profile_content">
                     <h4>Aiman Daniel</h4>
                     <p>pentabir</p>
+                    <a href="{{ url('user/logout') }}"> logout </a>
+                    
                   </div>
                 </div>
               </div>
