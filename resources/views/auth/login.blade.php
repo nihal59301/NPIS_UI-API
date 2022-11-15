@@ -207,13 +207,13 @@ var onReturnCallback = function(response) {
                           <form id="pengguna_jps_form" method="POST" action="{{url('login')}}">
                             @csrf    
                               <div class="form-group">
-                                  <label for="email"  class="sr-only">kad pengenalan</label>
+                                  <label for="Kad-Pengenalan"  class="sr-only">kad pengenalan</label>
                                   <input type="text"
                                          class="form-control"
-                                         id="email"
-                                         aria-describedby="emailHelp"
-                                         placeholder="Kad Pengenalan" name="email" />
-                                         @error('email')
+                                         id="Kad-Pengenalan"
+                                         aria-describedby="Kad-Pengenalan"
+                                         placeholder="Kad Pengenalan" name="Kad-Pengenalan" />
+                                         @error('Kad-Pengenalan')
                                           <span class="invalid-feedback" role="alert">
                                               <strong>{{ $message }}</strong>
                                           </span>
@@ -273,12 +273,12 @@ var onReturnCallback = function(response) {
                               <form id="pengguna_jps_form" method="POST" action="{{url('login')}}">
                                 @csrf    
                                   <div class="form-group">
-                                      <label for="nonjps_useremail"  class="sr-only">kad pengenalan</label>
+                                      <label for="nonjps_useremail"  class="sr-only">E-mel</label>
                                       <input type="text"
                                              class="form-control"
                                              id="nonjps_useremail"
                                              aria-describedby="emailHelp"
-                                             placeholder="Kad Pengenalan" name="nonjps_useremail" />
+                                             placeholder="E-mel" name="nonjps_useremail" />
                                              @error('nonjps_useremail')
                                           <span class="invalid-feedback" role="alert">
                                               <strong>{{ $message }}</strong>
