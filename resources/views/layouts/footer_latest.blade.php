@@ -25,6 +25,13 @@
 <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('datatables.min.js') }}" defer></script>
+<script>
+// When the user clicks on div, open the popup
+function myFunction() {
+  var popup = document.getElementById("profile_list");
+  popup.classList.toggle("show");
+}
+</script>
 @yield('scripts' )
 @stack('scripts')
 
