@@ -459,7 +459,7 @@ $(document).ready(function() {
 		formData.append('jawatan', document.myform.jawatan.value);
 		formData.append('jabatan', document.myform.jabatan.value);
 		formData.append('gred', document.myform.gred.value);
-		formData.append('kementerian', document.myform.kementerian.value);
+		// formData.append('kementerian', document.myform.kementerian.value);
 		formData.append('bahagian', document.myform.bahagian.value);
 		formData.append('negeri', document.myform.negeri.value);
 		formData.append('daerah', document.myform.daerah.value);
@@ -493,9 +493,9 @@ $(document).ready(function() {
 		})
 			.then(function (response) {
 			//handle success
-			console.log(response);
-			if(response.code == 200) {
-				window.location("{{ route('userlist') }}")
+			console.log(response.data.code);
+			if(response.data.code == 200) {
+				window.location.href = "{{ url('/userlist')}}";
 			}else {
 				if(response.data.code == 422) {
 					//console.log(response.data.data)
@@ -507,10 +507,7 @@ $(document).ready(function() {
 					alert('There was an error submitting data')
 				}	
 			}
-
-			
-
-			alert(response); 
+			//alert(response); 
 			})
 			.catch(function (response) {
 			//handle error

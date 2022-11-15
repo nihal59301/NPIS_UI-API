@@ -80,14 +80,14 @@
                                           <span class="error" id="error_gred"></span>
                                        </div>
                                     </div>
-                                    <div class="row input-data">
+                                    <!-- <div class="row input-data">
                                        <div class="col-md-12">
                                         <label>Kementerian</label><br>
                                         <select class="form-select form-control-light" name="kementerian" id="kementerian">
                                         </select>
                                         <span class="error" id="error_kementerian"></span>
                                        </div>
-                                    </div>
+                                    </div> -->
                                     <div class="row input-data">
                                        <div class="col-md-6">
                                         <label>Jabatan</label><br>

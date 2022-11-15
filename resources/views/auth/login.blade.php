@@ -389,7 +389,7 @@ var onReturnCallback = function(response) {
                     </div>
                     <div class="interface_tab_content_container">
                       <div class="interface_tab_content">
-                        <form class="login_interface_modal_form">
+                        <form class="login_interface_modal_form" action="" method="post" id="registe_jps_user_form" name="myform1">
                           <div class="input_container">
                             <label
                               for="Nama_Penuh"
@@ -400,7 +400,7 @@ var onReturnCallback = function(response) {
                               <input
                                 type="text"
                                 class="form-control"
-                                id="Nama_Penuh"
+                                id="Nama_Penuh" name="nama"
                               />
                             </div>
                           </div>
@@ -415,7 +415,7 @@ var onReturnCallback = function(response) {
                               <input
                                 type="text"
                                 class="form-control"
-                                id="Kad_Pengenalan"
+                                id="Kad_Pengenalan" name="no_kod_penganalan"
                               />
                             </div>
                           </div>
@@ -429,7 +429,7 @@ var onReturnCallback = function(response) {
                               <input
                                 type="text"
                                 class="form-control"
-                                id="Email_Rasmi"
+                                id="Email_Rasmi" name="email"
                               />
                             </div>
                           </div>
@@ -443,7 +443,7 @@ var onReturnCallback = function(response) {
                               <input
                                 type="text"
                                 class="form-control"
-                                id="No_Telefon"
+                                id="No_Telefon" name="no_telefon"
                               />
                             </div>
                           </div>
@@ -457,7 +457,7 @@ var onReturnCallback = function(response) {
                               <select
                                 type="text"
                                 class="form-control"
-                                id="No_Telefon"
+                                id="jawatan" name="jawatan"
                               >
                                 <option value=""></option>
                                 <option value="">Jawatan</option>
@@ -466,14 +466,20 @@ var onReturnCallback = function(response) {
                             </div>
                           </div>
                           <div class="input_container">
-                            <label for="Gred" class="col-form-label form_label"
-                              >Gred</label
-                            >
+                            <label for="Gred" class="col-form-label form_label">Gred</label>
                             <div class="form_input">
-                              <input type="text" class="form-control" id="Gred" />
+                              <select
+                                type="text"
+                                class="form-control"
+                                name="gred" id="gred"
+                              >
+                                <option value=""></option>
+                                <option value="">gred</option>
+                                <option value="">gred</option>
+                              </select>
                             </div>
                           </div>
-                          <div class="input_container">
+                          <!-- <div class="input_container">
                             <label
                               for="Kementerian"
                               class="col-form-label form_label"
@@ -490,7 +496,7 @@ var onReturnCallback = function(response) {
                                 <option value="">Jawatan</option>
                               </select>
                             </div>
-                          </div>
+                          </div> -->
                           <div class="input_container">
                             <label for="Jabatan" class="col-form-label form_label"
                               >Jabatan</label
@@ -499,11 +505,11 @@ var onReturnCallback = function(response) {
                               <select
                                 type="text"
                                 class="form-control"
-                                id="Jabatan"
+                                name="jabatan" id="Jabatan"
                               >
                                 <option value=""></option>
-                                <option value="">Jawatan</option>
-                                <option value="">Jawatan</option>
+                                <option value="">Jabatan</option>
+                                <option value="">Jabatan</option>
                               </select>
                             </div>
                           </div>
@@ -517,11 +523,11 @@ var onReturnCallback = function(response) {
                               <select
                                 type="text"
                                 class="form-control"
-                                id="Bahagian"
+                                name="bahagian" id="bahagian"
                               >
                                 <option value=""></option>
-                                <option value="">Jawatan</option>
-                                <option value="">Jawatan</option>
+                                <option value="">bahagian</option>
+                                <option value="">bahagian</option>
                               </select>
                             </div>
                           </div>
@@ -567,13 +573,13 @@ var onReturnCallback = function(response) {
                             </div>
                           </div>
                           <div class="form_btn_container">
-                            <button>KEMBALI</button><button>DAFTAR</button>
+                            <button>KEMBALI</button><button id="submit_jps">DAFTAR</button>
                           </div>
                         </form>
 
                       </div>
                       <div class="interface_tab_content">
-                        <form class="login_interface_modal_form">
+                        <form class="login_interface_modal_form" action="" method="post" id="register_agensi_user_form" name="myform">
                           <div class="input_container">
                             <label
                               for="Nama_Penuh"
@@ -584,7 +590,7 @@ var onReturnCallback = function(response) {
                               <input
                                 type="text"
                                 class="form-control"
-                                id="Nama_Penuh"
+                                id="Nama_Penuh" name="nama"
                               />
                             </div>
                           </div>
@@ -599,7 +605,7 @@ var onReturnCallback = function(response) {
                               <input
                                 type="text"
                                 class="form-control"
-                                id="Kad_Pengenalan"
+                                id="Kad_Pengenalan" name="no_kod_penganalan"
                               />
                             </div>
                           </div>
@@ -613,7 +619,7 @@ var onReturnCallback = function(response) {
                               <input
                                 type="text"
                                 class="form-control"
-                                id="Email_Rasmi"
+                                id="Email_Rasmi" name="email"
                               />
                             </div>
                           </div>
@@ -627,7 +633,7 @@ var onReturnCallback = function(response) {
                               <input
                                 type="text"
                                 class="form-control"
-                                id="No_Telefon"
+                                id="No_Telefon" name="no_telefon"
                               />
                             </div>
                           </div>
@@ -641,7 +647,7 @@ var onReturnCallback = function(response) {
                               <select
                                 type="text"
                                 class="form-control"
-                                id="No_Telefon"
+                                id="jawatan" name="jawatan"
                               >
                                 <option value=""></option>
                                 <option value="">Jawatan</option>
@@ -650,14 +656,20 @@ var onReturnCallback = function(response) {
                             </div>
                           </div>
                           <div class="input_container">
-                            <label for="Gred" class="col-form-label form_label"
-                              >Gred</label
-                            >
+                            <label for="Gred" class="col-form-label form_label">Gred</label>
                             <div class="form_input">
-                              <input type="text" class="form-control" id="Gred" />
+                              <select
+                                type="text"
+                                class="form-control"
+                                name="gred" id="gred"
+                              >
+                                <option value=""></option>
+                                <option value="">gred</option>
+                                <option value="">gred</option>
+                              </select>
                             </div>
                           </div>
-                          <div class="input_container">
+                          <!-- <div class="input_container">
                             <label
                               for="Kementerian"
                               class="col-form-label form_label"
@@ -674,7 +686,7 @@ var onReturnCallback = function(response) {
                                 <option value="">Jawatan</option>
                               </select>
                             </div>
-                          </div>
+                          </div> -->
                           <div class="input_container">
                             <label for="Jabatan" class="col-form-label form_label"
                               >Jabatan</label
@@ -683,11 +695,11 @@ var onReturnCallback = function(response) {
                               <select
                                 type="text"
                                 class="form-control"
-                                id="Jabatan"
+                                name="jabatan" id="Jabatan"
                               >
                                 <option value=""></option>
-                                <option value="">Jawatan</option>
-                                <option value="">Jawatan</option>
+                                <option value="">Jabatan</option>
+                                <option value="">Jabatan</option>
                               </select>
                             </div>
                           </div>
@@ -701,11 +713,11 @@ var onReturnCallback = function(response) {
                               <select
                                 type="text"
                                 class="form-control"
-                                id="Bahagian"
+                                name="bahagian" id="bahagian"
                               >
                                 <option value=""></option>
-                                <option value="">Jawatan</option>
-                                <option value="">Jawatan</option>
+                                <option value="">bahagian</option>
+                                <option value="">bahagian</option>
                               </select>
                             </div>
                           </div>
@@ -788,9 +800,7 @@ var onReturnCallback = function(response) {
                                   class="form-check-input"
                                   id="exampleCheck1"
                                 />
-                                <label
-                                  class="form_check_label"
-                                  for="exampleCheck1"
+                                <label class="form_check_label" for="exampleCheck1"
                                   >Dengan ini saya MENGAKU bahawa semua maklumat
                                   yang diisikan dalam permohonan ini adalah SAHIH
                                   dan BENAR.</label
@@ -799,7 +809,7 @@ var onReturnCallback = function(response) {
                             </div>
                           </div>
                           <div class="form_btn_container">
-                            <button>KEMBALI</button><button>DAFTAR</button>
+                            <button>KEMBALI</button><button id="submit_agensi">DAFTAR</button>
                           </div>
                         </form>
                       </div>
