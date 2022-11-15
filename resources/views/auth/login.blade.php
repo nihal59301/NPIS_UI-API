@@ -273,12 +273,12 @@ var onReturnCallback = function(response) {
                               <form id="pengguna_jps_form" method="POST" action="{{url('login')}}">
                                 @csrf    
                                   <div class="form-group">
-                                      <label for="nonjps_useremail"  class="sr-only">kad pengenalan</label>
+                                      <label for="nonjps_useremail"  class="sr-only">E-mel</label>
                                       <input type="email"
                                              class="form-control"
                                              id="nonjps_useremail"
                                              aria-describedby="emailHelp"
-                                             placeholder="Kad Pengenalan" name="nonjps_useremail" />
+                                             placeholder="E-mel" name="nonjps_useremail" />
                                              @error('nonjps_useremail')
                                           <span class="invalid-feedback" role="alert">
                                               <strong>{{ $message }}</strong>

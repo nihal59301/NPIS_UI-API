@@ -27,14 +27,45 @@
                   <img src="assets/images/Vector-11.png" alt="" />
                 </div>
                 <div class="profile_container d-flex">
-                  <div class="profile_img">
-                    <img src="assets/images/Admin pic.png" alt="Admin" />
-                  </div>
                   <div class="profile_content">
-                    <h4>Aiman Daniel</h4>
-                    <p>pentabir</p>
-                    <a href="{{ url('user/logout') }}"> logout </a>
-                    
+                    <ul>
+                      <li class="dropdown notification-list"  onclick="myFunction()">
+                            <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false"
+                                aria-expanded="false">
+                                <span class="account-user-avatar"> 
+                                    <img src="assets/images/Admin pic.png" alt="user-image" class="rounded-circle">
+                                </span>
+                                <span>
+                                    <span class="account-user-name">Aiman Daniel</span>
+                                    <span class="account-position">Pentadbir</span>
+                                </span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown" id="profile_list">
+                                <!-- item-->
+                                <div class=" dropdown-header noti-title">
+                                    <h6 class="text-overflow m-0">Welcome !</h6>
+                                </div>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <i class="mdi mdi-account-circle me-1"></i>
+                                    <span>My Account</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <i class="mdi mdi-account-edit me-1"></i>
+                                    <span>Settings</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="{{ url('user/logout') }}" class="dropdown-item notify-item">
+                                    <i class="mdi mdi-logout me-1"></i>
+                                    <span>Logout</span>
+                                </a>
+                            </div>
+                        </li>
+                      </ul>
                   </div>
                 </div>
               </div>
@@ -43,3 +74,4 @@
         </header>
         <!-- HEADER Section Ends -->
      
+        
