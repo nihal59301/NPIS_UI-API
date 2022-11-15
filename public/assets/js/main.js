@@ -254,6 +254,7 @@ function updateThumbnaildokumen(dropZoneElementDokumen, file) {  console.log(fil
 
 $(document).ready(function() {
 	const api_url = document.getElementById("api_url").value;  console.log(api_url);
+    const api_token = "Bearer "+ document.getElementById("token").value;  console.log(api_token);
 	$('#show-me').hide();   
 	$('input[type="radio"]').click(function() { //alert($(this).attr('id'));
 		if($(this).attr('id') == 'agensi_luar') {
@@ -265,35 +266,42 @@ $(document).ready(function() {
 		}
 	});
 
-	var dropDown = document.getElementById("kementerian");
-    $.ajax({
-        type: "GET",
-        url: api_url+"GetKementerian/",
-        dataType: 'json',
-        success: function (result) { console.log(result)
-            if (result) {
-                $.each(result, function (key, item) {
-					var opt = item.id;
-					var el = document.createElement("option");
-					el.textContent = item.Name;
-					el.value = opt;
-					dropDown.appendChild(el);
-                })
-            }
-            else {
-                $.Notification.error(result.Message);
-            }
-        }
-    });
+	$.ajaxSetup({
+		headers: {
+			   "Content-Type": "application/json",
+			   "Authorization": api_token,
+			   }
+   });
+
+	// var dropDown = document.getElementById("kementerian");
+    // $.ajax({
+    //     type: "GET",
+    //     url: api_url+"GetKementerian/",
+    //     dataType: 'json',
+    //     success: function (result) { console.log(result)
+    //         if (result) {
+    //             $.each(result, function (key, item) {
+	// 				var opt = item.id;
+	// 				var el = document.createElement("option");
+	// 				el.textContent = item.Name;
+	// 				el.value = opt;
+	// 				dropDown.appendChild(el);
+    //             })
+    //         }
+    //         else {
+    //             $.Notification.error(result.Message);
+    //         }
+    //     }
+    // });
 
 	var JabatandropDown =  document.getElementById("Jabatan");
     $.ajax({
         type: "GET",
-        url: api_url+"GetJabatan/",
+        url: api_url+"api/lookup/jabatan/list/",
         dataType: 'json',
-        success: function (result) { console.log(result)
+        success: function (result) { console.log(result.data)
             if (result) {
-                $.each(result, function (key, item) {
+                $.each(result.data, function (key, item) {
 					var opt = item.id;
 					var el = document.createElement("option");
 					el.textContent = item.nama_jabatan;
@@ -310,11 +318,11 @@ $(document).ready(function() {
 	var bahagiandropDown =  document.getElementById("bahagian");
     $.ajax({
         type: "GET",
-        url: api_url+"GetBahagian/",
+        url: api_url+"api/lookup/bahagian/list/",
         dataType: 'json',
         success: function (result) { console.log(result)
             if (result) {
-                $.each(result, function (key, item) {
+                $.each(result.data, function (key, item) {
 					var opt = item.id;
 					var el = document.createElement("option");
 					el.textContent = item.nama_bahagian;
@@ -331,11 +339,11 @@ $(document).ready(function() {
 	var negeridropDown =  document.getElementById("negeri");
     $.ajax({
         type: "GET",
-        url: api_url+"GetNegeri/",
+        url: api_url+"api/lookup/negeri/list",
         dataType: 'json',
         success: function (result) { console.log(result)
             if (result) {
-                $.each(result, function (key, item) {
+                $.each(result.data, function (key, item) {
 					var opt = item.id;
 					var el = document.createElement("option");
 					el.textContent = item.nama_negeri;
@@ -352,11 +360,11 @@ $(document).ready(function() {
 	var daerahdropDown =  document.getElementById("daerah");
     $.ajax({
         type: "GET",
-        url: api_url+"Getdaerah/",
+        url: api_url+"api/lookup/daerah/list",
         dataType: 'json',
         success: function (result) { console.log(result)
             if (result) {
-                $.each(result, function (key, item) {
+                $.each(result.data, function (key, item) {
 					var opt = item.id;
 					var el = document.createElement("option");
 					el.textContent = item.nama_daerah;
@@ -369,15 +377,14 @@ $(document).ready(function() {
             }
         }
     });
-
-	var jawatandropDown =  document.getElementById("jawatan");
+    var jawatandropDown =  document.getElementById("jawatan");
     $.ajax({
         type: "GET",
-        url: api_url+"GetJawatan/",
+        url: api_url+"api/lookup/jawatan/list",
         dataType: 'json',
         success: function (result) { console.log(result)
             if (result) {
-                $.each(result, function (key, item) {
+                $.each(result.data, function (key, item) {
 					var opt = item.id;
 					var el = document.createElement("option");
 					el.textContent = item.nama_jawatan;
@@ -394,11 +401,11 @@ $(document).ready(function() {
 	var greddropDown =  document.getElementById("gred");
     $.ajax({
         type: "GET",
-        url: api_url+"GetGred/",
+        url: api_url+"api/lookup/gredjawatan/list",
         dataType: 'json',
         success: function (result) { console.log(result)
             if (result) {
-                $.each(result, function (key, item) {
+                $.each(result.data, function (key, item) {
 					var opt = item.id;
 					var el = document.createElement("option");
 					el.textContent = item.nama_gred_jawatan;
@@ -411,6 +418,7 @@ $(document).ready(function() {
             }
         }
     });
+
 
     $("#submit").click(function(){
 
