@@ -250,6 +250,7 @@ function updateThumbnaildokumen(dropZoneElementDokumen, file) {  console.log(fil
 //document upload - done
 $(document).ready(function() {
 	const api_url = document.getElementById("api_url").value;  console.log(api_url);
+	const app_url = document.getElementById("app_url").value;  console.log(app_url);
     const api_token = "Bearer "+ document.getElementById("token").value;  console.log(api_token);
 	$('#show-me').hide();   
 	$('input[type="radio"]').click(function() { //alert($(this).attr('id'));
@@ -467,24 +468,6 @@ $(document).ready(function() {
 		formData.append('documents', document.myform.dokumen.files[0]);
 		formData.append('profile_image', document.myform.myFile.files[0]);
 
-	// 	console.log(...formData)
-    //   var create_data = {   'nama':document.myform.nama.value,
-	//   						'no_kod_penganalan':document.myform.no_kod_penganalan.value,
-	// 						'email':document.myform.email.value,
-	// 						'kategori':document.myform.kategori.value,
-	// 						'no_telefon':document.myform.no_telefon.value,
-	// 						'jawatan':document.myform.jawatan.value,
-	// 						'jabatan':"1",
-	// 						'gred':document.myform.gred.value,
-	// 						'kementerian':"1",
-	// 						'bahagian':document.myform.bahagian.value,
-	// 						'negeri':document.myform.negeri.value,
-	// 						'daerah':document.myform.daerah.value,
-	// 						'catatan':document.myform.catatan.value,
-	// 					}
-    //   console.log(create_data);
-// 	  var jsonString = JSON.stringify(create_data);
-// console.log(jsonString);
 		axios({
 			method: "post",
 			url: api_url+"api/user/create",
@@ -493,29 +476,24 @@ $(document).ready(function() {
 		})
 			.then(function (response) {
 			//handle success
-			console.log(response);
-			if(response.code == 200) {
-				window.location("{{ route('userlist') }}")
-			}else {
-				if(response.data.code == 422) {
-					//console.log(response.data.data)
-					Object.keys(response.data.data).forEach(key => {
-						console.log(key, response.data.data[key][0]);
+			console.log(response.data.code);
+			if(response.data.code === '200') {	
+				console.log("{{ url('/userlist') }}")			
+				//window.location.href = app_url + "/userlist"
+			}else {				
+				if(response.data.code === '422') {					
+					Object.keys(response.data.data).forEach(key => {						
 						document.getElementById("error_" + key).innerHTML= response.data.data[key][0]; 
 					  });					
-				}else {
+				}else {					
 					alert('There was an error submitting data')
 				}	
-			}
-
-			
-
-			alert(response); 
+			}			
 			})
 			.catch(function (response) {
-			//handle error
-			console.log(response);
-			alert("There was an error submitting data");
+				//handle error
+				console.log(response);
+				alert("There was an error submitting data");
 			});
 		// $.ajax({
 		// 	type: 'POST',

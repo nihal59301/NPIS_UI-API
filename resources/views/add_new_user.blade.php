@@ -23,6 +23,7 @@
                   </div>
                   <form action="" method="post" id="create_user_form" name="myform">
                      <input type="hidden" id="api_url" value={{env('API_URL')}}>
+                     <input type="hidden" id="app_url" value={{env('APP_URL')}}>
                      <input type="hidden" id="token" value={{env('TOKEN')}}>
                   <div class="row">
                      <div class="col-xl-12 col-lg-12">

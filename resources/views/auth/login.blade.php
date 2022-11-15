@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
 <link rel="stylesheet" href="assets/css/style.css" />
 <link rel="stylesheet" href="assets/css/Mediaquery.css" />
+
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/bootstrap.popper.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
@@ -19,6 +20,186 @@ var onReturnCallback = function(response) {
           
     }
 </script>
+
+   
+<script>
+        let round = document.querySelector(".round");
+
+let index = document.querySelector("#index");
+let eye_icon = document.querySelector(".eye_icon");
+let password_eye_field = document.querySelector(".password_eye_field");
+let login = document.querySelector("#login");
+let interface_tab_content = document.querySelectorAll(".interface_tab_content");
+let r_input = document.querySelectorAll(".r_container input");
+let input_file = document.querySelector("#Dokumen_Sokongan");
+
+let input_file_btn = document.querySelector(".form_input_file .select_file");
+let userlist_tab_btn = document.querySelectorAll(
+  ".userlist_tab_btn_container button"
+);
+let userlist_tab_content = document.querySelectorAll(".userlist_tab_content ");
+
+// ----------------------------------------user_profile-------------------------------------------
+let user_profile = document.querySelector("#user_profile");
+if (user_profile) {
+  userlist_tab_btn.forEach((utb, i) => {
+    utb.addEventListener("click", () => {
+      userlist_tab_content.forEach((utc) => {
+        utc.classList.add("d-none");
+      });
+      userlist_tab_btn.forEach((utb) => {
+        utb.classList.remove("active");
+      });
+      utb.classList.add("active");
+      userlist_tab_content[i].classList.remove("d-none");
+    });
+  });
+  userlist_tab_btn[1].click();
+}
+if (login) {
+  eye_icon.addEventListener("click", (e) => {
+    console.log(password_eye_field);
+    e.preventDefault();
+    password_eye_field.type == "password"
+      ? (password_eye_field.type = "text")
+      : (password_eye_field.type = "password");
+  });
+  document.querySelector(".masuk_submit").addEventListener("click", (e) => {
+    e.preventDefault();
+  });
+  r_input.forEach((inp, i) => {
+    inp.addEventListener("click", () => {
+      interface_tab_content.forEach((itc) => {
+        itc.classList.add("d-none");
+      });
+      if (inp.checked == true) {
+        interface_tab_content[i].classList.remove("d-none");
+      }
+    });
+  });
+  r_input[1].click();
+
+  // input_file
+  input_file_btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    console.log(input_file);
+    input_file.click();
+  });
+
+  // -------------------------
+  input_file.addEventListener("change", () => {
+    var files = input_file.files;
+    if (FileReader && files && files.length) {
+      var fr = new FileReader();
+      // console.log(fr);
+
+      fr.onload = function () {
+        file=input_file.files.length;
+        file_name=input_file.files[0].name;
+        file_size=input_file.files[0].size;
+        file_type=input_file.files[0].type;
+        pdf_size=file_size/1000024;
+        console.log(file_type);
+        if(file_type=='application/pdf'){
+          $("#pdf_name").html(file_name);
+          if(pdf_size>10){
+            $("#err-msg").prop('d-block');
+            $("#pdf_remove").prop('d-block');
+          }
+          else{
+            $("#pdf_size").html(pdf_size+'MB');
+          }
+        }
+        else{
+          alert('Please use a pdf file');
+        }
+
+      };
+
+      fr.readAsDataURL(files[0]);
+    }
+  });
+}
+if (index) {
+  let side_bar_Container = document.querySelector(".side_bar_Container");
+  let accordial_all_list = document.querySelectorAll(
+    ".accordian_single_list, .NPIS_logo_right_content"
+  );
+  // --------------------------------------------------------------------------------------------
+  let Mainbody_conatiner = document.querySelector(".Mainbody_conatiner");
+  round.addEventListener("click", () => {
+    side_bar_Container.classList.remove("show");
+    Mainbody_conatiner.classList.add("active");
+    accordial_all_list.forEach((asl) => {
+      asl.classList.add("active");
+    });
+  });
+  // --------------------------------------------------------------------------------------------
+  document.querySelector(".NPIS_logo").addEventListener("click", () => {
+    side_bar_Container.classList.add("show");
+    Mainbody_conatiner.classList.remove("active");
+    accordial_all_list.forEach((asl) => {
+      asl.classList.remove("active");
+    });
+  });
+  // --------------------------------------------------------------------------------------------
+
+  let accordian_single_list = document.querySelectorAll(
+    ".accordian_single_list"
+  );
+  let d_arrow = document.querySelectorAll(".d_arrow");
+
+  accordian_single_list.forEach((asl) => {
+    asl.addEventListener("click", () => {
+      d_arrow.forEach((darr) => {
+        darr.classList.remove("active");
+      });
+      // let accordian_content = asl.closest(".accordian_content ");
+      // console.log(accordian_content);
+      let arrow = asl.querySelector(".d_arrow");
+      let Accordian_link = asl.querySelector(".Accordian_link");
+      if (Accordian_link.classList.contains("collapsed")) {
+        arrow.classList.add("active");
+      } else {
+        arrow.classList.remove("active");
+      }
+    });
+  });
+}
+        </script>        
+
+<script>
+$(document).ready(function() {
+  const api_url = document.getElementById("api_url").value;  console.log(api_url);
+	const app_url = document.getElementById("app_url").value;  console.log(app_url);
+  const api_token = "Bearer "+ document.getElementById("token").value;  console.log(api_token);
+  $('#subForgotButton').click(function(){
+    // var formData = new FormData();
+    // var name = $("#email").val();
+    // console.log(name)
+    // //formData.append('email', document.submitForgot.email.value);
+    // axios({
+		// 	method: "post",
+		// 	url: api_url+"forgot-password",
+		// 	data: formData,
+		// 	headers: { "Content-Type": "application/json","Authorization": api_token },
+		// })
+    // .then(function (response) {
+		// 	//handle success
+		// 	console.log(response.data.code);				
+		// 	})
+		// 	.catch(function (response) {
+		// 		//handle error
+		// 		console.log(response);
+		// 		alert("There was an error submitting data");
+		// 	});
+  console.log('modal submitted')
+  //$('#sucess_modal').modal('show');
+    $('#submitForgot').submit();
+});
+})
+
+  </script>
 @endpush
 @section('content')
 @if(Session::has('message'))
@@ -44,7 +225,9 @@ $site_key= config('services.googleCaptcha.site_key');
           LOGIN
         </button>
       </div>
-
+      <input type="hidden" id="token" value={{env('TOKEN')}}>
+      <input type="hidden" id="api_url" value={{env('API_URL')}}>
+      <input type="hidden" id="app_url" value={{env('APP_URL')}}>
       <!-- Modal -->
       <div class="modal fade" id="log_masuk_modal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered log_masuk_modal_dialog" role="document">
@@ -711,6 +894,8 @@ $site_key= config('services.googleCaptcha.site_key');
     <section>
       <div class="forget_modal">
         <!-- Modal -->
+        <form method="POST" action="{{ route('password.email') }}" id="submitForgot">
+            @csrf
         <div
           class="modal fade"
           id="Forget_modal"
@@ -719,10 +904,12 @@ $site_key= config('services.googleCaptcha.site_key');
           aria-labelledby="exampleModalCenterTitle"
           aria-hidden="true"
         >
+        
           <div
             class="modal-dialog modal-dialog-centered forget_modal_dialog"
             role="document"
           >
+          
             <div class="modal-content forget_modal_content">
               <div class="modal-body forget_modal_body">
                 <div class="forget_modal_heading">
@@ -732,8 +919,7 @@ $site_key= config('services.googleCaptcha.site_key');
                     untuk set semula kata laluan.
                   </p>
                 </div>
-                <div class="forget_modal_form">
-                  <form id="forget_modal_form" autocomplete="off">
+                <div class="forget_modal_form">                  
                     <div class="form-group">
                       <label for="exampleInputEmail1" class="sr-only"
                         >No. Kad Pengenalan</label
@@ -742,6 +928,7 @@ $site_key= config('services.googleCaptcha.site_key');
                         type="text"
                         class="form-control"
                         id="exampleInputEmail1"
+                        name="no_ic"
                         aria-describedby="emailHelp"
                         placeholder="No. Kad Pengenalan"
                       />
@@ -751,7 +938,7 @@ $site_key= config('services.googleCaptcha.site_key');
                         >Alamat E-Mel</label
                       >
                       <input
-                        type="email"
+                        type="email" name="email"
                         class="form-control"
                         id="exampleInputPassword1"
                         placeholder="Alamat E-Mel"
@@ -759,20 +946,21 @@ $site_key= config('services.googleCaptcha.site_key');
                     </div>
                     <div class="forget_submit text-center">
                       <button
-                        type="button"
+                        type="submit"   
+                        id="subForgotButton"                     
                         data-toggle="modal"
                         data-target="#sucess_modal"
                         data-dismiss="modal"
-                      >
+                      >                      
                         Hantar
                       </button>
-                    </div>
-                  </form>
+                    </div>                  
                 </div>
               </div>
             </div>
           </div>
         </div>
+</form>
       </div>
     </section>
     <section>
@@ -807,154 +995,7 @@ $site_key= config('services.googleCaptcha.site_key');
         </div>
       </div>
     </section>
-    
-<script>
-        let round = document.querySelector(".round");
-
-let index = document.querySelector("#index");
-let eye_icon = document.querySelector(".eye_icon");
-let password_eye_field = document.querySelector(".password_eye_field");
-let login = document.querySelector("#login");
-let interface_tab_content = document.querySelectorAll(".interface_tab_content");
-let r_input = document.querySelectorAll(".r_container input");
-let input_file = document.querySelector("#Dokumen_Sokongan");
-
-let input_file_btn = document.querySelector(".form_input_file .select_file");
-let userlist_tab_btn = document.querySelectorAll(
-  ".userlist_tab_btn_container button"
-);
-let userlist_tab_content = document.querySelectorAll(".userlist_tab_content ");
-
-// ----------------------------------------user_profile-------------------------------------------
-let user_profile = document.querySelector("#user_profile");
-if (user_profile) {
-  userlist_tab_btn.forEach((utb, i) => {
-    utb.addEventListener("click", () => {
-      userlist_tab_content.forEach((utc) => {
-        utc.classList.add("d-none");
-      });
-      userlist_tab_btn.forEach((utb) => {
-        utb.classList.remove("active");
-      });
-      utb.classList.add("active");
-      userlist_tab_content[i].classList.remove("d-none");
-    });
-  });
-  userlist_tab_btn[1].click();
-}
-if (login) {
-  eye_icon.addEventListener("click", (e) => {
-    console.log(password_eye_field);
-    e.preventDefault();
-    password_eye_field.type == "password"
-      ? (password_eye_field.type = "text")
-      : (password_eye_field.type = "password");
-  });
-  document.querySelector(".masuk_submit").addEventListener("click", (e) => {
-    e.preventDefault();
-  });
-  r_input.forEach((inp, i) => {
-    inp.addEventListener("click", () => {
-      interface_tab_content.forEach((itc) => {
-        itc.classList.add("d-none");
-      });
-      if (inp.checked == true) {
-        interface_tab_content[i].classList.remove("d-none");
-      }
-    });
-  });
-  r_input[1].click();
-
-  // input_file
-  input_file_btn.addEventListener("click", (e) => {
-    e.preventDefault();
-    console.log(input_file);
-    input_file.click();
-  });
-
-  // -------------------------
-  input_file.addEventListener("change", () => {
-    var files = input_file.files;
-    if (FileReader && files && files.length) {
-      var fr = new FileReader();
-      // console.log(fr);
-
-      fr.onload = function () {
-        file=input_file.files.length;
-        file_name=input_file.files[0].name;
-        file_size=input_file.files[0].size;
-        file_type=input_file.files[0].type;
-        pdf_size=file_size/1000024;
-        console.log(file_type);
-        if(file_type=='application/pdf'){
-          $("#pdf_name").html(file_name);
-          if(pdf_size>10){
-            $("#err-msg").prop('d-block');
-            $("#pdf_remove").prop('d-block');
-          }
-          else{
-            $("#pdf_size").html(pdf_size+'MB');
-          }
-        }
-        else{
-          alert('Please use a pdf file');
-        }
-
-      };
-
-      fr.readAsDataURL(files[0]);
-    }
-  });
-}
-if (index) {
-  let side_bar_Container = document.querySelector(".side_bar_Container");
-  let accordial_all_list = document.querySelectorAll(
-    ".accordian_single_list, .NPIS_logo_right_content"
-  );
-  // --------------------------------------------------------------------------------------------
-  let Mainbody_conatiner = document.querySelector(".Mainbody_conatiner");
-  round.addEventListener("click", () => {
-    side_bar_Container.classList.remove("show");
-    Mainbody_conatiner.classList.add("active");
-    accordial_all_list.forEach((asl) => {
-      asl.classList.add("active");
-    });
-  });
-  // --------------------------------------------------------------------------------------------
-  document.querySelector(".NPIS_logo").addEventListener("click", () => {
-    side_bar_Container.classList.add("show");
-    Mainbody_conatiner.classList.remove("active");
-    accordial_all_list.forEach((asl) => {
-      asl.classList.remove("active");
-    });
-  });
-  // --------------------------------------------------------------------------------------------
-
-  let accordian_single_list = document.querySelectorAll(
-    ".accordian_single_list"
-  );
-  let d_arrow = document.querySelectorAll(".d_arrow");
-
-  accordian_single_list.forEach((asl) => {
-    asl.addEventListener("click", () => {
-      d_arrow.forEach((darr) => {
-        darr.classList.remove("active");
-      });
-      // let accordian_content = asl.closest(".accordian_content ");
-      // console.log(accordian_content);
-      let arrow = asl.querySelector(".d_arrow");
-      let Accordian_link = asl.querySelector(".Accordian_link");
-      if (Accordian_link.classList.contains("collapsed")) {
-        arrow.classList.add("active");
-      } else {
-        arrow.classList.remove("active");
-      }
-    });
-  });
-}
-
-        </script>
-
+ 
             <!-- <script src="https://www.google.com/recaptcha/api.js?render=6Le_V_siAAAAAI7AEeMNmqhYrC5deixFB63Kmhmb"></script> -->
 </body>
 
