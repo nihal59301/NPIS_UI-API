@@ -460,7 +460,7 @@ $(document).ready(function() {
 		formData.append('jawatan', document.myform.jawatan.value);
 		formData.append('jabatan', document.myform.jabatan.value);
 		formData.append('gred', document.myform.gred.value);
-		formData.append('kementerian', document.myform.kementerian.value);
+		// formData.append('kementerian', document.myform.kementerian.value);
 		formData.append('bahagian', document.myform.bahagian.value);
 		formData.append('negeri', document.myform.negeri.value);
 		formData.append('daerah', document.myform.daerah.value);

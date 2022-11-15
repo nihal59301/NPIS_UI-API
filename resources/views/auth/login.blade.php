@@ -210,6 +210,105 @@ $(document).ready(function() {
 $site_key= config('services.googleCaptcha.site_key');
  $secret_key=config('services.googleCaptcha.secret_key');
 @endphp
+{{-- <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Login') }}</div>
+
+                <div class="card-body">
+                    <form method="POST" action="{{url('login')}}">
+                        @csrf
+
+                        <div class="row mb-3">
+                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('No Kad Pengenalan') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Kata Laluan') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="mt-2 mb-2">
+                            <div class="g-recaptcha" data-sitekey={{$site_key}} data-callback="onReturnCallback"  name="g-recaptcha-response"></div>
+                        </div>
+
+                        <!-- <div class="row mb-3">
+                            <label for="Captchaimg" class="col-md-4 col-form-label text-md-end">{{ __('Captcha') }}</label>
+
+                            <div class="col-md-6 captchaimg">
+                                <span>{!! captcha_img() !!}</span>
+                                <button type="button" class="btn btn-danger" class="reload" id="reload">
+                                &#x21bb;
+                                </button>                                                                
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="Captcha" class="col-md-4 col-form-label text-md-end">{{ __('Sila masukan captcha diatas') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="Captcha" type="tetx" class="form-control @error('Captcha') is-invalid @enderror" name="Captcha" value="{{ old('Captcha') }}" required autocomplete="Captcha" autofocus>
+
+                                @error('Captcha')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>                         -->
+
+                        <div class="row mb-3">
+                            <div class="col-md-6 offset-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                                    <label class="form-check-label" for="remember">
+                                        {{ __('Remember Me') }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-0">
+                            <div class="col-md-8 offset-md-4">
+                                <button id="login" type="submit" class="btn btn-primary" disabled>
+                                    {{ __('Log Masuk') }}
+                                </button>
+
+                                @if (Route::has('password.request'))
+                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        {{ __('Lupa Kata Laluan?') }}
+                                    </a>
+                                @endif
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> --}}
+
     <section>
       <!-- Button trigger modal -->
       <div class="login_container">
@@ -468,7 +567,7 @@ $site_key= config('services.googleCaptcha.site_key');
                     </div>
                     <div class="interface_tab_content_container">
                       <div class="interface_tab_content">
-                        <form class="login_interface_modal_form">
+                        <form class="login_interface_modal_form" action="" method="post" id="registe_jps_user_form" name="myform1">
                           <div class="input_container">
                             <label
                               for="Nama_Penuh"
@@ -479,7 +578,7 @@ $site_key= config('services.googleCaptcha.site_key');
                               <input
                                 type="text"
                                 class="form-control"
-                                id="Nama_Penuh"
+                                id="Nama_Penuh" name="nama"
                               />
                             </div>
                           </div>
@@ -494,7 +593,7 @@ $site_key= config('services.googleCaptcha.site_key');
                               <input
                                 type="text"
                                 class="form-control"
-                                id="Kad_Pengenalan"
+                                id="Kad_Pengenalan" name="no_kod_penganalan"
                               />
                             </div>
                           </div>
@@ -508,7 +607,7 @@ $site_key= config('services.googleCaptcha.site_key');
                               <input
                                 type="text"
                                 class="form-control"
-                                id="Email_Rasmi"
+                                id="Email_Rasmi" name="email"
                               />
                             </div>
                           </div>
@@ -522,7 +621,7 @@ $site_key= config('services.googleCaptcha.site_key');
                               <input
                                 type="text"
                                 class="form-control"
-                                id="No_Telefon"
+                                id="No_Telefon" name="no_telefon"
                               />
                             </div>
                           </div>
@@ -536,7 +635,7 @@ $site_key= config('services.googleCaptcha.site_key');
                               <select
                                 type="text"
                                 class="form-control"
-                                id="No_Telefon"
+                                id="jawatan" name="jawatan"
                               >
                                 <option value=""></option>
                                 <option value="">Jawatan</option>
@@ -545,14 +644,20 @@ $site_key= config('services.googleCaptcha.site_key');
                             </div>
                           </div>
                           <div class="input_container">
-                            <label for="Gred" class="col-form-label form_label"
-                              >Gred</label
-                            >
+                            <label for="Gred" class="col-form-label form_label">Gred</label>
                             <div class="form_input">
-                              <input type="text" class="form-control" id="Gred" />
+                              <select
+                                type="text"
+                                class="form-control"
+                                name="gred" id="gred"
+                              >
+                                <option value=""></option>
+                                <option value="">gred</option>
+                                <option value="">gred</option>
+                              </select>
                             </div>
                           </div>
-                          <div class="input_container">
+                          <!-- <div class="input_container">
                             <label
                               for="Kementerian"
                               class="col-form-label form_label"
@@ -569,7 +674,7 @@ $site_key= config('services.googleCaptcha.site_key');
                                 <option value="">Jawatan</option>
                               </select>
                             </div>
-                          </div>
+                          </div> -->
                           <div class="input_container">
                             <label for="Jabatan" class="col-form-label form_label"
                               >Jabatan</label
@@ -578,11 +683,9 @@ $site_key= config('services.googleCaptcha.site_key');
                               <select
                                 type="text"
                                 class="form-control"
-                                id="Jabatan"
+                                name="jabatan" id="Jabatan"
                               >
                                 <option value=""></option>
-                                <option value="">Jawatan</option>
-                                <option value="">Jawatan</option>
                               </select>
                             </div>
                           </div>
@@ -596,11 +699,9 @@ $site_key= config('services.googleCaptcha.site_key');
                               <select
                                 type="text"
                                 class="form-control"
-                                id="Bahagian"
+                                name="bahagian" id="bahagian"
                               >
                                 <option value=""></option>
-                                <option value="">Jawatan</option>
-                                <option value="">Jawatan</option>
                               </select>
                             </div>
                           </div>
@@ -646,13 +747,13 @@ $site_key= config('services.googleCaptcha.site_key');
                             </div>
                           </div>
                           <div class="form_btn_container">
-                            <button>KEMBALI</button><button>DAFTAR</button>
+                            <button>KEMBALI</button><button id="submit_jps">DAFTAR</button>
                           </div>
                         </form>
 
                       </div>
                       <div class="interface_tab_content">
-                        <form class="login_interface_modal_form">
+                        <form class="login_interface_modal_form" action="" method="post" id="register_agensi_user_form" name="myform">
                           <div class="input_container">
                             <label
                               for="Nama_Penuh"
@@ -663,7 +764,7 @@ $site_key= config('services.googleCaptcha.site_key');
                               <input
                                 type="text"
                                 class="form-control"
-                                id="Nama_Penuh"
+                                id="Nama_Penuh" name="nama"
                               />
                             </div>
                           </div>
@@ -678,7 +779,7 @@ $site_key= config('services.googleCaptcha.site_key');
                               <input
                                 type="text"
                                 class="form-control"
-                                id="Kad_Pengenalan"
+                                id="Kad_Pengenalan" name="no_kod_penganalan"
                               />
                             </div>
                           </div>
@@ -692,7 +793,7 @@ $site_key= config('services.googleCaptcha.site_key');
                               <input
                                 type="text"
                                 class="form-control"
-                                id="Email_Rasmi"
+                                id="Email_Rasmi" name="email"
                               />
                             </div>
                           </div>
@@ -706,7 +807,7 @@ $site_key= config('services.googleCaptcha.site_key');
                               <input
                                 type="text"
                                 class="form-control"
-                                id="No_Telefon"
+                                id="No_Telefon" name="no_telefon"
                               />
                             </div>
                           </div>
@@ -720,7 +821,7 @@ $site_key= config('services.googleCaptcha.site_key');
                               <select
                                 type="text"
                                 class="form-control"
-                                id="No_Telefon"
+                                id="jawatan" name="jawatan"
                               >
                                 <option value=""></option>
                                 <option value="">Jawatan</option>
@@ -729,14 +830,20 @@ $site_key= config('services.googleCaptcha.site_key');
                             </div>
                           </div>
                           <div class="input_container">
-                            <label for="Gred" class="col-form-label form_label"
-                              >Gred</label
-                            >
+                            <label for="Gred" class="col-form-label form_label">Gred</label>
                             <div class="form_input">
-                              <input type="text" class="form-control" id="Gred" />
+                              <select
+                                type="text"
+                                class="form-control"
+                                name="gred" id="gred"
+                              >
+                                <option value=""></option>
+                                <option value="">gred</option>
+                                <option value="">gred</option>
+                              </select>
                             </div>
                           </div>
-                          <div class="input_container">
+                          <!-- <div class="input_container">
                             <label
                               for="Kementerian"
                               class="col-form-label form_label"
@@ -753,7 +860,7 @@ $site_key= config('services.googleCaptcha.site_key');
                                 <option value="">Jawatan</option>
                               </select>
                             </div>
-                          </div>
+                          </div> -->
                           <div class="input_container">
                             <label for="Jabatan" class="col-form-label form_label"
                               >Jabatan</label
@@ -762,11 +869,9 @@ $site_key= config('services.googleCaptcha.site_key');
                               <select
                                 type="text"
                                 class="form-control"
-                                id="Jabatan"
+                                name="jabatan" id="Jabatan_agensi"
                               >
                                 <option value=""></option>
-                                <option value="">Jawatan</option>
-                                <option value="">Jawatan</option>
                               </select>
                             </div>
                           </div>
@@ -780,11 +885,9 @@ $site_key= config('services.googleCaptcha.site_key');
                               <select
                                 type="text"
                                 class="form-control"
-                                id="Bahagian"
+                                name="bahagian" id="bahagian_agensi"
                               >
                                 <option value=""></option>
-                                <option value="">Jawatan</option>
-                                <option value="">Jawatan</option>
                               </select>
                             </div>
                           </div>
@@ -867,9 +970,7 @@ $site_key= config('services.googleCaptcha.site_key');
                                   class="form-check-input"
                                   id="exampleCheck1"
                                 />
-                                <label
-                                  class="form_check_label"
-                                  for="exampleCheck1"
+                                <label class="form_check_label" for="exampleCheck1"
                                   >Dengan ini saya MENGAKU bahawa semua maklumat
                                   yang diisikan dalam permohonan ini adalah SAHIH
                                   dan BENAR.</label
@@ -878,7 +979,7 @@ $site_key= config('services.googleCaptcha.site_key');
                             </div>
                           </div>
                           <div class="form_btn_container">
-                            <button>KEMBALI</button><button>DAFTAR</button>
+                            <button>KEMBALI</button><button id="submit_agensi">DAFTAR</button>
                           </div>
                         </form>
                       </div>
