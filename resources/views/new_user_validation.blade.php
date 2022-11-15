@@ -142,16 +142,16 @@
               data: response.data,
                 "language": {
                 "lengthMenu": "Papar _MENU_ Entri",
-                "zeroRecords": "Nothing found - sorry",
+                "zeroRecords": "Tiada Rekod",
                 "info": "Paparan _PAGE_ hinnga 10 Dari _PAGES_",
-                "infoEmpty": "No records available",
+                "infoEmpty": "Tiada Rekod",
                 "infoFiltered": "(filtered from _MAX_ total records)",
                 "search":"Carian:",
                 "paginate": {
                     "first":      "First",
                     "last":       "Last",
                     "next":       "Akhir",
-                    "previous":   "sebelem"
+                    "previous":   "Sebelum"
           }   ,
                   
       },
@@ -277,16 +277,16 @@
           data: response.data,
                         "language": {
                         "lengthMenu": "Papar _MENU_ Entri",
-                        "zeroRecords": "Nothing found - sorry",
+                        "zeroRecords": "Tiada Rekod",
                         "info": "Paparan _PAGE_ hinnga 10 Dari _PAGES_",
-                        "infoEmpty": "No records available",
+                        "infoEmpty": "Tiada Rekod",
                         "infoFiltered": "(filtered from _MAX_ total records)",
                         "search":"Carian:",
                         "paginate": {
                             "first":      "First",
                             "last":       "Last",
                             "next":       "Akhir",
-                            "previous":   "sebelem"
+                            "previous":   "Sebelum"
                         }   ,
                   
       },
@@ -379,16 +379,16 @@
               data: response.data,
                 "language": {
                 "lengthMenu": "Papar _MENU_ Entri",
-                "zeroRecords": "Nothing found - sorry",
+                "zeroRecords": "Tiada Rekod",
                 "info": "Paparan _PAGE_ hinnga 10 Dari _PAGES_",
-                "infoEmpty": "No records available",
+                "infoEmpty": "Tiada Rekod",
                 "infoFiltered": "(filtered from _MAX_ total records)",
                 "search":"Carian:",
                 "paginate": {
                     "first":      "First",
                     "last":       "Last",
                     "next":       "Akhir",
-                    "previous":   "sebelem"
+                    "previous":   "Sebelum"
           }   ,
                   
       },

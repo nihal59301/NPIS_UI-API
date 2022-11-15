@@ -51,7 +51,7 @@
                         </button>
                            
                         <label>Jurutera Awam</label>   
-                        <label>Jabatan Pengiran dan saliran(JPS)</label>
+                        <label>Jabatan Pengairan dan Saliran(JPS)</label>
                         <label>Bahagian Korporat(BKOR)</label>                       
                     </div> <!-- end card-->
                     <div class="card text-center">
@@ -99,7 +99,7 @@
                             </div>
                             <div class="form-row d-md-flex justify-content-between">
                                 <div class="form-group col-md-6" id="profile">
-                                <label for="no_telefon" class="text-primary">No Telefon</label>
+                                <label for="no_telefon" class="text-primary">No. Telefon</label>
                                 <input type="text" class="form-control" id="no_telefon" name="no_telefon" placeholder="">
                                 </div>
                                 <div class="form-group col-md-6" id="profile">
@@ -143,7 +143,7 @@
                                 </select>
                                 </div>
                                 <div class="form-group col-md-6" id="profile">
-                                <label for="daerah" class="text-primary">Doerah</label>
+                                <label for="daerah" class="text-primary">Daerah</label>
                                 <select id="daerah" class="form-control" name="daerah">
                                 </select>
                                 </div>
@@ -170,7 +170,7 @@
                                 </div>
                             </div>
                             <div class=" text-center p-3">
-                                <button type="button" class="back btn btn-danger">kemboli</button>
+                                <button type="button" class="back btn btn-danger">Kembali</button>
                                 <button type="button" class="save btn btn-primary">Simpan</button>
                             </div>
                         </form>
