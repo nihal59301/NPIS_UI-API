@@ -25,7 +25,7 @@ var onReturnCallback = function(response) {
             type: 'GET',
             url: 'reload-captcha',
             success: function (data) {
-                console.log(data)
+                // console.log(data)
                 $(".captchaimg span").html(data.captcha);
             }
         });
@@ -239,16 +239,18 @@ var onReturnCallback = function(response) {
                               {{-- <button id="login" type="button" value="" class="btn btn-block masuk_submit mt-4" disabled>log masuk</button> --}}
                               <div class="row mb-0">
                                 <div class="col-md-12">
-                                    <button id="login" type="submit"  class="btn btn-primary masuk_submit" disabled>
+                                    <button id="login" type="submit" class="btn btn-primary masuk_submit" disabled>
                                         {{ __('Log Masuk') }}
                                     </button>
                                 </div> 
                                 <div class="forget_password d-ext-end">
-                                  <a class="btn btn-link" href="#"  data-target="#Login_interface_modal" data-toggle="modal">
+                                  <a class="btn btn-link" href="#"  data-target="#Login_interface_modal" data-toggle="modal" data-backdrop="static"
+                                  data-keyboard="false">
                                       {{ __('Daftar Baharu') }}
                                   </a>
                                   @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="#"  data-target="#Forget_modal" data-toggle="modal">
+                                    <a class="btn btn-link" href="#"  data-target="#Forget_modal" data-toggle="modal" data-backdrop="static"
+                                    data-keyboard="false">
                                         {{ __('Lupa Kata Laluan?') }}
                                     </a>
                                   @endif 
@@ -270,7 +272,7 @@ var onReturnCallback = function(response) {
                               <p class="info">
                                   Sila masukkan ID Pengguna, Kata Laluan, dan Captcha
                               </p>
-                              <form id="pengguna_jps_form" method="POST" action="{{url('login')}}">
+                              <form id="pengguna_nonjps_form" method="POST" action="{{url('login')}}">
                                 @csrf    
                                   <div class="form-group">
                                       <label for="nonjps_useremail"  class="sr-only">E-mel</label>
@@ -309,11 +311,13 @@ var onReturnCallback = function(response) {
                                         </button>
                                     </div>
                                     <div class="forget_password d-text-end">
-                                      <a class="btn btn-link" href="#"  data-target="#Login_interface_modal" data-toggle="modal">
+                                      <a class="btn btn-link" href="#"  data-target="#Login_interface_modal" data-toggle="modal" data-backdrop="static"
+                                      data-keyboard="false">
                                         {{ __('Daftar Baharu') }}
                                       </a>
                                       @if (Route::has('password.request'))
-                                        <a class="btn btn-link" data-target="#Forget_modal" data-toggle="modal">
+                                        <a class="btn btn-link" data-target="#Forget_modal" data-toggle="modal" data-backdrop="static"
+                                        data-keyboard="false">
                                             {{ __('Lupa Kata Laluan?') }}
                                         </a>
                                       @endif
@@ -821,39 +825,6 @@ var onReturnCallback = function(response) {
           </div>
         </div>
       </section>
-          <!--------------------------------------------------- sucess_modal_container starts-------------------------- -->
-    <section>
-      <div class="sucess_modal_container">
-        <div
-          class="modal fade"
-          id="sucess_modal"
-          tabindex="-1"
-          role="dialog"
-          aria-labelledby="exampleModalCenterTitle"
-          aria-hidden="true"
-        >
-          <div
-            class="modal-dialog modal-dialog-centered sucess_modal_dialog"
-            role="document"
-          >
-            <div class="modal-content sucess_modal_content">
-              <div class="modal-body sucess_modal_body">
-                <h3>
-                  Kata laluan berjaya dihantar ke <br />
-                  email anda
-                </h3>
-                <div class="text-center">
-                  <button data-dismiss="modal">Tutup</button>
-                </div>
-              </div>
-              <div class="sucess_msg">
-                <img src="assets/images/coolicon.png" alt="" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
       {{--------------------------------- Forget pass model for JPS USER ---------------------------------------------}}
     <section>
       <div class="forget_modal">
@@ -1102,7 +1073,7 @@ if (index) {
         </script>
 
             <!-- <script src="https://www.google.com/recaptcha/api.js?render=6Le_V_siAAAAAI7AEeMNmqhYrC5deixFB63Kmhmb"></script> -->
-        </body>
+</body>
 
 @endsection
 
