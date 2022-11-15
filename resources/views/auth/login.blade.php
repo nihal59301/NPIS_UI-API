@@ -19,18 +19,6 @@ var onReturnCallback = function(response) {
           
     }
 </script>
-<script type="text/javascript">
-    $('#reload').click(function () {        
-        $.ajax({
-            type: 'GET',
-            url: 'reload-captcha',
-            success: function (data) {
-                // console.log(data)
-                $(".captchaimg span").html(data.captcha);
-            }
-        });
-    });
-</script>
 @endpush
 @section('content')
 @if(Session::has('message'))
@@ -38,14 +26,15 @@ var onReturnCallback = function(response) {
 @endif
 
 @php
- $site_key="6Lfto-8iAAAAAH_Z0bck7F3XtBBvPN6-Jbj44rib";
- $secret_key="6Lfto-8iAAAAAE_EqMEmYoBf-dyXWGfknA7b254N";  
+$site_key= config('services.googleCaptcha.site_key');
+ $secret_key=config('services.googleCaptcha.secret_key');
 @endphp
 {{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
+
                 <div class="card-body">
                     <form method="POST" action="{{url('login')}}">
                         @csrf
@@ -142,6 +131,9 @@ var onReturnCallback = function(response) {
     <section>
       <!-- Button trigger modal -->
       <div class="login_container">
+      @if($errors->any())
+          {{ implode('', $errors->all('<div>:message</div>')) }}
+      @endif
         <button
           type="button"
           class="btn btn-primary login_btn"
@@ -280,8 +272,8 @@ var onReturnCallback = function(response) {
                                              class="form-control"
                                              id="nonjps_useremail"
                                              aria-describedby="emailHelp"
-                                             placeholder="E-mel" name="nonjps_useremail" />
-                                             @error('nonjps_useremail')
+                                             placeholder="E-mel" name="email" />
+                                             @error('email')
                                           <span class="invalid-feedback" role="alert">
                                               <strong>{{ $message }}</strong>
                                           </span>
@@ -292,11 +284,11 @@ var onReturnCallback = function(response) {
                                       <input type="password"
                                              class="form-control password_eye_field"
                                              id="nonjps_userpassword"
-                                             placeholder="Kata Laluan" name="nonjps_userpassword" />
+                                             placeholder="Kata Laluan" name="password" />
                                       <button class="eye_icon">
                                           <img src="assets/images/Password eye.png" alt="" />
                                       </button>
-                                      @error('nonjps_userpassword')
+                                      @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -917,7 +909,8 @@ var onReturnCallback = function(response) {
         </div>
       </div>
     </section>
-    <script>
+    
+<script>
         let round = document.querySelector(".round");
 
 let index = document.querySelector("#index");
