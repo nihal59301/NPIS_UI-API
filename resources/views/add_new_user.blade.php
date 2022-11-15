@@ -57,7 +57,7 @@
                                     <div class="row input-data">
                                        <div class="col-md-6">
                                         <label>Emel Rasmi</label><br>
-                                        <input class="form-control" type="email" name="emel_rasmi" id="emel_rasmi">
+                                        <input class="form-control" type="email" name="email" id="emel_rasmi">
                                         <span class="error" id="error_email"></span>
                                        </div>
                                        <div class="col-md-6">
@@ -69,7 +69,7 @@
                                     <div class="row input-data">
                                        <div class="col-md-6">
                                         <label>Jawatan</label><br>
-                                          <select class="form-select" name="jawatan" id="jawatan">
+                                          <select class="form-select" name="jabatan" id="jawatan">
                                           </select>
                                        </div>
                                        <div class="col-md-6">
@@ -88,7 +88,7 @@
                                     <div class="row input-data">
                                        <div class="col-md-6">
                                         <label>Jabatan</label><br>
-                                          <select class="form-select form-control-light" name="Jabatan" id="Jabatan">
+                                          <select class="form-select form-control-light" name="jabatan" id="Jabatan">
                                           </select>
                                        </div>
                                        <div class="col-md-6">

@@ -266,42 +266,48 @@ $(document).ready(function() {
 		}
 	});
 
-	var dropDown = document.getElementById("kementerian");
-    $.ajax({
-        type: "GET",
-        url: api_url+"api/lookup/agensi/list",
-        dataType: 'json',
-        success: function (result) { console.log(result)
-            if (result.data) {
-                $.each(result, function (key, item) {
-					var opt = item.id;
-					var el = document.createElement("option");
-					el.textContent = item.Name;
-					el.value = opt;
-					dropDown.appendChild(el);
-                })
-            }
-            else {
-                $.Notification.error(result.Message);
-            }
-        }
-    });
+	$.ajaxSetup({
+		headers: {
+			   "Content-Type": "application/json",
+			   "Authorization": api_token,
+			   }
+   });
+
+	// var dropDown = document.getElementById("kementerian");
+    // $.ajax({
+    //     type: "GET",
+    //     url: api_url+"GetKementerian/",
+    //     dataType: 'json',
+    //     success: function (result) { console.log(result)
+    //         if (result) {
+    //             $.each(result, function (key, item) {
+	// 				var opt = item.id;
+	// 				var el = document.createElement("option");
+	// 				el.textContent = item.Name;
+	// 				el.value = opt;
+	// 				dropDown.appendChild(el);
+    //             })
+    //         }
+    //         else {
+    //             $.Notification.error(result.Message);
+    //         }
+    //     }
+    // });
 
 	var JabatandropDown =  document.getElementById("Jabatan");
     $.ajax({
         type: "GET",
-        url: api_url+"api/lookup/jabatan/list",
+        url: api_url+"api/lookup/jabatan/list/",
         dataType: 'json',
         success: function (result) { console.log(result.data)
             if (result) {
-                $.each(result.data, function (key, item) {					
+                $.each(result.data, function (key, item) {
 					var opt = item.id;
 					var el = document.createElement("option");
 					el.textContent = item.nama_jabatan;
-					el.value = opt;					
+					el.value = opt;
 					JabatandropDown.appendChild(el);
                 })
-				
             }
             else {
                 $.Notification.error(result.Message);
@@ -315,8 +321,8 @@ $(document).ready(function() {
         url: api_url+"api/lookup/bahagian/list/",
         dataType: 'json',
         success: function (result) { console.log(result)
-            if (result.data) {
-                $.each(result, function (key, item) {
+            if (result) {
+                $.each(result.data, function (key, item) {
 					var opt = item.id;
 					var el = document.createElement("option");
 					el.textContent = item.nama_bahagian;
@@ -333,11 +339,11 @@ $(document).ready(function() {
 	var negeridropDown =  document.getElementById("negeri");
     $.ajax({
         type: "GET",
-        url: api_url+"api/lookup/negeri/list/",
+        url: api_url+"api/lookup/negeri/list",
         dataType: 'json',
         success: function (result) { console.log(result)
-            if (result.data) {
-                $.each(result, function (key, item) {
+            if (result) {
+                $.each(result.data, function (key, item) {
 					var opt = item.id;
 					var el = document.createElement("option");
 					el.textContent = item.nama_negeri;
@@ -354,7 +360,7 @@ $(document).ready(function() {
 	var daerahdropDown =  document.getElementById("daerah");
     $.ajax({
         type: "GET",
-        url: api_url+"api/lookup/daerah/list/",
+        url: api_url+"api/lookup/daerah/list",
         dataType: 'json',
         success: function (result) { console.log(result)
             if (result) {
@@ -374,7 +380,7 @@ $(document).ready(function() {
     var jawatandropDown =  document.getElementById("jawatan");
     $.ajax({
         type: "GET",
-        url: api_url+"api/lookup/jawatan/list/",
+        url: api_url+"api/lookup/jawatan/list",
         dataType: 'json',
         success: function (result) { console.log(result)
             if (result) {
@@ -395,7 +401,7 @@ $(document).ready(function() {
 	var greddropDown =  document.getElementById("gred");
     $.ajax({
         type: "GET",
-        url: api_url+"api/lookup/gredjawatan/list/",
+        url: api_url+"api/lookup/gredjawatan/list",
         dataType: 'json',
         success: function (result) { console.log(result)
             if (result) {
@@ -421,26 +427,53 @@ $(document).ready(function() {
 			document.getElementById("name").focus();
 			return false; 
 		}
+		else{
+			document.getElementById("error_name").innerHTML=""; }
 		if(!document.myform.no_kod_penganalan.value)  { 
 			document.getElementById("error_no_kod_penganalan").innerHTML="medan no kod penganalan diperlukan"; 
 			document.getElementById("no_kod_penganalan").focus();
 			return false; 
-		}
+		}else { document.getElementById("error_no_kod_penganalan").innerHTML=""; }
 		if(!document.myform.emel_rasmi.value)  { 
 			document.getElementById("error_email").innerHTML="medan emel rasmi diperlukan"; 
 			document.getElementById("emel_rasmi").focus();
 			return false; 
-		}
+		}else{ document.getElementById("error_email").innerHTML="";}
 		if(!document.myform.no_telefon.value)  { 
 			document.getElementById("error_telefon").innerHTML="medan no telefon diperlukan"; 
 			document.getElementById("no_telefon").focus();
 			return false; 
-		}
+		}else{document.getElementById("error_telefon").innerHTML="";}
 
+		const api_url = document.getElementById("api_url").value;  console.log(api_url);
+    	const api_token = "Bearer "+ document.getElementById("token").value;  console.log(api_token);
+		$.ajaxSetup({
+			headers: {
+				   "Content-Type": "application/json",
+				   "Authorization": api_token,
+				   }
+	   });
+
+      var create_data = {   'nama':document.myform.nama.value,
+	  						'no_kod_penganalan':document.myform.no_kod_penganalan.value,
+							'email':document.myform.email.value,
+							'kategori':document.myform.kategori.value,
+							'no_telefon':document.myform.no_telefon.value,
+							'jawatan':document.myform.jawatan.value,
+							'jabatan':"1",
+							'gred':document.myform.gred.value,
+							'kementerian':"1",
+							'bahagian':document.myform.bahagian.value,
+							'negeri':document.myform.negeri.value,
+							'daerah':document.myform.daerah.value
+						}
+      console.log(create_data);
+	  var jsonString = JSON.stringify(create_data);
+console.log(jsonString);
 		$.ajax({
 			type: 'POST',
-			url: api_url+"addUser/",
-			data: $('#create_user_form').serialize(), 
+			url: api_url+"api/user/create",
+			data: jsonString, 
 			success: function(response) { console.log(response)
 			   alert(response); 
 			},
