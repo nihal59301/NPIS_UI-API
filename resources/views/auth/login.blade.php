@@ -13,7 +13,7 @@
 
 var onReturnCallback = function(response) {        
     if(response){
-        $("#login").prop('disabled', false);                             
+        $("#login-jps").prop('disabled', false);                             
         $("#login-nonjps").prop('disabled', false);  
     }
           
@@ -128,10 +128,10 @@ $site_key= config('services.googleCaptcha.site_key');
                                   @enderror
                               </div>
                               <div class="g-recaptcha" data-sitekey={{$site_key}} data-callback="onReturnCallback"  name="g-recaptcha-response"></div>
-                              {{-- <button id="login" type="button" value="" class="btn btn-block masuk_submit mt-4" disabled>log masuk</button> --}}
+                              
                               <div class="row mb-0">
                                 <div class="col-md-12">
-                                    <button id="login" type="submit" class="btn btn-primary masuk_submit" disabled>
+                                    <button id="login-jps" type="submit" class="btn btn-primary masuk_submit" disabled>
                                         {{ __('Log Masuk') }}
                                     </button>
                                 </div> 
