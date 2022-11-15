@@ -190,7 +190,7 @@
                           if(type === 'display'){
                               data='<div class="d-flex">'+
                                   '<button class="btn btn-danger  m-1">Tadak Lulus</button>'+
-                                  '<button class="btn btn-primary  m-1">Lulus</button>'+
+                                  '<button class="btn btn-primary m-1" onClick="approveTempUser('+row.id+')">Lulus</button>'+
                               '</div>'
                           }
                           return data;
@@ -224,6 +224,31 @@
         localStorage.setItem("user_type", "temp_user");
         window.location.href = "{{ url('/user-profile')}}";
 
+
+    }
+
+    function approveTempUser(id)
+    {
+       //alert("approve");
+       const api_url = document.getElementById("api_url").value;  console.log(api_url);
+       const api_token = "Bearer "+ document.getElementById("token").value;  console.log(api_token);
+       update_user_api = api_url+"api/user/approval/";
+       data_update = {'id':id};
+       var jsonString = JSON.stringify(data_update);
+       $.ajaxSetup({
+         headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": api_token,
+                    }
+        });
+       $.ajax({
+            type: 'POST',
+            url: update_user_api,
+            data: jsonString, 
+            success: function(response) { console.log(response.code)
+                window.location.href = "{{ url('/pengasahan-pengguna-baharu')}}";
+            }
+        });
 
     }
 
