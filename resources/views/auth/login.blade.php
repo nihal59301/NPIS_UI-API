@@ -244,14 +244,14 @@ var onReturnCallback = function(response) {
                                     </button>
                                 </div> 
                                 <div class="forget_password d-ext-end">
+                                  <a class="btn btn-link" href="#"  data-target="#login_interface_section_jps" data-toggle="modal">
+                                      {{ __('Daftar Baharu') }}
+                                  </a>
                                   @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    <a class="btn btn-link" href="#"  data-target="#Forget_modal_jps" data-toggle="modal">
                                         {{ __('Lupa Kata Laluan?') }}
                                     </a>
                                   @endif 
-                                    <a class="btn btn-link" href="RegisterNewUser">
-                                        {{ __('Daftar Baharu') }}
-                                    </a>
                                 </div>
                             </div>
                           </form>
@@ -309,14 +309,14 @@ var onReturnCallback = function(response) {
                                         </button>
                                     </div>
                                     <div class="forget_password d-text-end">
+                                      <a class="btn btn-link" data-target="#Login_interface_modal" data-toggle="modal">
+                                        {{ __('Daftar Baharu') }}
+                                      </a>
                                       @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        <a class="btn btn-link" href="#"  data-target="#Forget_modal" data-toggle="modal">
                                             {{ __('Lupa Kata Laluan?') }}
                                         </a>
                                       @endif
-                                      <a class="btn btn-link" href="RegisterNewUser">
-                                        {{ __('Daftar Baharu') }}
-                                    </a>
                                   </div>
                                 </div>
 
@@ -331,12 +331,684 @@ var onReturnCallback = function(response) {
         </div>
       </div>
     </section>
+      <!---------------------------------------------------- login interface Modal starts-------------------------- -->
+      <section>
+        <div class="login_interface_section">
+          <div
+            class="modal fade"
+            id="Login_interface_modal"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true"
+          >
+            <div
+              class="modal-dialog modal-dialog-centered login_interface_modal_dialog"
+              role="document"
+            >
+              <div class="modal-content login_interface_modal_content">
+                <div class="modal-body login_interface_modal_body">
+                  <div class="login_interface_close">
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <img src="assets/images/image 95.png" alt="" />
+                    </button>
+                  </div>
+                  <div class="login_interface_modal_body_content">
+                    <h4 class="login_interface_modal_header">
+                      DAFTAR AKAUN BAHARU
+                    </h4>
+                    <div class="interface_tab_container">
+                      <div class="d-flex">
+                        <div class="label">
+                          <label for="Kotegori Pengguna">Kotegori Pengguna</label>
+                        </div>
+                        <div class="radio_Container d-flex flex-column ml-5">
+                          <label class="r_container"
+                            >Pengguna JPS
+                            <input type="radio" name="radio" id="Pengguna_JPS" />
+                            <span class="checkmark"></span>
+                          </label>
+                          <label class="r_container"
+                            >Agensi Luar
+                            <input
+                              type="radio"
+                              name="radio"
+                              id="Agensi Luar"
+                              checked
+                            />
+                            <span class="checkmark"></span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="interface_tab_content_container">
+                      <div class="interface_tab_content">...</div>
+                      <div class="interface_tab_content">
+                        <form class="login_interface_modal_form">
+                          <div class="input_container">
+                            <label
+                              for="Nama_Penuh"
+                              class="col-form-label form_label"
+                              >Nama Penuh</label
+                            >
+                            <div class="form_input">
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="Nama_Penuh"
+                              />
+                            </div>
+                          </div>
+  
+                          <div class="input_container">
+                            <label
+                              for="Kad_Pengenalan"
+                              class="col-form-label form_label"
+                              >No. Kad Pengenalan</label
+                            >
+                            <div class="form_input">
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="Kad_Pengenalan"
+                              />
+                            </div>
+                          </div>
+                          <div class="input_container">
+                            <label
+                              for="Email_Rasmi"
+                              class="col-form-label form_label"
+                              >Email Rasmi</label
+                            >
+                            <div class="form_input">
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="Email_Rasmi"
+                              />
+                            </div>
+                          </div>
+                          <div class="input_container">
+                            <label
+                              for="No_Telefon"
+                              class="col-form-label form_label"
+                              >No Telefon</label
+                            >
+                            <div class="form_input">
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="No_Telefon"
+                              />
+                            </div>
+                          </div>
+                          <div class="input_container">
+                            <label
+                              for="No_Telefon"
+                              class="col-form-label form_label"
+                              >Jawatan</label
+                            >
+                            <div class="form_input">
+                              <select
+                                type="text"
+                                class="form-control"
+                                id="No_Telefon"
+                              >
+                                <option value=""></option>
+                                <option value="">Jawatan</option>
+                                <option value="">Jawatan</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="input_container">
+                            <label for="Gred" class="col-form-label form_label"
+                              >Gred</label
+                            >
+                            <div class="form_input">
+                              <input type="text" class="form-control" id="Gred" />
+                            </div>
+                          </div>
+                          <div class="input_container">
+                            <label
+                              for="Kementerian"
+                              class="col-form-label form_label"
+                              >Kementerian</label
+                            >
+                            <div class="form_input">
+                              <select
+                                type="text"
+                                class="form-control"
+                                id="Kementerian"
+                              >
+                                <option value=""></option>
+                                <option value="">Jawatan</option>
+                                <option value="">Jawatan</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="input_container">
+                            <label for="Jabatan" class="col-form-label form_label"
+                              >Jabatan</label
+                            >
+                            <div class="form_input">
+                              <select
+                                type="text"
+                                class="form-control"
+                                id="Jabatan"
+                              >
+                                <option value=""></option>
+                                <option value="">Jawatan</option>
+                                <option value="">Jawatan</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="input_container">
+                            <label
+                              for="Bahagian"
+                              class="col-form-label form_label"
+                              >Bahagian</label
+                            >
+                            <div class="form_input">
+                              <select
+                                type="text"
+                                class="form-control"
+                                id="Bahagian"
+                              >
+                                <option value=""></option>
+                                <option value="">Jawatan</option>
+                                <option value="">Jawatan</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="input_container">
+                            <div class="file_label d-flex">
+                              <label
+                                for="Dokumen_Sokongan"
+                                class="col-form-label form_label"
+                                >Dokumen Sokongan</label
+                              >
+                              <div class="pop_btn">
+                                <button
+                                  type="button"
+                                  class="btn"
+                                  data-container="body"
+                                  data-toggle="popover"
+                                  data-placement="right"
+                                  data-content="Sila muat naik  kad Jabatan"
+                                >
+                                  <img src="assets/images/i-icon.png" alt="" />
+                                </button>
+  
+                                <!-- <div class="pop_over">
+                                <p>  </p>
+                                </div> -->
+                              </div>
+                            </div>
+  
+                            <div class="form_input_file">
+                              <input
+                                type="file"
+                                class="form-control"
+                                id="Dokumen_Sokongan"
+                              />
+                              <button class="select_file">
+                                Muat naik lampiran
+                              </button>
+                              <p id="err-msg" class="file_size d-none">
+                                (Salz fail tidak melebihi 10 mb)
+                              </p>
+                              <div class="selected_file d-flex">
+                                <div id="pdf_img" class="pdf_img">
+                                </div>
+                                <div class="file_details">
+                                  <p id="pdf_name" class="pdf_name"></p>
+                                  <button class="d-none" id="pdf_remove">Remove file</button>
+                                </div>
+                                <p id="pdf_size" class="pdf_size"></p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="input_container">
+                            <label
+                              for="Kod_Pengesahan"
+                              class="col-form-label form_label"
+                            >
+                              Kod Pengesahan</label
+                            >
+                            <div class="form_input">
+                              <div
+                                class="g-recaptcha"
+                                data-sitekey={{$site_key}}
+                                data-action="submit"
+                              >
+                                Submit
+                              </div>
+                            </div>
+                          </div>
+                          <div class="input_container m-0">
+                            <label
+                              for="Kod_Pengesahan"
+                              class="col-form-label form_label"
+                            >
+                              Perakuan Pendaftaran</label
+                            >
+                            <div class="form_input">
+                              <div class="form-group form-check form_checker">
+                                <input
+                                  type="checkbox"
+                                  class="form-check-input"
+                                  id="exampleCheck1"
+                                />
+                                <label
+                                  class="form_check_label"
+                                  for="exampleCheck1"
+                                  >Dengan ini saya MENGAKU bahawa semua maklumat
+                                  yang diisikan dalam permohonan ini adalah SAHIH
+                                  dan BENAR.</label
+                                >
+                              </div>
+                            </div>
+                          </div>
+                          <div class="form_btn_container">
+                            <button>KEMBALI</button><button>DAFTAR</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!---------------------------------------------------- login2 interface Modal starts-------------------------- -->
+      <section>
+        <div class="login_interface_section">
+          <div
+            class="modal fade"
+            id="login_interface_section_jps"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true"
+          >
+            <div
+              class="modal-dialog modal-dialog-centered login_interface_modal_dialog"
+              role="document"
+            >
+              <div class="modal-content login_interface_modal_content">
+                <div class="modal-body login_interface_modal_body">
+                  <div class="login_interface_close">
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <img src="assets/images/image 95.png" alt="" />
+                    </button>
+                  </div>
+                  <div class="login_interface_modal_body_content">
+                    <h4 class="login_interface_modal_header">
+                      DAFTAR AKAUN BAHARU
+                    </h4>
+                    <div class="interface_tab_container">
+                      <div class="d-flex">
+                        <div class="label">
+                          <label for="Kotegori Pengguna">Kotegori Pengguna</label>
+                        </div>
+                        <div class="radio_Container d-flex flex-column ml-5">
+                          <label class="r_container"
+                            >Pengguna JPS
+                            <input type="radio" name="radio" id="Pengguna_JPS" />
+                            <span class="checkmark"></span>
+                          </label>
+                          <label class="r_container"
+                            >Agensi Luar
+                            <input
+                              type="radio"
+                              name="radio"
+                              id="Agensi Luar"
+                              checked
+                            />
+                            <span class="checkmark"></span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="interface_tab_content_container">
+                      <div class="interface_tab_content">...</div>
+                      <div class="interface_tab_content">
+                        <form class="login_interface_modal_form">
+                          <div class="input_container">
+                            <label
+                              for="Nama_Penuh"
+                              class="col-form-label form_label"
+                              >Nama Penuh</label
+                            >
+                            <div class="form_input">
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="Nama_Penuh"
+                              />
+                            </div>
+                          </div>
+  
+                          <div class="input_container">
+                            <label
+                              for="Kad_Pengenalan"
+                              class="col-form-label form_label"
+                              >No. Kad Pengenalan</label
+                            >
+                            <div class="form_input">
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="Kad_Pengenalan"
+                              />
+                            </div>
+                          </div>
+                          <div class="input_container">
+                            <label
+                              for="Email_Rasmi"
+                              class="col-form-label form_label"
+                              >Email Rasmi</label
+                            >
+                            <div class="form_input">
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="Email_Rasmi"
+                              />
+                            </div>
+                          </div>
+                          <div class="input_container">
+                            <label
+                              for="No_Telefon"
+                              class="col-form-label form_label"
+                              >No Telefon</label
+                            >
+                            <div class="form_input">
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="No_Telefon"
+                              />
+                            </div>
+                          </div>
+                          <div class="input_container">
+                            <label
+                              for="No_Telefon"
+                              class="col-form-label form_label"
+                              >Jawatan</label
+                            >
+                            <div class="form_input">
+                              <select
+                                type="text"
+                                class="form-control"
+                                id="No_Telefon"
+                              >
+                                <option value=""></option>
+                                <option value="">Jawatan</option>
+                                <option value="">Jawatan</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="input_container">
+                            <label for="Gred" class="col-form-label form_label"
+                              >Gred</label
+                            >
+                            <div class="form_input">
+                              <input type="text" class="form-control" id="Gred" />
+                            </div>
+                          </div>
+                          <div class="input_container">
+                            <label
+                              for="Kementerian"
+                              class="col-form-label form_label"
+                              >Kementerian</label
+                            >
+                            <div class="form_input">
+                              <select
+                                type="text"
+                                class="form-control"
+                                id="Kementerian"
+                              >
+                                <option value=""></option>
+                                <option value="">Jawatan</option>
+                                <option value="">Jawatan</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="input_container">
+                            <label for="Jabatan" class="col-form-label form_label"
+                              >Jabatan</label
+                            >
+                            <div class="form_input">
+                              <select
+                                type="text"
+                                class="form-control"
+                                id="Jabatan"
+                              >
+                                <option value=""></option>
+                                <option value="">Jawatan</option>
+                                <option value="">Jawatan</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="input_container">
+                            <label
+                              for="Bahagian"
+                              class="col-form-label form_label"
+                              >Bahagian</label
+                            >
+                            <div class="form_input">
+                              <select
+                                type="text"
+                                class="form-control"
+                                id="Bahagian"
+                              >
+                                <option value=""></option>
+                                <option value="">Jawatan</option>
+                                <option value="">Jawatan</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="input_container">
+                            <div class="file_label d-flex">
+                              <label
+                                for="Dokumen_Sokongan"
+                                class="col-form-label form_label"
+                                >Dokumen Sokongan</label
+                              >
+                              <div class="pop_btn">
+                                <button
+                                  type="button"
+                                  class="btn"
+                                  data-container="body"
+                                  data-toggle="popover"
+                                  data-placement="right"
+                                  data-content="Sila muat naik  kad Jabatan"
+                                >
+                                  <img src="assets/images/i-icon.png" alt="" />
+                                </button>
+  
+                                <!-- <div class="pop_over">
+                                <p>  </p>
+                                </div> -->
+                              </div>
+                            </div>
+                          </div>
+                          <div class="input_container">
+                            <label
+                              for="Kod_Pengesahan"
+                              class="col-form-label form_label"
+                            >
+                              Kod Pengesahan</label
+                            >
+                            <div class="form_input">
+                              <div
+                                class="g-recaptcha"
+                                data-sitekey={{$site_key}}
+                                data-action="submit"
+                              >
+                                Submit
+                              </div>
+                            </div>
+                          </div>
+                          <div class="input_container m-0">
+                            <label
+                              for="Kod_Pengesahan"
+                              class="col-form-label form_label"
+                            >
+                              Perakuan Pendaftaran</label
+                            >
+                            <div class="form_input">
+                              <div class="form-group form-check form_checker">
+                                <input
+                                  type="checkbox"
+                                  class="form-check-input"
+                                  id="exampleCheck1"
+                                />
+                                <label
+                                  class="form_check_label"
+                                  for="exampleCheck1"
+                                  >Dengan ini saya MENGAKU bahawa semua maklumat
+                                  yang diisikan dalam permohonan ini adalah SAHIH
+                                  dan BENAR.</label
+                                >
+                              </div>
+                            </div>
+                          </div>
+                          <div class="form_btn_container">
+                            <button>KEMBALI</button><button>DAFTAR</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+          <!--------------------------------------------------- sucess_modal_container starts-------------------------- -->
+    <section>
+      <div class="sucess_modal_container">
+        <div
+          class="modal fade"
+          id="sucess_modal"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalCenterTitle"
+          aria-hidden="true"
+        >
+          <div
+            class="modal-dialog modal-dialog-centered sucess_modal_dialog"
+            role="document"
+          >
+            <div class="modal-content sucess_modal_content">
+              <div class="modal-body sucess_modal_body">
+                <h3>
+                  Kata laluan berjaya dihantar ke <br />
+                  email anda
+                </h3>
+                <div class="text-center">
+                  <button data-dismiss="modal">Tutup</button>
+                </div>
+              </div>
+              <div class="sucess_msg">
+                <img src="assets/images/coolicon.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+      {{--------------------------------- Forget pass model for JPS USER ---------------------------------------------}}
     <section>
       <div class="forget_modal">
         <!-- Modal -->
         <div
           class="modal fade"
           id="Forget_modal"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalCenterTitle"
+          aria-hidden="true"
+        >
+          <div
+            class="modal-dialog modal-dialog-centered forget_modal_dialog"
+            role="document"
+          >
+            <div class="modal-content forget_modal_content">
+              <div class="modal-body forget_modal_body">
+                <div class="forget_modal_heading">
+                  <h4>Lupa kata laluan ?</h4>
+                  <p>
+                    Sila masukkan E-Mel, No. Kad Pengenalan dan semak E-Mel anda
+                    untuk set semula kata laluan.
+                  </p>
+                </div>
+                <div class="forget_modal_form">
+                  <form id="forget_modal_form" autocomplete="off">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1" class="sr-only"
+                        >No. Kad Pengenalan</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="exampleInputEmail1"
+                        aria-describedby="emailHelp"
+                        placeholder="No. Kad Pengenalan"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1" class="sr-only"
+                        >Alamat E-Mel</label
+                      >
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="exampleInputPassword1"
+                        placeholder="Alamat E-Mel"
+                      />
+                    </div>
+                    <div class="forget_submit text-center">
+                      <button
+                        type="button"
+                        data-toggle="modal"
+                        data-target="#sucess_modal"
+                        data-dismiss="modal"
+                      >
+                        Hantar
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+      {{--------------------------------- Forget pass model2 for JPS USER ---------------------------------------------}}
+
+    <section>
+      <div class="forget_modal">
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="Forget_modal_jps"
           tabindex="-1"
           role="dialog"
           aria-labelledby="exampleModalCenterTitle"
@@ -432,78 +1104,148 @@ var onReturnCallback = function(response) {
     </section>
     <script>
         let round = document.querySelector(".round");
-        let index = document.querySelector("#index");
-        let eye_icon = document.querySelector(".eye_icon");
-        let password_eye_field = document.querySelector(".password_eye_field");
-        let login = document.querySelector("#login");
-        if (login) {
-        eye_icon.addEventListener("click", (e) => {
-            console.log(password_eye_field);
-            e.preventDefault();
-            password_eye_field.type == "password"
-            ? (password_eye_field.type = "text")
-            : (password_eye_field.type = "password");
-        });
-        //   document.querySelector(".musuk_submit").addEventListener("click", (e) => {
-        //     e.preventDefault();
-        //   });
-        }
-        if (index) {
-        let side_bar_Container = document.querySelector(".side_bar_Container");
-        let accordial_all_list = document.querySelectorAll(
-            ".accordian_single_list, .NPIS_logo_right_content"
-        );
-        // --------------------------------------------------------------------------------------------
-        let Mainbody_conatiner = document.querySelector(".Mainbody_conatiner");
-        round.addEventListener("click", () => {
-            side_bar_Container.classList.remove("show");
-            Mainbody_conatiner.classList.add("active");
-            accordial_all_list.forEach((asl) => {
-            asl.classList.add("active");
-            });
-        });
-        // --------------------------------------------------------------------------------------------
-        document.querySelector(".NPIS_logo").addEventListener("click", () => {
-            side_bar_Container.classList.add("show");
-            Mainbody_conatiner.classList.remove("active");
-            accordial_all_list.forEach((asl) => {
-            asl.classList.remove("active");
-            });
-        });
-        // --------------------------------------------------------------------------------------------
 
-        let accordian_single_list = document.querySelectorAll(
-            ".accordian_single_list"
-        );
-        let d_arrow = document.querySelectorAll(".d_arrow");
+let index = document.querySelector("#index");
+let eye_icon = document.querySelector(".eye_icon");
+let password_eye_field = document.querySelector(".password_eye_field");
+let login = document.querySelector("#login");
+let interface_tab_content = document.querySelectorAll(".interface_tab_content");
+let r_input = document.querySelectorAll(".r_container input");
+let input_file = document.querySelector("#Dokumen_Sokongan");
 
-        accordian_single_list.forEach((asl) => {
-            asl.addEventListener("click", () => {
-            d_arrow.forEach((darr) => {
-                darr.classList.remove("active");
-            });
-            // let accordian_content = asl.closest(".accordian_content ");
-            // console.log(accordian_content);
-            let arrow = asl.querySelector(".d_arrow");
-            let Accordian_link = asl.querySelector(".Accordian_link");
-            if (Accordian_link.classList.contains("collapsed")) {
-                arrow.classList.add("active");
-            } else {
-                arrow.classList.remove("active");
-            }
-            });
-        });
-        }
-        </script>
+let input_file_btn = document.querySelector(".form_input_file .select_file");
+let userlist_tab_btn = document.querySelectorAll(
+  ".userlist_tab_btn_container button"
+);
+let userlist_tab_content = document.querySelectorAll(".userlist_tab_content ");
 
-            
-        <script>
-        // $("#log_musuk_modal").modal("show");
-        // $("#Forget_modal").modal("show");
-        // $("#sucess_modal").modal("show");
-        function onSubmit(token) {
-        document.getElementById("penguna_jps_form").submit();
+// ----------------------------------------user_profile-------------------------------------------
+let user_profile = document.querySelector("#user_profile");
+if (user_profile) {
+  userlist_tab_btn.forEach((utb, i) => {
+    utb.addEventListener("click", () => {
+      userlist_tab_content.forEach((utc) => {
+        utc.classList.add("d-none");
+      });
+      userlist_tab_btn.forEach((utb) => {
+        utb.classList.remove("active");
+      });
+      utb.classList.add("active");
+      userlist_tab_content[i].classList.remove("d-none");
+    });
+  });
+  userlist_tab_btn[1].click();
+}
+if (login) {
+  eye_icon.addEventListener("click", (e) => {
+    console.log(password_eye_field);
+    e.preventDefault();
+    password_eye_field.type == "password"
+      ? (password_eye_field.type = "text")
+      : (password_eye_field.type = "password");
+  });
+  document.querySelector(".masuk_submit").addEventListener("click", (e) => {
+    e.preventDefault();
+  });
+  r_input.forEach((inp, i) => {
+    inp.addEventListener("click", () => {
+      interface_tab_content.forEach((itc) => {
+        itc.classList.add("d-none");
+      });
+      if (inp.checked == true) {
+        interface_tab_content[i].classList.remove("d-none");
+      }
+    });
+  });
+  r_input[1].click();
+
+  // input_file
+  input_file_btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    console.log(input_file);
+    input_file.click();
+  });
+
+  // -------------------------
+  input_file.addEventListener("change", () => {
+    var files = input_file.files;
+    if (FileReader && files && files.length) {
+      var fr = new FileReader();
+      // console.log(fr);
+
+      fr.onload = function () {
+        file=input_file.files.length;
+        file_name=input_file.files[0].name;
+        file_size=input_file.files[0].size;
+        file_type=input_file.files[0].type;
+        pdf_size=file_size/1000024;
+        console.log(file_type);
+        if(file_type=='application/pdf'){
+          $("#pdf_name").html(file_name);
+          if(pdf_size>10){
+ 
+          }
+          else{
+            $("#pdf_size").html(pdf_size+'MB');
+          }
         }
+        else{
+          alert('Please use a pdf file');
+        }
+
+      };
+
+      fr.readAsDataURL(files[0]);
+    }
+  });
+}
+if (index) {
+  let side_bar_Container = document.querySelector(".side_bar_Container");
+  let accordial_all_list = document.querySelectorAll(
+    ".accordian_single_list, .NPIS_logo_right_content"
+  );
+  // --------------------------------------------------------------------------------------------
+  let Mainbody_conatiner = document.querySelector(".Mainbody_conatiner");
+  round.addEventListener("click", () => {
+    side_bar_Container.classList.remove("show");
+    Mainbody_conatiner.classList.add("active");
+    accordial_all_list.forEach((asl) => {
+      asl.classList.add("active");
+    });
+  });
+  // --------------------------------------------------------------------------------------------
+  document.querySelector(".NPIS_logo").addEventListener("click", () => {
+    side_bar_Container.classList.add("show");
+    Mainbody_conatiner.classList.remove("active");
+    accordial_all_list.forEach((asl) => {
+      asl.classList.remove("active");
+    });
+  });
+  // --------------------------------------------------------------------------------------------
+
+  let accordian_single_list = document.querySelectorAll(
+    ".accordian_single_list"
+  );
+  let d_arrow = document.querySelectorAll(".d_arrow");
+
+  accordian_single_list.forEach((asl) => {
+    asl.addEventListener("click", () => {
+      d_arrow.forEach((darr) => {
+        darr.classList.remove("active");
+      });
+      // let accordian_content = asl.closest(".accordian_content ");
+      // console.log(accordian_content);
+      let arrow = asl.querySelector(".d_arrow");
+      let Accordian_link = asl.querySelector(".Accordian_link");
+      if (Accordian_link.classList.contains("collapsed")) {
+        arrow.classList.add("active");
+      } else {
+        arrow.classList.remove("active");
+      }
+    });
+  });
+}
+
         </script>
 
             <!-- <script src="https://www.google.com/recaptcha/api.js?render=6Le_V_siAAAAAI7AEeMNmqhYrC5deixFB63Kmhmb"></script> -->
