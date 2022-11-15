@@ -254,6 +254,7 @@ function updateThumbnaildokumen(dropZoneElementDokumen, file) {  console.log(fil
 
 $(document).ready(function() {
 	const api_url = document.getElementById("api_url").value;  console.log(api_url);
+    const api_token = "Bearer "+ document.getElementById("token").value;  console.log(api_token);
 	$('#show-me').hide();   
 	$('input[type="radio"]').click(function() { //alert($(this).attr('id'));
 		if($(this).attr('id') == 'agensi_luar') {
@@ -291,7 +292,7 @@ $(document).ready(function() {
         type: "GET",
         url: api_url+"api/lookup/jabatan/list",
         dataType: 'json',
-        success: function (result) { console.log(result)
+        success: function (result) { console.log(result.data)
             if (result) {
                 $.each(result.data, function (key, item) {					
 					var opt = item.id;
@@ -370,8 +371,7 @@ $(document).ready(function() {
             }
         }
     });
-
-	var jawatandropDown =  document.getElementById("jawatan");
+    var jawatandropDown =  document.getElementById("jawatan");
     $.ajax({
         type: "GET",
         url: api_url+"api/lookup/jawatan/list/",
@@ -412,6 +412,7 @@ $(document).ready(function() {
             }
         }
     });
+
 
     $("#submit").click(function(){
 
