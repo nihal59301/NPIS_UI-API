@@ -20,6 +20,8 @@
         <!-- Icons css -->
         <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="assets/css/style2.css" rel="stylesheet" type="text/css" />
+
         
         <!-- /* need to change this datas */ -->
         <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">

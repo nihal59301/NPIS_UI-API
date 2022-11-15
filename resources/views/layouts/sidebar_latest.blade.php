@@ -92,8 +92,8 @@
                     >
                     <ul class="">
                        <li><a href="userlist">Profil Pengguna</a></li>
-                       <li><a href="{{ route('users.index') }}">Pengesahan Pengguna Baharu </a></li>
-                       <li><a href="#">Daftar Pengguna Baharu</a></li>
+                       <li><a href="/pengasahan-pengguna-baharu">Pengesahan Pengguna Baharu </a></li>
+                       <li><a href="/daftar-pengguna-baharu">Daftar Pengguna Baharu</a></li>
                        <li><a href="#">Selenggara Portal</a></li>
                        <li><a href="#">Selenggara Data </a></li>
                        <li><a href="#">Selenggara Kod Projek</a></li>

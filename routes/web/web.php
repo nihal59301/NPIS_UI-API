@@ -36,13 +36,19 @@ Route::get('/reload-captcha', [CaptchaServiceController::class, 'reloadCaptcha']
 Route::get('/user/first/reset', [UserController::class, 'firstReset'])->name('first.reset');
 Route::post('/user/first/update', [UserController::class, 'firstResetUpdate'])->name('first.reset.update');
 
-// Route::get('/userlist', [UserProfileController::class, 'userlist']);
+Route::get('/userlist', [UserProfileController::class, 'userlist']);
 // Route::get('/user_profile', [UserProfileController::class, 'userprofile']);
-// Route::get('/pengasahan-pengguna-baharu', [UserController::class, 'newUserValidation']);
+//  Route::get('/pengasahan-pengguna-baharu', [UserController::class, 'newUserValidation']);
+
+Route::get('/pengasahan-pengguna-baharu', function () {
+    return view('new_user_validation');
+})->name('new_user_validation');
 
 Route::get('/user-profile', function () {
     return view('userprofile');
 })->name('userprofile');
+
+//Route::get('/user_profile', [UserController::class, 'view_user']);
 
 Route::get('/daftar-pengguna-baharu', function () {
     return view('add_new_user');
