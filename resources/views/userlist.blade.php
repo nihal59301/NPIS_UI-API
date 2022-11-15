@@ -12,9 +12,90 @@
   border-style: inset;
   border-width: 1.8px;
 } 
-.border-bottom{
-    border-bottom-color: aqua !important;
+.jpsBtn{
+    border-bottom-width: 3.5px !important;
+    border-bottom-color: #39AFD1 !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-top:none !important;
 }
+
+.nonjpsBtn:focus{
+    border-bottom-width: 3.5px !important;
+    border-bottom-color: #39AFD1 !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-top:none !important;
+}
+.jpsBtn:focus{
+    border-bottom-width: 3.5px !important;
+    border-bottom-color: #39AFD1 !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-top:none !important;
+}
+
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    color: rgb(255, 255, 255) !important;
+    font-weight: 900 !important;
+    border: 1px solid #38afd1 !important;
+    border-radius: 50%;
+    background-color: #38afd1 !important;
+    background:#38afd1 !important;
+
+}
+
+.form-check-input:checked {
+    background-color: #0acd95 !important;
+    border-color: #0acd95 !important;
+}
+.form-check-input{
+    height: 1.5em !important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    min-width: 0.5em !important;
+    padding: 0.5em 1em !important;
+    margin-left: 0px !important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+  background: none;
+  color: black!important;
+  border-radius: 50%;
+}
+#jps{
+    font-size: 1.2rem !important;
+    font-weight: 500 !important;
+}
+#nonjps{
+    font-size: 1.2rem !important;
+    font-weight: 500 !important;
+}
+
+th{
+    color: #656b9b !important;
+}
+
+table.dataTable thead th, table.dataTable thead td {
+    border-bottom: none !important;
+}
+div.dataTables_wrapper div.dataTables_length label {
+    color: gray !important;
+    font-weight: 600 !important;
+    
+}
+div.dataTables_wrapper div.dataTables_length select {
+    width: 70px !important;
+    height: 35px !important;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    display: inline-block;
+}
+/* div.dataTables_wrapper div.dataTables_length select:focus {
+    filter:drop-shadow(2px 2px 2px #7adaf5);
+} */
+
 </style>
 
 <div class="content-page">
@@ -51,25 +132,30 @@
                         <div class="col-xl-12 col-lg-12">
                             <div class="card card-h-100">
                                 <div class="d-flex card-header justify-content-between align-items-center">
-                                    <h4 class="header-title">SENARAI PENGGUNA JPS</h4>
+                                    <div class="d-flex ">
+                                    <img src="images/card.png" height="30px" alt="card" />
+                                    <h1 id="jps" class="header-title p-1 jps ml-5">SENARAI PENGGUNA JPS</h1>
+                                    <h1 id="nonjps" class="header-title p-1 nonjps ml-5">SENARAI PENGGUNA AGENSI LUAR</h1>
+                                    </div>
                                     <div>
-                                    <button class="btn btn-success btn-sm"><i class="fa-solid fa-plus"></i> PENGGUNA</button>
-                                    <button class="btn btn-sm btn-info"> <i class="mdi mdi-printer" style="font-style:normal"></i></button>
+                                    <button class="btn btn-success"><img class="border bg-white rounded-circle mx-auto p-1" src="images/plus.png"/> PENGGUNA</button>
+                                    <button class="btn btn-info"> <i class="mdi mdi-printer h4" style="font-style:normal"></i></button>
                                     </div>
                                 </div>
                                 <div>
+                                    
 
                                 </div>
                                 <div>
-                                <button style="margin-bottom: -8px;" onclick="jps_user()" class="btn btn-white col-3 col-lg-1  btn-sm  border-bottom text-black"><strong>JPS</strong></button>
-                                <button style="margin-bottom: -8px;" onclick="agensi_user()" class="btn btn-white text-info btn-sm">AGENSI LUAR</button>
+                                <button id="jpsBtn" style="margin-bottom: -8px;" onclick="jps_user()" class="btn btn-white col-3 col-lg-1  btn-sm  border-bottom jpsBtn active" ><strong><h4>JPS<h4></strong></button>
+                                <button id="nonjpsBtn" style="margin-bottom: -8px;" onclick="agensi_user()" class="btn btn-white btn-sm border-bottom nonjpsBtn"><h4>AGENSI LUAR<h4></button>
                                 </div>
                                 <hr>
                                 <div id="jps_card" class="card-body pt-0 mb-4">
                                     <table id="jps_user" width="100%" class=" display ">
                                         <thead>
                                             <tr>
-                                                <th>Nama</th>
+                                                <th class="float-left">Nama</th>
                                                 <th>No.Kad Pengenalan</th>
                                                 <th>Emel</th> 
                                                 <th>Bahagian</th> 
@@ -111,6 +197,8 @@
         </div>
     </div>
 </div>
+
+
 
 
 @endsection
