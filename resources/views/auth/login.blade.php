@@ -46,7 +46,6 @@ var onReturnCallback = function(response) {
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
-
                 <div class="card-body">
                     <form method="POST" action="{{url('login')}}">
                         @csrf
@@ -152,7 +151,8 @@ var onReturnCallback = function(response) {
           LOGIN
         </button>
       </div>
-
+      <input type="hidden" id="api_url" value={{env('API_URL')}}>
+      <input type="hidden" id="token" value={{env('TOKEN')}}>
       <!-- Modal -->
       <div class="modal fade" id="log_masuk_modal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered log_masuk_modal_dialog" role="document">
@@ -512,8 +512,6 @@ var onReturnCallback = function(response) {
                                 name="jabatan" id="Jabatan"
                               >
                                 <option value=""></option>
-                                <option value="">Jabatan</option>
-                                <option value="">Jabatan</option>
                               </select>
                             </div>
                           </div>
@@ -530,8 +528,6 @@ var onReturnCallback = function(response) {
                                 name="bahagian" id="bahagian"
                               >
                                 <option value=""></option>
-                                <option value="">bahagian</option>
-                                <option value="">bahagian</option>
                               </select>
                             </div>
                           </div>
@@ -699,11 +695,9 @@ var onReturnCallback = function(response) {
                               <select
                                 type="text"
                                 class="form-control"
-                                name="jabatan" id="Jabatan"
+                                name="jabatan" id="Jabatan_agensi"
                               >
                                 <option value=""></option>
-                                <option value="">Jabatan</option>
-                                <option value="">Jabatan</option>
                               </select>
                             </div>
                           </div>
@@ -717,11 +711,9 @@ var onReturnCallback = function(response) {
                               <select
                                 type="text"
                                 class="form-control"
-                                name="bahagian" id="bahagian"
+                                name="bahagian" id="bahagian_agensi"
                               >
                                 <option value=""></option>
-                                <option value="">bahagian</option>
-                                <option value="">bahagian</option>
                               </select>
                             </div>
                           </div>
@@ -1069,6 +1061,77 @@ if (index) {
     });
   });
 }
+</script>
+<script src="assets/js/jquery.min.js"></script>
+<script>
+console.log('heeeee');
+
+  const api_url = document.getElementById("api_url").value;  console.log(api_url);
+  const api_token = "Bearer "+ document.getElementById("token").value;  console.log(api_token);
+
+$.ajaxSetup({
+         headers: {
+                "Content-Type": "application/json",
+                "Authorization": api_token,
+                }
+    });
+var JabatandropDown =  document.getElementById("Jabatan"); console.log(JabatandropDown);
+var JabatanAgensidropDown =  document.getElementById("Jabatan_agensi"); console.log(JabatanAgensidropDown);
+$.ajax({
+        type: "GET",
+        url: api_url+"api/lookup/jabatan/list/",
+        dataType: 'json',
+        success: function (result) { console.log(result.data)
+            if (result) {
+                $.each(result.data, function (key, item) {
+                    var opt = item.id;
+                    var el = document.createElement("option");
+                    el.textContent = item.nama_jabatan;
+                    el.value = opt;
+                    JabatandropDown.appendChild(el);
+                });
+                $.each(result.data, function (key, item) {
+                    var opt = item.id;
+                    var el = document.createElement("option");
+                    el.textContent = item.nama_jabatan;
+                    el.value = opt;
+                    JabatanAgensidropDown.appendChild(el);
+                });
+            }
+            else {
+                $.Notification.error(result.Message);
+            }
+        }
+    });
+
+var bahagiandropDown =  document.getElementById("bahagian");console.log(bahagiandropDown);
+var bahagianAgensidropDown =  document.getElementById("bahagian_agensi");console.log(bahagianAgensidropDown);
+$.ajax({
+        type: "GET",
+        url: api_url+"api/lookup/bahagian/list/",
+        dataType: 'json',
+        success: function (result) { console.log(result)
+            if (result) {
+                $.each(result.data, function (key, item) {
+                        var opt = item.id;
+                        var el = document.createElement("option");
+                        el.textContent = item.nama_bahagian;
+                        el.value = opt;
+                        bahagiandropDown.appendChild(el);
+                });
+                $.each(result.data, function (key, item) {
+                        var opt = item.id;
+                        var el = document.createElement("option");
+                        el.textContent = item.nama_bahagian;
+                        el.value = opt;
+                        bahagianAgensidropDown.appendChild(el);
+                })
+            }
+            else {
+                $.Notification.error(result.Message);
+            }
+        }
+    });
 
         </script>
 
