@@ -281,6 +281,12 @@ class UserController extends Controller
     public function userlist(){
         return view('userlist');
     }
+
+    public function userProfile($id)
+    {
+        $user_id = $id;
+        return view('userprofile',compact('user_id'));
+    }
     public function fectchuser(request $request){
         $id=$request->toArray();
         $user_id=$id["id"];

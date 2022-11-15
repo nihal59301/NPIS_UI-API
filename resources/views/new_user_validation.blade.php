@@ -296,7 +296,7 @@
                       targets:0, // Start with the last
                       render: function ( data, type, row, meta ) {
                           if(type === 'display'){
-                              data = '<a class="text-dark" href="user_profile?id=' +row.id+ '">'+row.name+'</a>';
+                              data = '<a class="text-dark" href="user-profile/' +row.id+ '">'+row.name+'</a>';
                           }
                           return data;
                       }

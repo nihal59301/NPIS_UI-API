@@ -85,7 +85,7 @@
                         <input type="hidden" id="api_url" value={{env('API_URL')}}>
                         <input type="hidden" id="token" value={{env('TOKEN')}}>
                         <input type="hidden" id="user_type" value="table_users">
-                        <input type="hidden" id="user_id" name="id" value="">
+                        <input type="hidden" id="user_id" name="id" value="{{$user_id}}">
 
                             <div class="form-row d-md-flex justify-content-between">
                                 <div class="form-group col-md-6" id="profile">
