@@ -69,33 +69,38 @@
                                     <div class="row input-data">
                                        <div class="col-md-6">
                                         <label>Jawatan</label><br>
-                                          <select class="form-select" name="jabatan" id="jawatan">
+                                          <select class="form-select" name="jawatan" id="jawatan">
                                           </select>
+                                          <span class="error" id="error_jawatan"></span>
                                        </div>
                                        <div class="col-md-6">
                                         <label>Gred</label><br>
                                           <select class="form-select" name="gred" id="gred">
                                           </select>
+                                          <span class="error" id="error_gred"></span>
                                        </div>
                                     </div>
-                                    <!-- <div class="row input-data">
+                                    <div class="row input-data">
                                        <div class="col-md-12">
                                         <label>Kementerian</label><br>
                                         <select class="form-select form-control-light" name="kementerian" id="kementerian">
                                         </select>
+                                        <span class="error" id="error_kementerian"></span>
                                        </div>
-                                    </div> -->
+                                    </div>
                                     <div class="row input-data">
                                        <div class="col-md-6">
                                         <label>Jabatan</label><br>
                                           <select class="form-select form-control-light" name="jabatan" id="Jabatan">
                                           </select>
+                                          <span class="error" id="error_jabatan"></span>
                                        </div>
                                        <div class="col-md-6">
                                         <label>Bahagian</label><br>
                                         <select class="form-select" name="bahagian" id="bahagian">
                                           <option value=""> - Tidak Berkenan - </option>
-                                          </select>                                       
+                                          </select>    
+                                          <span class="error" id="error_bahagian"></span>                                   
                                        </div>
                                     </div>
                                     <div class="row input-data">
@@ -104,12 +109,14 @@
                                           <select class="form-select" name="negeri" id="negeri">
                                              <option value=""> - Tidak Berkenan - </option>
                                           </select>
+                                          <span class="error" id="error_negeri"></span>
                                        </div>
                                        <div class="col-md-6">
                                         <label>Daerah</label><br>
                                           <select class="form-select" name="daerah" id="daerah">
                                              <option value=""> - Tidak Berkenan - </option>
-                                          </select>                                      
+                                          </select>       
+                                          <span class="error" id="error_daerah"></span>                               
                                        </div>
                                     </div>
                                     <div class="row input-data">
@@ -165,5 +172,6 @@
    @endsection
 
    @section('scripts')
+   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
    <script src="assets/js/main.js"></script>
    @endsection
