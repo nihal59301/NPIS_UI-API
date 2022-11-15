@@ -23,7 +23,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('users', UserController::class);
-Route::get('userlist', [UserController::class, 'userlist']);
+Route::get('/userlist', [UserController::class, 'userlist']);
 Route::get('fectchuser', [UserController::class, 'fectchuser']);
 
 // Route::get('userprofile', [UserController::class, 'userprofile']);
@@ -36,9 +36,6 @@ Route::get('/reload-captcha', [CaptchaServiceController::class, 'reloadCaptcha']
 Route::get('/user/first/reset', [UserController::class, 'firstReset'])->name('first.reset');
 Route::post('/user/first/update', [UserController::class, 'firstResetUpdate'])->name('first.reset.update');
 
-Route::get('/userlist', [UserProfileController::class, 'userlist']);
-// Route::get('/user_profile', [UserProfileController::class, 'userprofile']);
-//  Route::get('/pengasahan-pengguna-baharu', [UserController::class, 'newUserValidation']);
 
 Route::get('/pengasahan-pengguna-baharu', function () {
     return view('new_user_validation');

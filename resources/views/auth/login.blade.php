@@ -13,7 +13,8 @@
 
 var onReturnCallback = function(response) {        
     if(response){
-        $("#login").prop('disabled', false);                     
+        $("#login").prop('disabled', false);                             
+        $("#login-nonjps").prop('disabled', false);  
     }
           
     }
@@ -303,7 +304,7 @@ var onReturnCallback = function(response) {
                                   {{-- <button id="login" type="button" value="" class="btn btn-block masuk_submit mt-4" disabled>log masuk</button> --}}
                                   <div class="row mb-0">
                                     <div class="col-md-12">
-                                        <button id="login" type="submit"  class="btn btn-primary masuk_submit" disabled>
+                                        <button id="login-nonjps" type="submit"  class="btn btn-primary masuk_submit" disabled>
                                             {{ __('Log Masuk') }}
                                         </button>
                                     </div>

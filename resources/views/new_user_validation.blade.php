@@ -168,8 +168,9 @@
                   {
                       targets:3, // Start with the last
                       render: function ( data, type, row, meta ) {
+                            // console.log(row.jawatan.nama_jawatan);
                           if(type === 'display'){
-                                  data="Jabatan"
+                                  data=row.jabatan.nama_jabatan;
                           }
                           return data;
                       }
@@ -178,7 +179,7 @@
                       targets:4, // Start with the last
                       render: function ( data, type, row, meta ) {
                           if(type === 'display'){
-                                  data="Jawatan"
+                                  data=row.jawatan.nama_jawatan
                           }
                           return data;
                       }

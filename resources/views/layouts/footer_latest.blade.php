@@ -52,7 +52,7 @@
                     data:{id:user_id},
                     success: function(response) {
                         if(response){
-                            window.location.href = "userprofile";
+                            window.location.href = "user-profile";
                         }
                     },
                     error: function(response) {
@@ -108,8 +108,9 @@
                   {
                       targets:3, // Start with the last
                       render: function ( data, type, row, meta ) {
+                            // console.log(row.bahagian.nama_bahagian)
                           if(type === 'display'){
-                                  data="bahgian"
+                                  data=row.bahagian.nama_bahagian
                           }
                           return data;
                       }
@@ -118,7 +119,7 @@
                       targets:4, // Start with the last
                       render: function ( data, type, row, meta ) {
                           if(type === 'display'){
-                                  data="Jawatan"
+                                  data=row.jawatan.nama_jawatan
                           }
                           return data;
                       }
@@ -194,7 +195,7 @@
           data: response.data,
           "language": {
           "lengthMenu": "Papar _MENU_ Entri",
-          "zeroRecords": "Nothing found - sorry",
+          "zeroRecords": "Tiada Rekod",
           "info": "Paparan _PAGE_ hinnga 10 Dari _PAGES_",
           "infoEmpty": "No records available",
           "infoFiltered": "(filtered from _MAX_ total records)",

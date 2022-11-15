@@ -284,6 +284,8 @@ class UserController extends Controller
     public function fectchuser(request $request){
         $id=$request->toArray();
         $user_id=$id["id"];
-        return $user_id;
+        $user_data=User::find($user_id);
+        $user_data->toArray();
+        return redirect('user-profile');
     }
 }
