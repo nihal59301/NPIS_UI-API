@@ -207,13 +207,13 @@ var onReturnCallback = function(response) {
                           <form id="pengguna_jps_form" method="POST" action="{{url('login')}}">
                             @csrf    
                               <div class="form-group">
-                                  <label for="Kad-Pengenalan"  class="sr-only">kad pengenalan</label>
+                                  <label for="email"  class="sr-only">kad pengenalan</label>
                                   <input type="text"
                                          class="form-control"
-                                         id="Kad-Pengenalan"
-                                         aria-describedby="Kad-Pengenalan"
-                                         placeholder="Kad Pengenalan" name="Kad-Pengenalan" />
-                                         @error('Kad-Pengenalan')
+                                         id="email"
+                                         aria-describedby="emailHelp"
+                                         placeholder="Kad Pengenalan" name="email" />
+                                         @error('email')
                                           <span class="invalid-feedback" role="alert">
                                               <strong>{{ $message }}</strong>
                                           </span>
