@@ -38,8 +38,8 @@ var onReturnCallback = function(response) {
 @endif
 
 @php
- $site_key="6Lfto-8iAAAAAH_Z0bck7F3XtBBvPN6-Jbj44rib";
- $secret_key="6Lfto-8iAAAAAE_EqMEmYoBf-dyXWGfknA7b254N";  
+$site_key= config('services.googleCaptcha.site_key');
+ $secret_key=config('services.googleCaptcha.secret_key');
 @endphp
 {{-- <div class="container">
     <div class="row justify-content-center">

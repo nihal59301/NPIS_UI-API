@@ -96,13 +96,24 @@ class LoginController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function logout(Request $request)
-    {
-
-        Auth::user()->tokens()->delete();
+    {        
         $this->guard()->logout();
 
         $request->session()->invalidate();
 
         return redirect('/');
+    }
+
+     /**
+     * Get the login username to be used by the controller.
+     *
+     * @return string
+     */
+    public function username()
+    {
+        //return 'email';
+        $field = (filter_var(request()->email, FILTER_VALIDATE_EMAIL) || !request()->email) ? 'email' : 'no_ic';
+        request()->merge([$field => request()->email]);
+        return $field;
     }
 }

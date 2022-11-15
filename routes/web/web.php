@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CaptchaServiceController;
 
 /*
@@ -35,6 +36,7 @@ Route::get('/user/approval/{id}', [UserController::class, 'userApproval'])->name
 Route::get('/reload-captcha', [CaptchaServiceController::class, 'reloadCaptcha']);
 Route::get('/user/first/reset', [UserController::class, 'firstReset'])->name('first.reset');
 Route::post('/user/first/update', [UserController::class, 'firstResetUpdate'])->name('first.reset.update');
+Route::get('/user/logout', [LoginController::class, 'logout'])->name('user.logout');
 
 
 Route::get('/pengasahan-pengguna-baharu', function () {

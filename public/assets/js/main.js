@@ -248,10 +248,6 @@ function updateThumbnaildokumen(dropZoneElementDokumen, file) {  console.log(fil
 
 
 //document upload - done
-
-
-
-
 $(document).ready(function() {
 	const api_url = document.getElementById("api_url").value;  console.log(api_url);
     const api_token = "Bearer "+ document.getElementById("token").value;  console.log(api_token);
@@ -427,34 +423,112 @@ $(document).ready(function() {
 			document.getElementById("name").focus();
 			return false; 
 		}
+		else{
+			document.getElementById("error_name").innerHTML=""; }
 		if(!document.myform.no_kod_penganalan.value)  { 
 			document.getElementById("error_no_kod_penganalan").innerHTML="medan no kod penganalan diperlukan"; 
 			document.getElementById("no_kod_penganalan").focus();
 			return false; 
-		}
+		}else { document.getElementById("error_no_kod_penganalan").innerHTML=""; }
 		if(!document.myform.emel_rasmi.value)  { 
 			document.getElementById("error_email").innerHTML="medan emel rasmi diperlukan"; 
 			document.getElementById("emel_rasmi").focus();
 			return false; 
-		}
+		}else{ document.getElementById("error_email").innerHTML="";}
 		if(!document.myform.no_telefon.value)  { 
 			document.getElementById("error_telefon").innerHTML="medan no telefon diperlukan"; 
 			document.getElementById("no_telefon").focus();
 			return false; 
-		}
+		}else{document.getElementById("error_telefon").innerHTML="";}
 
-		$.ajax({
-			type: 'POST',
-			url: api_url+"addUser/",
-			data: $('#create_user_form').serialize(), 
-			success: function(response) { console.log(response)
-			   alert(response); 
-			},
-		   error: function() {
-				//$("#commentList").append($("#name").val() + "<br/>" + $("#body").val());
-			   alert("There was an error submitting data");
-		   }
-		});
+		const api_url = document.getElementById("api_url").value;  console.log(api_url);
+    	const api_token = "Bearer "+ document.getElementById("token").value;  console.log(api_token);
+		$.ajaxSetup({
+			headers: {
+				   "Content-Type": "application/json",
+				   "Authorization": api_token,
+				   }
+	   });
+
+		var formData = new FormData();
+		formData.append('nama', document.myform.nama.value);
+		formData.append('no_kod_penganalan', document.myform.no_kod_penganalan.value);
+		formData.append('email', document.myform.email.value);
+		formData.append('kategori', document.myform.kategori.value);
+		formData.append('no_telefon', document.myform.no_telefon.value);
+		formData.append('jawatan', document.myform.jawatan.value);
+		formData.append('jabatan', document.myform.jabatan.value);
+		formData.append('gred', document.myform.gred.value);
+		formData.append('kementerian', document.myform.kementerian.value);
+		formData.append('bahagian', document.myform.bahagian.value);
+		formData.append('negeri', document.myform.negeri.value);
+		formData.append('daerah', document.myform.daerah.value);
+		formData.append('catatan', document.myform.catatan.value);
+		formData.append('documents', document.myform.dokumen.files[0]);
+		formData.append('profile_image', document.myform.myFile.files[0]);
+
+	// 	console.log(...formData)
+    //   var create_data = {   'nama':document.myform.nama.value,
+	//   						'no_kod_penganalan':document.myform.no_kod_penganalan.value,
+	// 						'email':document.myform.email.value,
+	// 						'kategori':document.myform.kategori.value,
+	// 						'no_telefon':document.myform.no_telefon.value,
+	// 						'jawatan':document.myform.jawatan.value,
+	// 						'jabatan':"1",
+	// 						'gred':document.myform.gred.value,
+	// 						'kementerian':"1",
+	// 						'bahagian':document.myform.bahagian.value,
+	// 						'negeri':document.myform.negeri.value,
+	// 						'daerah':document.myform.daerah.value,
+	// 						'catatan':document.myform.catatan.value,
+	// 					}
+    //   console.log(create_data);
+// 	  var jsonString = JSON.stringify(create_data);
+// console.log(jsonString);
+		axios({
+			method: "post",
+			url: api_url+"api/user/create",
+			data: formData,
+			headers: { "Content-Type": "multipart/form-data","Authorization": api_token, },
+		})
+			.then(function (response) {
+			//handle success
+			console.log(response);
+			if(response.code == 200) {
+				window.location("{{ route('userlist') }}")
+			}else {
+				if(response.data.code == 422) {
+					//console.log(response.data.data)
+					Object.keys(response.data.data).forEach(key => {
+						console.log(key, response.data.data[key][0]);
+						document.getElementById("error_" + key).innerHTML= response.data.data[key][0]; 
+					  });					
+				}else {
+					alert('There was an error submitting data')
+				}	
+			}
+
+			
+
+			alert(response); 
+			})
+			.catch(function (response) {
+			//handle error
+			console.log(response);
+			alert("There was an error submitting data");
+			});
+		// $.ajax({
+		// 	type: 'POST',
+		// 	url: api_url+"api/user/create",
+		// 	data: jsonString, 
+		// 	success: function(response) { console.log(response)
+		// 	   alert(response); 
+		// 	},
+		//    error: function() {
+		// 		//$("#commentList").append($("#name").val() + "<br/>" + $("#body").val());
+		// 	   alert("There was an error submitting data");
+		//    }
+		// });
 	});
 
 
