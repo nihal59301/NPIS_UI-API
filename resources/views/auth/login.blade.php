@@ -38,8 +38,8 @@ var onReturnCallback = function(response) {
 @endif
 
 @php
- $site_key="6LfewgkjAAAAAENUC3_Jv6odsc-cga2arJtWcwus";
- $secret_key="6LfewgkjAAAAANPoh7qEaDRoN337gttpj5l-EJa1";
+$site_key= config('services.googleCaptcha.site_key');
+ $secret_key=config('services.googleCaptcha.secret_key');
 @endphp
 {{-- <div class="container">
     <div class="row justify-content-center">
@@ -274,7 +274,7 @@ var onReturnCallback = function(response) {
                                 @csrf    
                                   <div class="form-group">
                                       <label for="nonjps_useremail"  class="sr-only">E-mel</label>
-                                      <input type="email"
+                                      <input type="text"
                                              class="form-control"
                                              id="nonjps_useremail"
                                              aria-describedby="emailHelp"

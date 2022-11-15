@@ -268,10 +268,10 @@ $(document).ready(function() {
 	var dropDown = document.getElementById("kementerian");
     $.ajax({
         type: "GET",
-        url: api_url+"GetKementerian/",
+        url: api_url+"api/lookup/agensi/list",
         dataType: 'json',
         success: function (result) { console.log(result)
-            if (result) {
+            if (result.data) {
                 $.each(result, function (key, item) {
 					var opt = item.id;
 					var el = document.createElement("option");
@@ -289,17 +289,18 @@ $(document).ready(function() {
 	var JabatandropDown =  document.getElementById("Jabatan");
     $.ajax({
         type: "GET",
-        url: api_url+"GetJabatan/",
+        url: api_url+"api/lookup/jabatan/list",
         dataType: 'json',
         success: function (result) { console.log(result)
             if (result) {
-                $.each(result, function (key, item) {
+                $.each(result.data, function (key, item) {					
 					var opt = item.id;
 					var el = document.createElement("option");
 					el.textContent = item.nama_jabatan;
-					el.value = opt;
+					el.value = opt;					
 					JabatandropDown.appendChild(el);
                 })
+				
             }
             else {
                 $.Notification.error(result.Message);
@@ -310,10 +311,10 @@ $(document).ready(function() {
 	var bahagiandropDown =  document.getElementById("bahagian");
     $.ajax({
         type: "GET",
-        url: api_url+"GetBahagian/",
+        url: api_url+"api/lookup/bahagian/list/",
         dataType: 'json',
         success: function (result) { console.log(result)
-            if (result) {
+            if (result.data) {
                 $.each(result, function (key, item) {
 					var opt = item.id;
 					var el = document.createElement("option");
@@ -331,10 +332,10 @@ $(document).ready(function() {
 	var negeridropDown =  document.getElementById("negeri");
     $.ajax({
         type: "GET",
-        url: api_url+"GetNegeri/",
+        url: api_url+"api/lookup/negeri/list/",
         dataType: 'json',
         success: function (result) { console.log(result)
-            if (result) {
+            if (result.data) {
                 $.each(result, function (key, item) {
 					var opt = item.id;
 					var el = document.createElement("option");
@@ -352,11 +353,11 @@ $(document).ready(function() {
 	var daerahdropDown =  document.getElementById("daerah");
     $.ajax({
         type: "GET",
-        url: api_url+"Getdaerah/",
+        url: api_url+"api/lookup/daerah/list/",
         dataType: 'json',
         success: function (result) { console.log(result)
             if (result) {
-                $.each(result, function (key, item) {
+                $.each(result.data, function (key, item) {
 					var opt = item.id;
 					var el = document.createElement("option");
 					el.textContent = item.nama_daerah;
@@ -373,11 +374,11 @@ $(document).ready(function() {
 	var jawatandropDown =  document.getElementById("jawatan");
     $.ajax({
         type: "GET",
-        url: api_url+"GetJawatan/",
+        url: api_url+"api/lookup/jawatan/list/",
         dataType: 'json',
         success: function (result) { console.log(result)
             if (result) {
-                $.each(result, function (key, item) {
+                $.each(result.data, function (key, item) {
 					var opt = item.id;
 					var el = document.createElement("option");
 					el.textContent = item.nama_jawatan;
@@ -394,11 +395,11 @@ $(document).ready(function() {
 	var greddropDown =  document.getElementById("gred");
     $.ajax({
         type: "GET",
-        url: api_url+"GetGred/",
+        url: api_url+"api/lookup/gredjawatan/list/",
         dataType: 'json',
         success: function (result) { console.log(result)
             if (result) {
-                $.each(result, function (key, item) {
+                $.each(result.data, function (key, item) {
 					var opt = item.id;
 					var el = document.createElement("option");
 					el.textContent = item.nama_gred_jawatan;
