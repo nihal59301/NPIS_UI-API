@@ -27,6 +27,7 @@ class UserController extends Controller
         $this->middleware('auth');
     }
     
+    
     /**
      * Display a listing of the resource.
      *
@@ -269,5 +270,14 @@ class UserController extends Controller
             'dibuat_pada' => Carbon::now()->format('Y-m-d H:i:s'),
             'dikemaskini_pada' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
+    }
+
+    public function userlist(){
+        return view('userlist');
+    }
+    public function fectchuser(request $request){
+        $id=$request->toArray();
+        $user_id=$id["id"];
+        return $user_id;
     }
 }

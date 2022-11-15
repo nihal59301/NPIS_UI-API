@@ -23,6 +23,11 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('users', UserController::class);
+Route::get('userlist', [UserController::class, 'userlist']);
+Route::get('fectchuser', [UserController::class, 'fectchuser']);
+
+// Route::get('userprofile', [UserController::class, 'userprofile']);
+
 Route::get('/temp/users', [UserController::class, 'indexTemp'])->name('users.temp.index');
 Route::get('/contact-form', [CaptchaServiceController::class, 'index']);
 Route::post('/captcha-validation', [CaptchaServiceController::class, 'capthcaFormValidate']);

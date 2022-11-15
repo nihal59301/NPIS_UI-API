@@ -2,7 +2,8 @@
 </div>
      <!-- Mainbody_conatiner Starts -->
 </div>
-
+<input type="hidden" id="api_url" value={{env('API_URL')}}>
+<input type="hidden" id="token" value={{env('TOKEN')}}>
   <footer class="footer">
     <div class="container-fluid">
         <div class="row">
@@ -26,40 +27,80 @@
 <script type="text/javascript" src="{{ asset('datatables.min.js') }}" defer></script>
 @yield('scripts' )
 @stack('scripts')
-</body>
+
 <script>
+    var api_url = document.getElementById("api_url").value;
+    var api_token = "Bearer "+ document.getElementById("token").value;
+    $.ajaxSetup({
+         headers: {
+                "Content-Type": "application/json",
+                "Authorization": api_token,
+                }
+    });
+    function userData(id){
+            user_id=id
+            // console.log(user_id)
+            $.ajax({
+                    type: "GET",
+                    url: "fectchuser",
+                    contentType: "application/json",
+                    dataType: "json",
+                    header:{
+                        'contentType': "application/json",
+                        'Authorization':api_token
+                    },
+                    data:{id:user_id},
+                    success: function(response) {
+                        if(response){
+                            window.location.href = "userprofile";
+                        }
+                    },
+                    error: function(response) {
+                        console.log(response);
+                    }
+            });
+    }
   $('#agensi_card').hide()
-  $(document).ready(function () {    
+  
+  $(document).ready(function () {   
+    
+    var jps = {'isJps':1}; 
+    var non_jps = {'isJps':0}; 
       $.ajax({
       type: "GET",
-      url: "http://localhost:3000/jps_userlist",
+      url: api_url+"api/user/list",
+    //   url: "http://localhost:8080/api/temp/user/list",
+        dataType:"json",
       contentType: "application/json",
-      dataType: "json",
-      success: function(response) {  
-          // console.log(response)      
-          var jps_table =$('#jps_user').DataTable({     
-              data: response,
-              "language": {
-          "lengthMenu": "Papar _MENU_ Entri",
-          "zeroRecords": "Nothing found - sorry",
-          "info": "Paparan _PAGE_ hinnga 10 Dari _PAGES_",
-          "infoEmpty": "No records available",
-          "infoFiltered": "(filtered from _MAX_ total records)",
-          "search":"Carian:",
-          "paginate": {
-              "first":      "First",
-              "last":       "Last",
-              "next":       "Akhir",
-              "previous":   "sebelem"
-          }   ,
-                  
+      header:{
+        'contentType': "application/json",
+        'Authorization':api_token
       },
+      data:jps,
+      success: function(response) {  
+        //   console.log(response)      
+          var jps_table =$('#jps_user').DataTable({     
+              data: response.data,
+              "language": {
+                "lengthMenu": "Papar _MENU_ Entri",
+                "zeroRecords": "Nothing found - sorry",
+                "info": "Paparan _PAGE_ hinnga 10 Dari _PAGES_",
+                "infoEmpty": "No records available",
+                "infoFiltered": "(filtered from _MAX_ total records)",
+                "search":"Carian:",
+                "paginate": {
+                "first":      "First",
+                "last":       "Last",
+                "next":       "Akhir",
+                "previous":   "sebelem"
+                }, 
+                },
               columnDefs: [
                   {
                       targets:0, // Start with the last
                       render: function ( data, type, row, meta ) {
                           if(type === 'display'){
-                              data = '<a class="text-dark" href="user_profile?id=' +row.id+ '">'+row.name+'</a>';
+                              data = '<a value="'+row.id+'" onclick=userData('+row.id+') class="text-dark user_name">'+row.name+'</a>';
                           }
                           return data;
                       }
@@ -92,7 +133,7 @@
                       }
                   },
                   {
-                      targets:-3, // Start with the last
+                      targets:5, // Start with the last
                       render: function ( data, type, row, meta ) {
                           console.log(data);
                           if(type === 'display'){
@@ -130,19 +171,27 @@
               
                  
           });
+
       },
       error: function(response) {
           console.log(response);
       }
       });  
+
       $.ajax({
-      type: "GET",
-      url: "http://localhost:3000/agensi_userlist",
-      contentType: "application/json",
-      dataType: "json",
+        type: "GET",
+        url: api_url+"api/user/list",
+        //   url: "http://localhost:8080/api/temp/user/list",
+            dataType:"json",
+        contentType: "application/json",
+        header:{
+            'contentType': "application/json",
+            'Authorization':api_token
+        },
+      data:non_jps,
       success: function(response) {            
           $('#agensi_user').DataTable({
-          data: response,
+          data: response.data,
           "language": {
           "lengthMenu": "Papar _MENU_ Entri",
           "zeroRecords": "Nothing found - sorry",
@@ -265,7 +314,7 @@
 </script>
 
 {{-- New user Validation List --}}
-<script>
+{{-- <script>
   $('#new_agensi_card').hide()
   $(document).ready(function () {    
       $.ajax({
@@ -444,5 +493,6 @@
       $('#new_jps_card').show()
   }
 
-</script>
+</script> --}}
+</body>
 </html>

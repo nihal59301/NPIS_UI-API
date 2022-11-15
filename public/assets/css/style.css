@@ -9,17 +9,28 @@
 body {
   background-color: #f5f6fa;
 }
+.form-check-input:checked {
+  background-color:#43c27e !important;
+  border-color: #43c27e !important;
+}
+.form-switch .form-check-input {
+  width: 3em !important;
+}
 
 .NPIS_Container {
   display: flex;
   width: 100%;
+  justify-content: space-between;
 }
-
+.content-page {
+  margin-left: 0px !important;
+  min-height: 0vh !important;
+  padding: 0px !important;
+}
 .side_bar_Container {
   width: 4.5%;
   padding: 1.4% 0.8% 1.4% 1.2%;
-  /* height: 100vh; */
-  transition: 0.4s ease-in-out;
+  transition: 0.4s linear;
   background: linear-gradient(180deg, #74d6b9 0%, rgba(94, 183, 156, 0) 83.72%), #577dc6;
   overflow: hidden;
 }
@@ -46,7 +57,7 @@ body {
   width: 100%;
   align-items: center;
   display: flex;
-  transition: 0.4s ease-in-out;
+  transition: 0.4s ease-in;
 }
 .side_bar_Container .NPIS_logo_container .NPIS_logo_right_content h3 {
   padding: 0 1rem;
@@ -87,14 +98,14 @@ body {
 .side_bar_Container .sidebar_list_container #accordionParent .accordian_content .accordian_single_list {
   width: 100%;
   padding-left: 0.8rem;
-  transition: 0.4s ease-in-out;
+  opacity: 1;
+  left: 0;
 }
 .side_bar_Container .sidebar_list_container #accordionParent .accordian_content .accordian_single_list .Accordian-header {
   padding: 0rem 0.4rem;
 }
 .side_bar_Container .sidebar_list_container #accordionParent .accordian_content .accordian_single_list .Accordian-header a.Accordian_link {
   display: block;
-  width: 100%;
   text-decoration: none;
   color: #f4f9fa;
   text-transform: uppercase;
@@ -105,7 +116,6 @@ body {
   width: 100%;
 }
 .side_bar_Container .sidebar_list_container #accordionParent .accordian_content .accordian_single_list .Accordian-header a.Accordian_link .sidebar_icon_Container .sidebar_icon_right_content .sb_contents {
-  width: 100%;
   justify-content: space-between;
 }
 .side_bar_Container .sidebar_list_container #accordionParent .accordian_content .accordian_single_list .Accordian-header a.Accordian_link .sidebar_icon_Container .sidebar_icon_right_content .sb_contents p {
@@ -129,7 +139,6 @@ body {
 .side_bar_Container .sidebar_list_container #accordionParent .accordian_content .accordian_single_list .accordian_collapse_list ul li a {
   text-decoration: none;
   display: block;
-  width: 80%;
   padding: 0.3rem 0;
   font-size: 0.86rem;
   color: #f4f9fa;
@@ -139,9 +148,9 @@ body {
   font-weight: 600;
 }
 .side_bar_Container .sidebar_list_container #accordionParent .accordian_content .accordian_single_list.active {
-  width: 0;
+  width: 0%;
   height: 0;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 .side_bar_Container .sidebar_list_container ul {
   padding: 0;
@@ -149,8 +158,12 @@ body {
   list-style: none;
   text-decoration: none;
 }
+
+/*Top menu nav*/
+
 .Mainbody_conatiner {
   width: 83.2%;
+  transition: 0.4s ease-in-out;
 }
 .Mainbody_conatiner.active {
   width: 95.5%;
@@ -187,15 +200,21 @@ body {
   gap: 1.6rem;
   padding: 0 1rem;
 }
+.Mainbody_conatiner header nav .nav_bar .Nav_right_content .Nav_right_img_content .icons_contains {
+  display: flex;
+  align-items: center;
+  gap: 2.3rem;
+}
 .Mainbody_conatiner header nav .nav_bar .Nav_right_content .profile_container {
   background-color: #faf9fe;
   border-left: 1px solid #f6f6f6;
   gap: 0.5rem;
   align-items: center;
-  padding: 0rem 3rem 0rem 2rem;
+  padding: 2rem 3rem 2rem 2rem;
   margin-top:-20px;
-  margin-right:-19px;
   margin-bottom:-14px;
+  margin-right:-19px;
+
 }
 .Mainbody_conatiner header nav .nav_bar .Nav_right_content .profile_container .profile_content h4 {
   margin: 0;
@@ -206,4 +225,188 @@ body {
   font-size: 0.8rem;
   color: #a3adb1;
   margin: 0;
+}
+
+/*Login*/
+
+#log_masuk_modal .log_masuk_modal_dialog {
+  max-width: 50%;
+}
+#log_masuk_modal .log_masuk_modal_container {
+  padding: 5% 0;
+}
+#log_masuk_modal .log_masuk_modal_container .log_masuk_modal_content {
+  width: 62%;
+  margin: auto;
+  padding: 5% 0;
+}
+#log_masuk_modal .log_masuk_modal_container .log_masuk_modal_content .log_masuk_modal_header button {
+  background-color: transparent;
+  border: none;
+  /*x(close)*/
+}
+#log_masuk_modal .log_masuk_modal_container .log_masuk_modal_content .log_masuk_modal_body {
+  padding: 0;
+  font-family: Poppins_Regular;
+}
+#log_masuk_modal .log_masuk_modal_container .log_masuk_modal_content .log_masuk_modal_body h4 {
+  font-size: 2.5rem;
+  font-family: Poppins_bold;
+  text-transform: uppercase;
+}
+#log_masuk_modal .log_masuk_modal_container .log_masuk_modal_content .log_masuk_modal_body .MAsuk_tab_container nav .nav-link.active {
+  border-bottom: transparent;
+  background-color: #fff;
+  border-color: #000;
+   /*JPS (pengguna JPS border)*/
+}
+
+#log_masuk_modal .log_masuk_modal_container .log_masuk_modal_content .log_masuk_modal_body .MAsuk_tab_container nav .nav-link1 {
+  border-top: transparent;
+  border-right: transparent;
+  border-left: transparent;
+  background-color: #fff;
+  border-color: #000;
+  /*JPS (pengguna kementerian/agensi border)*/
+}
+#log_masuk_modal .log_masuk_modal_container .log_masuk_modal_content .log_masuk_modal_body .MAsuk_tab_container nav button {
+  background-color: #fff;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  /*JPS (pengguna JPS||kementerian tab content)*/
+}
+#log_masuk_modal .log_masuk_modal_container .log_masuk_modal_content .log_masuk_modal_body .MAsuk_tab_container .pengguna_jps_tab_content .info {
+  padding-top: 1rem;
+  color: #c4c4c4;
+  font-size: 0.8rem;
+}
+#log_masuk_modal .log_masuk_modal_container .log_masuk_modal_content .log_masuk_modal_body .MAsuk_tab_container .pengguna_jps_tab_content form input {
+  width: 90%;
+  padding: 1rem 10%;
+  height: auto;
+  border-color: #000;
+  margin-bottom: 4%;
+  border-radius: 8px;
+  background-image: url("../images/Kad.png");
+  background-repeat: no-repeat;
+  background-size: 6%;
+  background-position: top 45% left 2%;
+}
+#log_masuk_modal .log_masuk_modal_container .log_masuk_modal_content .log_masuk_modal_body .MAsuk_tab_container .pengguna_jps_tab_content form input.password_eye_field {
+  background-image: url("../images/Kata.png");
+}
+#log_masuk_modal .log_masuk_modal_container .log_masuk_modal_content .log_masuk_modal_body .MAsuk_tab_container .pengguna_jps_tab_content form .masuk_submit {
+  padding: 1.2rem 0.5rem;
+  background-color: #317292;
+  color: #fff;
+  text-transform: uppercase;
+  border-radius: 10px;
+  width: 100%;
+  font-size: 1.1rem;
+}
+#log_masuk_modal .log_masuk_modal_container .log_masuk_modal_content .log_masuk_modal_body .MAsuk_tab_container .pengguna_jps_tab_content form .forget_password {
+  padding-top: 2%;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+}
+#log_masuk_modal .log_masuk_modal_container .log_masuk_modal_content .log_masuk_modal_body .MAsuk_tab_container .pengguna_jps_tab_content form .forget_password button {
+  background-color: transparent;
+  border: none;
+  color: #4a7bba;
+  padding: 0.7%;
+}
+
+#Forget_modal .forget_modal_dialog {
+  max-width: 35%;
+}
+#Forget_modal .forget_modal_dialog .forget_modal_content {
+  border-radius: 10px;
+  box-shadow: rgba(1, 8, 17, 0.4) 0px 0px 0px 1px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(15, 15, 15, 0.08) 0px 1px 0px inset;
+}
+#Forget_modal .forget_modal_dialog .forget_modal_content .forget_modal_body {
+  padding: 6% 7%;
+}
+#Forget_modal .forget_modal_dialog .forget_modal_content .forget_modal_body .forget_modal_heading h4 {
+  font-size: 1.3rem;
+  font-family: poppins_bold;
+  text-transform: uppercase;
+}
+#Forget_modal .forget_modal_dialog .forget_modal_content .forget_modal_body .forget_modal_heading p {
+  font-size: 0.9rem;
+}
+#Forget_modal .forget_modal_dialog .forget_modal_content .forget_modal_body .forget_modal_form form input {
+  background-color: #f8f8f8;
+  height: auto;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  border-color: #000;
+}
+#Forget_modal .forget_modal_dialog .forget_modal_content .forget_modal_body .forget_modal_form form .forget_submit button {
+  text-transform: uppercase;
+  border: none;
+  border-radius: 5px;
+  padding: 1.8% 10%;
+  color: #fff;
+  font-weight: 500;
+  background-color: #1c8c51;
+}
+
+#sucess_modal .sucess_modal_dialog {
+  max-width: 35%;
+}
+#sucess_modal .sucess_modal_dialog .sucess_modal_content {
+  padding: 5% 3%;
+  border: none;
+}
+#sucess_modal .sucess_modal_dialog .sucess_modal_content .sucess_modal_body {
+  width: 100%;
+  margin: auto;
+  margin-top:2%;
+  padding: 5%;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+}
+#sucess_modal .sucess_modal_dialog .sucess_modal_content .sucess_modal_body h3 {
+  font-size: 1.6rem;
+  text-align: center;
+}
+#sucess_modal .sucess_modal_dialog .sucess_modal_content .sucess_modal_body button {
+  margin-top: 4%;
+  background-color: #0062dd;
+  border-radius: 20px;
+  color: #fff;
+  border: none;
+  font-size: 0.87rem;
+  padding: 0.4rem 1rem;
+}
+
+.login_container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login_container .login_btn {
+  padding: 1rem 3%;
+  font-size: 1.4rem;
+}
+
+.eye_icon {
+  position: absolute;
+  top: 30%;
+  right: 0;
+  background-color: transparent;
+  border: none;
+  z-index: 9999;
+}
+
+.sucess_msg {
+  position: absolute;
+  top: -18%;
+  left: 40%;
+  background-color: transparent;
 }/*# sourceMappingURL=style.css.map */
+/* .dropdown-menu.mt-3.show{
+  left:38px
+} */
