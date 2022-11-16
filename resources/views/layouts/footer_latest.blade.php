@@ -232,7 +232,7 @@ function myFunction() {
                       targets:0, // Start with the last
                       render: function ( data, type, row, meta ) {
                           if(type === 'display'){
-                              data = '<a class="text-dark" href="user_profile?id=' +row.id+ '">'+row.name+'</a>';
+                            data = '<a value="'+row.id+'" onClick="loadView('+row.id+')" class="text-dark user_name">'+row.name+'</a>';
                           }
                           return data;
                       }
@@ -269,7 +269,7 @@ function myFunction() {
                       render: function ( data, type, row, meta ) {
                           console.log(data);
                           if(type === 'display'){
-                              if(row.jenis_pengguna_id==1 && row.row_status==1){
+                              if(row.jenis_pengguna_id==2 && row.row_status==1){
                                   data =
                                   '<div class="form-check form-switch">'+
                                   '<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>'+
@@ -291,10 +291,10 @@ function myFunction() {
                   {
                       targets:7, // Start with the last
                       render: function ( data, type, row, meta ) {
-                          console.log(data);
+                        //   console.log(data);
                           if(type === 'display'){
-                              if(row.jenis_pengguna_id==1 && row.row_status==1){
-                                  data ='<img class="img-thumbnail" width="40px" src="pdf.png" alt="">'
+                              if(row.jenis_pengguna_id==2 && row.row_status==1){
+                                  data ='<img class="img-thumbnail" width="40px" src="images/pdf.png" alt="">'
                               }
                           }
                           return data;

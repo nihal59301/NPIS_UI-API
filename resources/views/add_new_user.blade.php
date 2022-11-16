@@ -50,7 +50,7 @@
                                         <span class="error" id="error_name"></span>
                                        </div>
                                        <div class="col-md-6">
-                                        <label>No Kod penganalan</label><br>
+                                        <label>No. Kad Pengenalan</label><br>
                                         <input class="form-control" type="text" name="no_kod_penganalan" id="no_kod_penganalan"> 
                                         <span class="error" id="error_no_kod_penganalan"></span>
                                        </div>
@@ -99,7 +99,7 @@
                                        <div class="col-md-6">
                                         <label>Bahagian</label><br>
                                         <select class="form-select" name="bahagian" id="bahagian">
-                                          <option value=""> - Tidak Berkenan - </option>
+                                          <option value=""> - Tidak Berkenaan - </option>
                                           </select>    
                                           <span class="error" id="error_bahagian"></span>                                   
                                        </div>
@@ -108,14 +108,14 @@
                                        <div class="col-md-6">
                                         <label>Negeri</label><br>
                                           <select class="form-select" name="negeri" id="negeri">
-                                             <option value=""> - Tidak Berkenan - </option>
+                                             <option value=""> - Tidak Berkenaan - </option>
                                           </select>
                                           <span class="error" id="error_negeri"></span>
                                        </div>
                                        <div class="col-md-6">
                                         <label>Daerah</label><br>
                                           <select class="form-select" name="daerah" id="daerah">
-                                             <option value=""> - Tidak Berkenan - </option>
+                                             <option value=""> - Tidak Berkenaan - </option>
                                           </select>       
                                           <span class="error" id="error_daerah"></span>                               
                                        </div>
@@ -125,7 +125,7 @@
                                        <div class="col-md-6">
                                           <label>Gambar Profil <h7 class="types">(jenis fail yang disyorkan: jpeg, png)</h7></label><br>
                                           <div class="drop-zone">
-                                             <span class="drop-zone__prompt"><b><i class="mdi mdi-cloud-upload"></i> <br>Drop files here or click to upload<br><h6>(saiz fail tidak membiri 2 mb)</h6></b></span>
+                                             <span class="drop-zone__prompt"><b><i class="mdi mdi-cloud-upload"></i> <br>Letakkan fail di sini atau klik untuk memuat naik​<br><h6>(saiz fail tidak membiri 4 mb)</h6></b></span>
                                              <input type="file" name="myFile" id="myFile" class="drop-zone__input">
                                           </div>
                                           <span id="gambar_profile" style="display:none;color:red;"></span>
@@ -137,7 +137,7 @@
                                           <label>Dokumen Sokongan  <h7 class="types">(jenis fail yang disyorkan: pdf, jpeg, docx, png)</h7></label><br>
                                           <div class="drop-zone_dokumen">
                                              <img id="doku_image_new" src="pdf_image.png"width="10%" style="display:none;"><label id="doku_label"></label>
-                                             <span id="dokumen_span" class="drop-zone__prompt_dockumen"><b><i class="mdi mdi-cloud-upload"></i> <br>Drop files here or click to upload<br><h6>(saiz fail tidak membiri 2 mb)</h6></b></span>
+                                             <span id="dokumen_span" class="drop-zone__prompt_dockumen"><b><i class="mdi mdi-cloud-upload"></i> <br>Letakkan fail di sini atau klik untuk memuat naik​<br><h6>(saiz fail tidak membiri 4 mb)</h6></b></span>
                                              <input type="file" name="dockumen" id="dokumen" class="drop-zone__input_dokumen">
                                           </div>
                                           <div>

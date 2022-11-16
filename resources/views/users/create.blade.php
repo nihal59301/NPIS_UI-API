@@ -40,7 +40,7 @@
                                         @enderror
                                        </div>
                                        <div class="col-md-6">
-                                        <label>No Kod penganalan</label><br>
+                                        <label>No. Kad Pengenalan</label><br>
                                         <input class="form-control" type="text" name="no_kod_penganalan"> 
                                         @error('no_kod_penganalan')
                                             <span class="invalid-feedback" role="alert">
@@ -73,7 +73,7 @@
                                        <div class="col-md-6">
                                         <label>Jawatan</label><br>                                        
                                         <select class="form-select" name="jawatan">
-                                             <option value=""> - Tidak Berkenan - </option>
+                                             <option value=""> - Tidak Berkenaan - </option>
                                              @foreach ($jawatans as  $jawatan)
                                                 <option value="{{$jawatan->id}}">{{$jawatan->nama_jawatan}}</option>
                                             @endforeach                                                
@@ -87,7 +87,7 @@
                                        <div class="col-md-6">
                                         <label>Gred</label><br>                                        
                                         <select class="form-select" name="gred">
-                                             <option value=""> - Tidak Berkenan - </option>
+                                             <option value=""> - Tidak Berkenaan - </option>
                                              @foreach ($gredJawatans as  $gredJawatan)
                                                 <option value="{{$gredJawatan->id}}">{{$gredJawatan->nama_gred_jawatan}}</option>
                                             @endforeach                                                
@@ -119,7 +119,7 @@
                                        <div class="col-md-6">
                                         <label>Jabatan</label><br>
                                           <select class="form-select form-control-light" name="jabatan">
-                                          <option value=""> - Tidak Berkenan - </option>
+                                          <option value=""> - Tidak Berkenaan - </option>
                                           @foreach ($jabatans as  $jabatan)
                                             <option value="{{$jabatan->id}}">{{$jabatan->nama_jabatan}}</option>
                                             @endforeach                                             
@@ -133,7 +133,7 @@
                                        <div class="col-md-6">
                                         <label>Bahagian</label><br>
                                         <select class="form-select form-control-light" name="bahagian">
-                                            <option value=""> - Tidak Berkenan - </option>
+                                            <option value=""> - Tidak Berkenaan - </option>
                                             @foreach ($bahagians as  $bahagian)
                                                 <option value="{{$bahagian->id}}">{{$bahagian->nama_bahagian}}</option>
                                             @endforeach                                            
@@ -148,7 +148,7 @@
                                        <div class="col-md-6">
                                         <label>Negeri</label><br>
                                           <select class="form-select form-control-light" name="negeri">
-                                             <option value=""> - Tidak Berkenan - </option>
+                                             <option value=""> - Tidak Berkenaan - </option>
                                              @foreach ($negeris as  $negeri)
                                                 <option value="{{$negeri->id}}">{{$negeri->nama_negeri}}</option>
                                             @endforeach                                                
@@ -162,7 +162,7 @@
                                        <div class="col-md-6">
                                         <label>Daerah</label><br>
                                           <select class="form-select" name="daerah">
-                                             <option value=""> - Tidak Berkenan - </option>
+                                             <option value=""> - Tidak Berkenaan - </option>
                                              @foreach ($daerahs as  $daerah)
                                                 <option value="{{$daerah->id}}">{{$daerah->nama_daerah}}</option>
                                             @endforeach                                                

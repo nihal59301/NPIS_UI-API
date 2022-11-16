@@ -73,7 +73,7 @@
                                         <thead>
                                             <tr>
                                                 <th>Nama</th>
-                                                <th>No.Kad Pengenalan</th>
+                                                <th>No. Kad Pengenalan</th>
                                                 <th>Emel</th> 
                                                 <th>Jabatan</th> 
                                                 <th>Jawatan</th> 
@@ -90,7 +90,7 @@
                                         <thead>
                                             <tr>
                                                 <th>Nama</th>
-                                                <th>No.Kad Pengenalan</th>
+                                                <th>No. Kad Pengenalan</th>
                                                 <th>Emel</th> 
                                                 <th>Jabatan</th> 
                                                 <th>Jawatan</th> 
