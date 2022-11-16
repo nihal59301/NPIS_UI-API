@@ -181,30 +181,144 @@ $(document).ready(function() {
   const api_url = document.getElementById("api_url").value;  console.log(api_url);
 	const app_url = document.getElementById("app_url").value;  console.log(app_url);
   const api_token = "Bearer "+ document.getElementById("token").value;  console.log(api_token);
-  $('#subForgotButton').click(function(){
-    // var formData = new FormData();
-    // var name = $("#email").val();
-    // console.log(name)
-    // //formData.append('email', document.submitForgot.email.value);
-    // axios({
-		// 	method: "post",
-		// 	url: api_url+"forgot-password",
-		// 	data: formData,
-		// 	headers: { "Content-Type": "application/json","Authorization": api_token },
-		// })
-    // .then(function (response) {
-		// 	//handle success
-		// 	console.log(response.data.code);				
-		// 	})
-		// 	.catch(function (response) {
-		// 		//handle error
-		// 		console.log(response);
-		// 		alert("There was an error submitting data");
-		// 	});
-  console.log('modal submitted')
-  //$('#sucess_modal').modal('show');
-    $('#submitForgot').submit();
-});
+      $('#subForgotButton').click(function(){
+        // var formData = new FormData();
+        // var name = $("#email").val();
+        // console.log(name)
+        // //formData.append('email', document.submitForgot.email.value);
+        // axios({
+        // 	method: "post",
+        // 	url: api_url+"forgot-password",
+        // 	data: formData,
+        // 	headers: { "Content-Type": "application/json","Authorization": api_token },
+        // })
+        // .then(function (response) {
+        // 	//handle success
+        // 	console.log(response.data.code);				
+        // 	})
+        // 	.catch(function (response) {
+        // 		//handle error
+        // 		console.log(response);
+        // 		alert("There was an error submitting data");
+        // 	});
+      console.log('modal submitted')
+      //$('#sucess_modal').modal('show');
+        $('#submitForgot').submit();
+    });
+
+    $.ajaxSetup({
+         headers: {
+                "Content-Type": "application/json",
+                "Authorization": api_token,
+                }
+    });
+	// var dropDown = document.getElementById("kementerian");
+    // $.ajax({
+    //     type: "GET",
+    //     url: api_url+"GetKementerian/",
+    //     dataType: 'json',
+    //     success: function (result) { console.log(result)
+    //         if (result) {
+    //             $.each(result, function (key, item) {
+	// 				var opt = item.id;
+	// 				var el = document.createElement("option");
+	// 				el.textContent = item.Name;
+	// 				el.value = opt;
+	// 				dropDown.appendChild(el);
+    //             })
+    //         }
+    //         else {
+    //             $.Notification.error(result.Message);
+    //         }
+    //     }
+    // });
+
+	var JabatandropDown =  document.getElementById("jabatan");
+    $.ajax({
+        type: "GET",
+        url: api_url+"api/lookup/jabatan/list/",
+        dataType: 'json',
+        success: function (result) { console.log(result.data)
+            if (result) {
+                $.each(result.data, function (key, item) {
+					var opt = item.id;
+					var el = document.createElement("option");
+					el.textContent = item.nama_jabatan;
+					el.value = opt;
+					JabatandropDown.appendChild(el);
+                })
+            }
+            else {
+                $.Notification.error(result.Message);
+            }
+        }
+    });
+
+    var bahagiandropDown =  document.getElementById("bahagian");
+    $.ajax({
+        type: "GET",
+        url: api_url+"api/lookup/bahagian/list/",
+        dataType: 'json',
+        success: function (result) { console.log(result)
+            if (result) {
+                $.each(result.data, function (key, item) {
+					var opt = item.id;
+					var el = document.createElement("option");
+					el.textContent = item.nama_bahagian;
+					el.value = opt;
+					bahagiandropDown.appendChild(el);
+                })
+            }
+            else {
+                $.Notification.error(result.Message);
+            }
+        }
+    });
+
+    var jawatandropDown =  document.getElementById("jawatan");
+    $.ajax({
+        type: "GET",
+        url: api_url+"api/lookup/jawatan/list",
+        dataType: 'json',
+        success: function (result) { console.log(result)
+            if (result) {
+                $.each(result.data, function (key, item) {
+					var opt = item.id;
+					var el = document.createElement("option");
+					el.textContent = item.nama_jawatan;
+					el.value = opt;
+					jawatandropDown.appendChild(el);
+                })
+            }
+            else {
+                $.Notification.error(result.Message);
+            }
+        }
+    });
+
+	var greddropDown =  document.getElementById("gred");
+    $.ajax({
+        type: "GET",
+        url: api_url+"api/lookup/gredjawatan/list",
+        dataType: 'json',
+        success: function (result) { console.log(result)
+            if (result) {
+                $.each(result.data, function (key, item) {
+					var opt = item.id;
+					var el = document.createElement("option");
+					el.textContent = item.nama_gred_jawatan;
+					el.value = opt;
+					greddropDown.appendChild(el);
+                })
+            }
+            else {
+                $.Notification.error(result.Message);
+            }
+        }
+    });
+
+    
+
 })
 
 
@@ -591,9 +705,10 @@ $site_key= config('services.googleCaptcha.site_key');
                               <input
                                 type="text"
                                 class="form-control"
-                                id="Nama_Penuh" name="nama"
+                                id="name" name="nama"
                               />
                             </div>
+                            <span class="error" id="error_name"></span>
                           </div>
   
                           <div class="input_container">
@@ -609,6 +724,7 @@ $site_key= config('services.googleCaptcha.site_key');
                                 id="Kad_Pengenalan" name="no_kod_penganalan"
                               />
                             </div>
+                            <span class="error" id="error_no_kod_penganalan"></span>
                           </div>
                           <div class="input_container">
                             <label
@@ -623,6 +739,7 @@ $site_key= config('services.googleCaptcha.site_key');
                                 id="Email_Rasmi" name="email"
                               />
                             </div>
+                            <span class="error" id="error_email"></span>
                           </div>
                           <div class="input_container">
                             <label
@@ -637,6 +754,7 @@ $site_key= config('services.googleCaptcha.site_key');
                                 id="No_Telefon" name="no_telefon"
                               />
                             </div>
+                            <span class="error" id="error_telefon"></span>
                           </div>
                           <div class="input_container">
                             <label
@@ -651,9 +769,8 @@ $site_key= config('services.googleCaptcha.site_key');
                                 id="jawatan" name="jawatan"
                               >
                                 <option value=""></option>
-                                <option value="">Jawatan</option>
-                                <option value="">Jawatan</option>
                               </select>
+                              <span class="error" id="error_jawatan"></span>
                             </div>
                           </div>
                           <div class="input_container">
@@ -665,12 +782,11 @@ $site_key= config('services.googleCaptcha.site_key');
                                 name="gred" id="gred"
                               >
                                 <option value=""></option>
-                                <option value="">gred</option>
-                                <option value="">gred</option>
                               </select>
+                              <span class="error" id="error_gred"></span>
                             </div>
                           </div>
-                          <!-- <div class="input_container">
+                          <div class="input_container">
                             <label
                               for="Kementerian"
                               class="col-form-label form_label"
@@ -682,12 +798,11 @@ $site_key= config('services.googleCaptcha.site_key');
                                 class="form-control"
                                 id="Kementerian"
                               >
-                                <option value=""></option>
-                                <option value="">Jawatan</option>
-                                <option value="">Jawatan</option>
+                                <option value="1">Kementerian Alam Sekitar dan Air (KASA)</option>
+                                <option value="2">Kementerian Tenaga dan Sumber Asli (KeTSA)</option>
                               </select>
                             </div>
-                          </div> -->
+                          </div>
                           <div class="input_container">
                             <label for="Jabatan" class="col-form-label form_label"
                               >Jabatan</label
@@ -696,10 +811,11 @@ $site_key= config('services.googleCaptcha.site_key');
                               <select
                                 type="text"
                                 class="form-control"
-                                name="jabatan" id="Jabatan_agensi"
+                                name="jabatan" id="jabatan"
                               >
                                 <option value=""></option>
                               </select>
+                              <span class="error" id="error_jabatan"></span>
                             </div>
                           </div>
                           <div class="input_container">
@@ -712,10 +828,11 @@ $site_key= config('services.googleCaptcha.site_key');
                               <select
                                 type="text"
                                 class="form-control"
-                                name="bahagian" id="bahagian_agensi"
+                                name="bahagian" id="bahagian"
                               >
                                 <option value=""></option>
                               </select>
+                              <span class="error" id="error_bahagian"></span>                                   
                             </div>
                           </div>
                           <div class="input_container" id='nonjps_doc'>
