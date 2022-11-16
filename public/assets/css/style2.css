@@ -143,3 +143,22 @@ div#profile {
    margin-left: 0px;
    padding: 0px;
 }
+
+.modal-content {
+   width: 80% !important;
+   border-radius: 12px !important;
+   margin-left: 75px !important;
+}
+
+.card.mb-0 {
+   border-bottom-style: outset !important;
+}
+
+button#tutup  {
+   height: 23px !important;
+   font-size: 11px !important;
+   margin-top: 26px !important;
+   padding-bottom: 20px !important;
+   width: 55px;
+   padding-top: 6px;
+}
