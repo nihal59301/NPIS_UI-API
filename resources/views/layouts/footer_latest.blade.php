@@ -44,28 +44,34 @@ function myFunction() {
                 "Authorization": api_token,
                 }
     });
-    function userData(id){
-            user_id=id
-            // console.log(user_id)
-            $.ajax({
-                    type: "GET",
-                    url: "fectchuser",
-                    contentType: "application/json",
-                    dataType: "json",
-                    header:{
-                        'contentType': "application/json",
-                        'Authorization':api_token
-                    },
-                    data:{id:user_id},
-                    success: function(response) {
-                        if(response){
-                            window.location.href = "user-profile";
-                        }
-                    },
-                    error: function(response) {
-                        console.log(response);
-                    }
-            });
+    // function userData(id){
+    //         user_id=id
+    //         // console.log(user_id)
+    //         $.ajax({
+    //                 type: "GET",
+    //                 url: "fectchuser",
+    //                 contentType: "application/json",
+    //                 dataType: "json",
+    //                 header:{
+    //                     'contentType': "application/json",
+    //                     'Authorization':api_token
+    //                 },
+    //                 data:{id:user_id},
+    //                 success: function(response) {
+    //                     if(response){
+    //                         window.location.href = "user-profile";
+    //                     }
+    //                 },
+    //                 error: function(response) {
+    //                     console.log(response);
+    //                 }
+    //         });
+    // }
+    function loadView(id)
+    {
+        localStorage.setItem("user_id", id);
+        localStorage.setItem("user_type", "temp_user");
+        window.location.href = "{{ url('/user-profile')}}";
     }
   $('#agensi_card').hide()
   
@@ -94,12 +100,13 @@ function myFunction() {
                 "info": "Paparan _PAGE_ hinnga 10 Dari _PAGES_",
                 "infoEmpty": "No records available",
                 "infoFiltered": "(filtered from _MAX_ total records)",
-                "search":"Carian:",
+                "search": "_INPUT_",
+                "searchPlaceholder": "Carian",
                 "paginate": {
-                "first":      "First",
-                "last":       "Last",
+                "first":      "Awal",
+                "last":       "Seterusnya",
                 "next":       "Akhir",
-                "previous":   "sebelem"
+                "previous":   "Sebelum"
                 }, 
                 },
               columnDefs: [
@@ -107,7 +114,7 @@ function myFunction() {
                       targets:0, // Start with the last
                       render: function ( data, type, row, meta ) {
                           if(type === 'display'){
-                              data = '<a value="'+row.id+'" onclick=userData('+row.id+') class="text-dark user_name">'+row.name+'</a>';
+                              data = '<a value="'+row.id+'" onClick="loadView('+row.id+')" class="text-dark user_name">'+row.name+'</a>';
                           }
                           return data;
                       }
@@ -207,14 +214,14 @@ function myFunction() {
           "infoEmpty": "No records available",
           "infoFiltered": "(filtered from _MAX_ total records)",
           "search":"Carian:",
+          
           "paginate": {
-              "first":      "First",
-              "last":       "Last",
-              "next":       "Akhir",
-              "previous":   "sebelem"
-          }   ,
-                  
-      },
+                "first":      "Awal",
+                "last":       "Seterusnya",
+                "next":       "Akhir",
+                "previous":   "Sebelum"
+                },       
+            },
               columnDefs: [
                   {
                       targets:0, // Start with the last
@@ -229,7 +236,7 @@ function myFunction() {
                       targets:3, // Start with the last
                       render: function ( data, type, row, meta ) {
                           if(type === 'display'){
-                                  data="bahgian"
+                                  data=row.bahagian.nama_bahagian
                           }
                           return data;
                       }
@@ -238,7 +245,7 @@ function myFunction() {
                       targets:4, // Start with the last
                       render: function ( data, type, row, meta ) {
                           if(type === 'display'){
-                                  data="Jawatan"
+                                  data=row.jawatan.nama_jawatan
                           }
                           return data;
                       }
@@ -282,7 +289,7 @@ function myFunction() {
                           console.log(data);
                           if(type === 'display'){
                               if(row.jenis_pengguna_id==1 && row.row_status==1){
-                                  data ='<img class="img-thumbnail" width="40px" src="pdf.jpg.png" alt="">'
+                                  data ='<img class="img-thumbnail" width="40px" src="pdf.png" alt="">'
                               }
                           }
                           return data;
@@ -309,15 +316,28 @@ function myFunction() {
       }
       });   
   })
-
+  $('#nonjps').hide()
   function agensi_user(){
       $('#jps_card').hide()
+      $('#jps').hide()
+      $('#nonjps').show()
       $('#agensi_card').show()
+      $("#jpsBtn").removeClass("jpsBtn");
+      $("#nonjpsBtn").addClass("nonjpsBtn");
   }
   function jps_user(){
       $('#agensi_card').hide()
       $('#jps_card').show()
+      $('#jps').show()
+      $('#nonjps').hide()
+      $("#jpsBtn").addClass("jpsBtn");
+      $("#nonjpsBtn").removeClass("nonjpsBtn");
   }
+  let userlist_tab_btn = document.querySelectorAll(
+  ".userlist_tab_btn_container button"
+);
+let userlist_tab_content = document.querySelectorAll(".userlist_tab_content ");
+  
 
 </script>
 </html>

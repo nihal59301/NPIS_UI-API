@@ -383,7 +383,7 @@ $(document).ready(function() {
 
     var tmp_user =  localStorage.getItem('user_type'); console.log(tmp_user);
     var user_id =  localStorage.getItem('user_id'); console.log(user_id);
-
+    
     var list_user_api='';
     var update_user_api='';
     var data_update='';
