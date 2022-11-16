@@ -38,7 +38,7 @@ Route::get('/user/first/reset', [UserController::class, 'firstReset'])->name('fi
 Route::post('/user/first/update', [UserController::class, 'firstResetUpdate'])->name('first.reset.update');
 Route::get('/user/logout', [LoginController::class, 'logout'])->name('user.logout');
 
-Route::get('/user-profile/{id}', [UserController::class, 'userProfile'])->name('user.profile');
+Route::get('/user-profile/{temp}/{id}', [UserController::class, 'userProfile'])->name('user.profile');
 
 Route::get('/pengasahan-pengguna-baharu', function () {
     return view('new_user_validation');

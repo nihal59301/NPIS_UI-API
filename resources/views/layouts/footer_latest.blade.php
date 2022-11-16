@@ -68,10 +68,15 @@ function myFunction() {
     //         });
     // }
     function loadView(id)
-    {
+    { console.log(id)
+        //var url = '{{ url("/user-profile", ":id")}}'
+        var url = '{{ route("user.profile", ["appuser",":id"])}}'
+        url = url.replace(':id', id);
+        //url = url.replace(':temp', id);
+        
         localStorage.setItem("user_id", id);
         localStorage.setItem("user_type", "temp_user");
-        window.location.href = "{{ url('/user-profile')}}";
+        window.location.href = url;
     }
   $('#agensi_card').hide()
   

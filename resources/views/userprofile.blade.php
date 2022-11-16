@@ -381,27 +381,28 @@ $(document).ready(function() {
 
     
 
-    var tmp_user =  localStorage.getItem('user_type'); console.log(tmp_user);
-    var user_id =  localStorage.getItem('user_id'); console.log(user_id);
+    var tmp_user =  localStorage.getItem('user_type'); console.log("{{$temp_type}}");
+     var user_id =  localStorage.getItem('user_id'); console.log({{$user_id}});
+     var tmp_user = "{{$temp_type}}"
     
     var list_user_api='';
     var update_user_api='';
     var data_update='';
-    if(tmp_user!='temp_user')
+    if(tmp_user!='temp')
     {
-         list_user_api = api_url+"api/user/details/"+user_id;
+         list_user_api = api_url+"api/user/details/"+{{$user_id}};
          update_user_api = api_url+"updateUser/";
          data_update = $('#update_user_form').serialize();
     }
     else
     {
-        list_user_api = api_url+"api/user/details/temp/"+user_id;
+        list_user_api = api_url+"api/user/details/temp/"+{{$user_id}};
         update_user_api = api_url+"api/user/approval/";
         data_update = {'id':user_id};
 
     }
     var jsonString = JSON.stringify(data_update);
-
+    console.log(list_user_api)
    //console.log(jsonString);
     $.ajax({
         type: "GET",
