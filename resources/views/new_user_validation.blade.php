@@ -160,7 +160,8 @@
                       targets:0, // Start with the last
                       render: function ( data, type, row, meta ) { console.log(data);
                           if(type === 'display'){
-                              data = '<a class="text-dark" onClick="loadView('+row.id+')">'+row.name+'</a>';
+                              //data = '<a class="text-dark" onClick="loadView('+row.id+')">'+row.name+'</a>';
+                              data = '<a class="text-dark" href="user-profile/' +row.id+ '">'+row.name+'</a>';
                           }
                           return data;
                       }
@@ -326,7 +327,7 @@
                           if(type === 'display'){
                               data='<div class="d-flex">'+
                                   '<button class="btn btn-danger m-1">Tadak Lulus</button>'+
-                                  '<button class="btn btn-primary m-1">Lulus</button>'+
+                                  '<button class="btn btn-primary m-1" onClick="approveTempUser('+row.id+')">Lulus</button>'+                                  
                               '</div>'
                           }
                           return data;
@@ -398,7 +399,8 @@
                       targets:0, // Start with the last
                       render: function ( data, type, row, meta ) { console.log(data);
                           if(type === 'display'){
-                              data = '<a class="text-dark" onClick="loadView('+row.id+')">'+row.name+'</a>';
+                            data = '<a class="text-dark" href="user-profile/' +row.id+ '">'+row.name+'</a>';
+                              //data = '<a class="text-dark" onClick="loadView('+row.id+')">'+row.name+'</a>';
                           }
                           return data;
                       }

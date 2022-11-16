@@ -252,6 +252,9 @@ $(document).ready(function() {
 	const api_url = document.getElementById("api_url").value;  console.log(api_url);
 	const app_url = document.getElementById("app_url").value;  console.log(app_url);
     const api_token = "Bearer "+ document.getElementById("token").value;  console.log(api_token);
+	const {
+		host, hostname, href, origin, pathname, port, protocol, search
+	  } = window.location
 	$('#show-me').hide();   
 	$('input[type="radio"]').click(function() { //alert($(this).attr('id'));
 		if($(this).attr('id') == 'agensi_luar') {
@@ -478,8 +481,9 @@ $(document).ready(function() {
 			//handle success
 			console.log(response.data.code);
 			if(response.data.code === '200') {	
-				console.log("{{ url('/userlist') }}")			
-				//window.location.href = app_url + "/userlist"
+				console.log("{{ url('/userlist') }}")
+				console.log(origin + '/userlist')
+				window.location.href = origin + '/userlist'
 			}else {				
 				if(response.data.code === '422') {					
 					Object.keys(response.data.data).forEach(key => {						

@@ -15,16 +15,16 @@
               <div class="Nav_right_content d-flex">
                 <div class="Nav_right_img_content d-flex">
                   <img
-                    src="assets/images/Jata-Malaysia-Vector-01 6.png"
+                    src='{{ asset("assets/images/Jata-Malaysia-Vector-01 6.png") }}'
                     alt="Jata-Malaysia"
                   />
                   <img
-                    src="assets/images/logo-jab-pengairan-saliran-msia__400x293 6.png"
+                    src='{{ asset("assets/images/logo-jab-pengairan-saliran-msia__400x293 6.png") }}'
                     alt="jab-pengairan-saliran-msia"
                   />
-                  <img class="img-responsive" height="20px" src="assets/images/coolicon.png" alt="coolicon" />
-                  <img src="assets/images/Icon Settings.png" alt="Settings" />
-                  <img src="assets/images/Vector-11.png" alt="" />
+                  <img class="img-responsive" height="20px" src='{{ asset("assets/images/coolicon.png") }}' alt="coolicon" />
+                  <img src='{{ asset("assets/images/Icon Settings.png") }}' alt="Settings" />
+                  <img src='{{ asset("assets/images/Vector-11.png") }}' alt="" />
                 </div>
                 <div class="profile_container d-flex">
                   <div class="profile_content">
@@ -33,7 +33,7 @@
                             <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false"
                                 aria-expanded="false">
                                 <span class="account-user-avatar"> 
-                                    <img src="assets/images/Admin pic.png" alt="user-image" class="rounded-circle">
+                                    <img src='{{ asset("assets/images/Admin pic.png") }}' alt="user-image" class="rounded-circle">
                                 </span>
                                 <span>
                                     <span class="account-user-name">Aiman Daniel</span>

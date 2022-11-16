@@ -3,7 +3,7 @@
   <div class="side_bar_content">
      <div class="NPIS_logo_container d-flex">
         <div class="NPIS_logo">
-           <img src="assets/images/LOGO.png" alt="LOGO" />
+           <img src='{{ asset("assets/images/LOGO.png") }}' alt="LOGO" />
         </div>
         <div class="NPIS_logo_right_content">
            <h3>NPIS</h3>
@@ -18,7 +18,7 @@
         <ul class="accordion" id="accordionParent">
            <li class="accordian_content d-flex">
               <div class="sidebar_icon">
-                 <img src="assets/images/Vector-9.png" alt="Vector9" />
+                 <img src='{{ asset("assets/images/Vector-9.png") }}' alt="Vector9" />
               </div>
               <div class="accordian_single_list">
                  <div class="Accordian-header" id="headingTwo">
@@ -35,7 +35,7 @@
                                 <p>Geo Board</p>
                                 <div>
                                    <img
-                                      src="assets/images/down arrow.png"
+                                      src='{{ asset("assets/images/down arrow.png") }}'
                                       class="d_arrow"
                                       alt="d_arrow"
                                       />
@@ -59,7 +59,7 @@
            </li>
            <li class="accordian_content d-flex">
               <div class="sidebar_icon">
-                 <img src="assets/images/Vector-3.png" alt="d_arrow" />
+                 <img src='{{ asset("assets/images/Vector-3.png") }}' alt="d_arrow" />
               </div>
               <div class="accordian_single_list">
                  <div class="Accordian-header" id="headingTwo">
@@ -74,7 +74,7 @@
                                 <p>Pentadbir</p>
                                 <div>
                                    <img
-                                      src="assets/images/down arrow.png"
+                                      src='{{ asset("assets/images/down arrow.png") }}'
                                       class="d_arrow"
                                       alt="d_arrow"
                                       />
@@ -109,7 +109,7 @@
            </li>
            <li class="accordian_content d-flex">
               <div class="sidebar_icon">
-                 <img src="assets/images/Vector-4.png" alt="Vector" />
+                 <img src='{{ asset("assets/images/Vector-4.png") }}' alt="Vector" />
               </div>
               <div class="accordian_single_list">
                  <div class="Accordian-header" id="headingTwo">
@@ -124,7 +124,7 @@
                                 <p>Permohonan Projek</p>
                                 <div>
                                    <img
-                                      src="assets/images/down arrow.png"
+                                      src='{{ asset("assets/images/down arrow.png") }}'
                                       class="d_arrow "
                                       alt="d_arrow"
                                       />
@@ -153,7 +153,7 @@
            </li>
            <li class="accordian_content d-flex">
               <div class="sidebar_icon">
-                 <img src="assets/images/Vector-1.png" alt="Vector" />
+                 <img src='{{ asset("assets/images/Vector-1.png") }}' alt="Vector" />
               </div>
               <div class="accordian_single_list">
                  <div class="Accordian-header" id="headingTwo">
@@ -168,7 +168,7 @@
                                 <p>PEMANTAUAN DAN PENILAIAN PROJEK</p>
                                 <div>
                                    <img
-                                      src="assets/images/down arrow.png"
+                                      src='{{ asset("assets/images/down arrow.png") }}'
                                       class="d_arrow"
                                       alt="d_arrow"
                                       />
@@ -194,7 +194,7 @@
            </li>
            <li class="accordian_content d-flex">
               <div class="sidebar_icon">
-                 <img src="assets/images/Vector.png" alt="Vector" />
+                 <img src='{{ asset("assets/images/Vector.png") }}' alt="Vector" />
               </div>
               <div class="accordian_single_list">
                  <div class="Accordian-header" id="headingTwo">
@@ -209,7 +209,7 @@
                                 <p>KONTRAK</p>
                                 <div>
                                    <img
-                                      src="assets/images/down arrow.png"
+                                      src='{{ asset("assets/images/down arrow.png") }}'
                                       class="d_arrow"
                                       alt="d_arrow"
                                       />
@@ -235,7 +235,7 @@
            </li>
            <li class="accordian_content d-flex">
               <div class="sidebar_icon">
-                 <img src="assets/images/Vector-6.png" alt="Vector" />
+                 <img src='{{ asset("assets/images/Vector-6.png") }}' alt="Vector" />
               </div>
               <div class="accordian_single_list">
                  <div class="Accordian-header" id="headingTwo">
@@ -250,7 +250,7 @@
                                 <p>PERUNDING</p>
                                 <div>
                                    <img
-                                      src="assets/images/down arrow.png"
+                                      src='{{ asset("assets/images/down arrow.png") }}'
                                       class="d_arrow"
                                       alt="d_arrow"
                                       />
@@ -276,7 +276,7 @@
            </li>
            <li class="accordian_content d-flex">
               <div class="sidebar_icon">
-                 <img src="assets/images/Vector-2.png" alt="Vector" />
+                 <img src='{{ asset("assets/images/Vector-2.png") }}' alt="Vector" />
               </div>
               <div class="accordian_single_list">
                  <div class="Accordian-header" id="headingTwo">
@@ -291,7 +291,7 @@
                                 <p>Value Management</p>
                                 <div>
                                    <img
-                                      src="assets/images/down arrow.png"
+                                      src='{{ asset("assets/images/down arrow.png") }}'
                                       class="d_arrow"
                                       alt="d_arrow"
                                       />
@@ -317,7 +317,7 @@
            </li>
            <li class="accordian_content d-flex">
               <div class="sidebar_icon">
-                 <img src="assets/images/Vector-5.png" alt="Vector" />
+                 <img src='{{ asset("assets/images/Vector-5.png") }}' alt="Vector" />
               </div>
               <div class="accordian_single_list">
                  <div class="Accordian-header" id="headingTwo">
@@ -332,7 +332,7 @@
                                 <p>Notice of Change</p>
                                 <div>
                                    <img
-                                      src="assets/images/down arrow.png"
+                                      src='{{ asset("assets/images/down arrow.png") }}'
                                       class="d_arrow"
                                       alt="d_arrow"
                                       />
@@ -358,7 +358,7 @@
            </li>
            <li class="accordian_content d-flex">
               <div class="sidebar_icon">
-                 <img src="assets/images/Vector-7.png" alt="Vector" />
+                 <img src='{{ asset("assets/images/Vector-7.png") }}' alt="Vector" />
               </div>
               <div class="accordian_single_list">
                  <div class="Accordian-header" id="headingTwo">
@@ -373,7 +373,7 @@
                                 <p>PERMOHONAN PERUNTUKAN DI LUAR ROLLING PLAN (RP)</p>
                                 <div>
                                    <img
-                                      src="assets/images/down arrow.png"
+                                      src='{{ asset("assets/images/down arrow.png") }}'
                                       class="d_arrow"
                                       alt="d_arrow"
                                       />
@@ -399,7 +399,7 @@
            </li>
            <li class="accordian_content d-flex">
               <div class="sidebar_icon">
-                 <img src="assets/images/Vector-8.png" alt="Vector" />
+                 <img src='{{ asset("assets/images/Vector-8.png") }}' alt="Vector" />
               </div>
               <div class="accordian_single_list">
                  <div class="Accordian-header" id="headingTwo">
@@ -414,7 +414,7 @@
                                 <p>PENJANAAN LAPORAN</p>
                                 <div>
                                    <img
-                                      src="assets/images/down arrow.png"
+                                      src='{{ asset("assets/images/down arrow.png") }}'
                                       class="d_arrow"
                                       alt="d_arrow"
                                       />

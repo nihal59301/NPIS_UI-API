@@ -409,21 +409,21 @@ $(document).ready(function() {
         dataType: 'json',
         success: function (result) { console.log(result.data)
             if (result.data) { //console.log(document.getElementById("nama").innerHTML);
-                document.getElementById("name").value= result.data.name;
-                document.getElementById("nama").innerHTML= result.data.name;
-                document.getElementById("no_telefon").value= result.data.no_telefon;
-                document.getElementById("emel_rasmi").value= result.data.email;
-                document.getElementById("jawatan").value= result.data.jawatan_id;
-                document.getElementById("gred").value= result.data.gred_jawatan_id;
+                document.getElementById("name").value= result.data.user.name;
+                document.getElementById("nama").innerHTML= result.data.user.name;
+                document.getElementById("no_telefon").value= result.data.user.no_telefon;
+                document.getElementById("emel_rasmi").value= result.data.user.email;
+                document.getElementById("jawatan").value= result.data.user.jawatan_id;
+                document.getElementById("gred").value= result.data.user.gred_jawatan_id;
                 //document.getElementById("kementerian").value= result.data.kementerian_id;
-                document.getElementById("Jabatan").value= result.data.jabatan_id;
-                document.getElementById("bahagian").value= result.data.bahagian_id;
-                document.getElementById("negeri").value= result.data.negeri_id;
-                document.getElementById("daerah").value= result.data.daerah_id;
-                document.getElementById("catatan").value= result.data.catatan;
-                document.getElementById("no_kod_penganalan").value= result.data.no_ic;
+                document.getElementById("Jabatan").value= result.data.user.jabatan_id;
+                document.getElementById("bahagian").value= result.data.user.bahagian_id;
+                document.getElementById("negeri").value= result.data.user.negeri_id;
+                document.getElementById("daerah").value= result.data.user.daerah_id;
+                document.getElementById("catatan").value= result.data.user.catatan;
+                document.getElementById("no_kod_penganalan").value= result.data.user.no_ic;
 
-                if(result.data.status_pengguna_id==1 && result.data.row_status==1)
+                if(result.data.user.status_pengguna_id==1 && result.data.user.row_status==1)
                 {
                     document.getElementById("inputState").value= 1;
                     document.getElementById("active").style.display = 'block';
@@ -435,11 +435,11 @@ $(document).ready(function() {
                     document.getElementById("inactive").style.display = 'block';
                     document.getElementById("active").style.display = 'none';
                 }
-                document.getElementById("gambar_image").src = api_url+result.data.gambar_profil;
+                document.getElementById("gambar_image").src = api_url+result.data.user.gambar_profil;
                 if(result.data.dokumen_sokungan && result.data.jenis_pengguna_id==0)
                 {
                     document.getElementById("doku_sec").style.display = 'block';
-                    document.getElementById("document_url").href = result.data.dokumen_sokungan;
+                    document.getElementById("document_url").href = result.data.user.dokumen_path;
                     document.getElementById("user_data_type").innerHTML = "Pengguna Agensi Luar";
                 }
                  else 
