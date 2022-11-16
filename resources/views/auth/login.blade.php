@@ -72,7 +72,7 @@ if (login) {
       ? (password_eye_field.type = "text")
       : (password_eye_field.type = "password");
   });
-  document.querySelector(".masuk_submit").addEventListener("click", (e) => {
+  document.querySelector(".masuk_submit").addEventListener("click", (e) => {  alert('ddd');
     e.preventDefault();
   });
   r_input.forEach((inp, i) => {
@@ -309,6 +309,48 @@ $(document).ready(function() {
 					el.textContent = item.nama_gred_jawatan;
 					el.value = opt;
 					greddropDown.appendChild(el);
+                })
+            }
+            else {
+                $.Notification.error(result.Message);
+            }
+        }
+    });
+
+    var negeridropDown =  document.getElementById("negeri");
+    $.ajax({
+        type: "GET",
+        url: api_url+"api/lookup/negeri/list",
+        dataType: 'json',
+        success: function (result) { console.log(result)
+            if (result) {
+                $.each(result.data, function (key, item) {
+					var opt = item.id;
+					var el = document.createElement("option");
+					el.textContent = item.nama_negeri;
+					el.value = opt;
+					negeridropDown.appendChild(el);
+                })
+            }
+            else {
+                $.Notification.error(result.Message);
+            }
+        }
+    });
+
+	var daerahdropDown =  document.getElementById("daerah");
+    $.ajax({
+        type: "GET",
+        url: api_url+"api/lookup/daerah/list",
+        dataType: 'json',
+        success: function (result) { console.log(result)
+            if (result) {
+                $.each(result.data, function (key, item) {
+					var opt = item.id;
+					var el = document.createElement("option");
+					el.textContent = item.nama_daerah;
+					el.value = opt;
+					daerahdropDown.appendChild(el);
                 })
             }
             else {
@@ -768,7 +810,6 @@ $site_key= config('services.googleCaptcha.site_key');
                                 class="form-control"
                                 id="jawatan" name="jawatan"
                               >
-                                <option value=""></option>
                               </select>
                               <span class="error" id="error_jawatan"></span>
                             </div>
@@ -781,7 +822,6 @@ $site_key= config('services.googleCaptcha.site_key');
                                 class="form-control"
                                 name="gred" id="gred"
                               >
-                                <option value=""></option>
                               </select>
                               <span class="error" id="error_gred"></span>
                             </div>
@@ -813,7 +853,6 @@ $site_key= config('services.googleCaptcha.site_key');
                                 class="form-control"
                                 name="jabatan" id="jabatan"
                               >
-                                <option value=""></option>
                               </select>
                               <span class="error" id="error_jabatan"></span>
                             </div>
@@ -830,9 +869,40 @@ $site_key= config('services.googleCaptcha.site_key');
                                 class="form-control"
                                 name="bahagian" id="bahagian"
                               >
-                                <option value=""></option>
                               </select>
                               <span class="error" id="error_bahagian"></span>                                   
+                            </div>
+                          </div>
+                          <div class="input_container">
+                            <label
+                              for="Negeri"
+                              class="col-form-label form_label"
+                              >Negeri</label
+                            >
+                            <div class="form_input">
+                              <select
+                                type="text"
+                                class="form-control"
+                                name="negri" id="negeri"
+                              >
+                              </select>
+                              <span class="error" id="error_negeri"></span>                                   
+                            </div>
+                          </div>
+                          <div class="input_container">
+                            <label
+                              for="Daerah"
+                              class="col-form-label form_label"
+                              >Daerah</label
+                            >
+                            <div class="form_input">
+                              <select
+                                type="text"
+                                class="form-control"
+                                name="daerah" id="daerah"
+                              >
+                              </select>
+                              <span class="error" id="error_daerah"></span>                                   
                             </div>
                           </div>
                           <div class="input_container" id='nonjps_doc'>
@@ -850,6 +920,7 @@ $site_key= config('services.googleCaptcha.site_key');
                                   data-toggle="popover"
                                   data-placement="right"
                                   data-content="Sila muat naik  kad Jabatan"
+                                  title="Sila muat naik  kad Jabatan"
                                 >
                                   <img src="assets/images/i-icon.png" alt="" />
                                 </button>
