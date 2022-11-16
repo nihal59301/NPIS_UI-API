@@ -629,6 +629,7 @@ $(document).ready(function() {
 
     $("#submit").click(function(){
 
+
 		if(!document.myform.nama.value)  { 
 			document.getElementById("error_nama").innerHTML="medan nama diperlukan"; 
 			document.getElementById("name").focus();
@@ -646,12 +647,38 @@ $(document).ready(function() {
 			document.getElementById("emel_rasmi").focus();
 			return false; 
 		}else{ document.getElementById("error_email").innerHTML="";}
+
+
 		if(!document.myform.no_telefon.value)  { 
 			document.getElementById("error_no_telefon").innerHTML="medan no telefon diperlukan"; 
 			document.getElementById("no_telefon").focus();
 			return false; 
 		}else{document.getElementById("error_no_telefon").innerHTML="";}
-console.log(document.myform.image_name);
+
+      if(!document.myform.bahagian.value)  { 
+			document.getElementById("error_bahagian").innerHTML="sila pilih bahagian"; 
+			document.getElementById("bahagian").focus();
+			return false; 
+		}else{document.getElementById("error_bahagian").innerHTML="";}
+
+      if(!document.myform.negeri.value)  { 
+			document.getElementById("error_negeri").innerHTML="sila pilih negeri"; 
+			document.getElementById("negeri").focus();
+			return false; 
+		}else{document.getElementById("error_negeri").innerHTML="";}
+
+      if(!document.myform.daerah.value)  { 
+			document.getElementById("error_daerah").innerHTML="sila pilih daerah"; 
+			document.getElementById("daerah").focus();
+			return false; 
+		}else{document.getElementById("error_daerah").innerHTML="";}
+
+      if(!document.myform.catatan.value)  { 
+			document.getElementById("error_catatan").innerHTML="medan catatan diperlukan"; 
+			document.getElementById("catatan").focus();
+			return false; 
+		}else{document.getElementById("error_catatan").innerHTML="";}
+
       if(!document.myform.image_name.value)  { 
         // document.getElementById("error_image_name").style.display = 'block';
 			document.getElementById("error_image_name").innerHTML="sila muat naik gambar profil"; 
