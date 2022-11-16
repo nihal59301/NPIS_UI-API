@@ -680,7 +680,12 @@ console.log(document.myform.image_name);
 				   "Authorization": api_token,
 				   }
 	   });
-
+      var newText = document.getElementsByClassName('error'); console.log(newText.length);
+      for($i=0;$i<newText.length;$i++)
+      {
+         console.log(newText[$i].innerHTML="");
+      }
+      
 		var formData = new FormData();
 		formData.append('nama', document.myform.nama.value);
 		formData.append('no_kod_penganalan', document.myform.no_kod_penganalan.value);
