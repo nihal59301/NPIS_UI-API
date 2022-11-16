@@ -51,8 +51,8 @@
                         </button>
                            
                         <label>Jurutera Awam</label>   
-                        <label>Jabatan Pengairan dan Saliran(JPS)</label>
-                        <label>Bahagian Korporat(BKOR)</label>                       
+                        <label>Jabatan Pengairan dan Saliran (JPS)</label>
+                        <label>Bahagian Korporat (BKOR)</label>                       
                     </div> <!-- end card-->
                     <div class="card text-center">
                         <div class="d-flex card-header justify-content-between align-items-center">
@@ -109,8 +109,8 @@
                             </div>
                             <div class="form-row d-md-flex justify-content-between">
                                 <div class="form-group col-md-6" id="profile">
-                                <label for="jawatan" class="text-primary">Jabatan</label>
-                                <select id="jawatan" class="form-control" name="jawatan">
+                                <label for="Jabatan" class="text-primary">Jabatan</label>
+                                <select id="Jabatan" class="form-control" name="Jabatan">
                                 </select>
                                 </div>
                                 <div class="form-group col-md-6" id="profile">
@@ -126,8 +126,8 @@
                             </div> -->
                             <div class="form-row d-md-flex justify-content-between">
                                 <div class="form-group col-md-6" id="profile">
-                                <label for="Jabatan" class="text-primary">Jawatan</label>
-                                <select id="Jabatan" class="form-control" name="jabatan">
+                                <label for="Jawatan" class="text-primary">Jawatan</label>
+                                <select id="Jawatan" class="form-control" name="Jawatan">
                                 </select>
                                 </div>
                                 <div class="form-group col-md-6" id="profile">
@@ -259,7 +259,8 @@ $(document).ready(function() {
         type: "GET",
         url: api_url+"api/lookup/jabatan/list/",
         dataType: 'json',
-        success: function (result) { console.log(result.data)
+        success: function (result) { 
+            console.log(result.data)
             if (result) {
                 $.each(result.data, function (key, item) {
 					var opt = item.id;
@@ -337,7 +338,7 @@ $(document).ready(function() {
             }
         }
     });
-    var jawatandropDown =  document.getElementById("jawatan");
+    var jawatandropDown =  document.getElementById("Jawatan");
     $.ajax({
         type: "GET",
         url: api_url+"api/lookup/jawatan/list",
@@ -411,7 +412,7 @@ $(document).ready(function() {
         success: function (result) { console.log(result.data)
             if (result.data) { //console.log(document.getElementById("nama").innerHTML);
                 document.getElementById("name").value= result.data.user.name;
-                document.getElementById("nama").innerHTML= result.data.user.name;
+                // document.getElementById("nama").innerHTML= result.data.user.name;
                 document.getElementById("no_telefon").value= result.data.user.no_telefon;
                 document.getElementById("emel_rasmi").value= result.data.user.email;
                 document.getElementById("jawatan").value= result.data.user.jawatan_id;

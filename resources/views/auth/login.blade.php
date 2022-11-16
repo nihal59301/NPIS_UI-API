@@ -489,7 +489,7 @@ $site_key= config('services.googleCaptcha.site_key');
                         aria-controls="nav-profile"
                         aria-selected="false"
                       >
-                        pengguna kementerian/agensi
+                        Pengguna Agensi Luar
                       </button>
                     </div>
                   </nav>
@@ -677,7 +677,7 @@ $site_key= config('services.googleCaptcha.site_key');
                             <span class="checkmark"></span>
                           </label>
                           <label class="r_container"
-                            >Agensi Luar
+                            >Pengguna Agensi Luar
                             <input
                               type="radio"
                               name="radio"

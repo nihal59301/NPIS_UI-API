@@ -169,7 +169,7 @@ div.dataTables_wrapper div.dataTables_length select {
                                         <thead>
                                             <tr>
                                                 <th class="float-left">Nama</th>
-                                                <th>No.Kad Pengenalan</th>
+                                                <th>No. Kad Pengenalan</th>
                                                 <th>Emel</th> 
                                                 <th>Bahagian</th> 
                                                 <th>Jawatan</th> 
@@ -187,7 +187,7 @@ div.dataTables_wrapper div.dataTables_length select {
                                         <thead>
                                             <tr>
                                                 <th>Nama</th>
-                                                <th>No.Kad Pengenalan</th>
+                                                <th>No. Kad Pengenalan</th>
                                                 <th>Emel</th> 
                                                 <th>Bahagian</th> 
                                                 <th>Jawatan</th> 
