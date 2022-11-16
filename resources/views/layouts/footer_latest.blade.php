@@ -155,7 +155,7 @@ function myFunction() {
                   {
                       targets:5, // Start with the last
                       render: function ( data, type, row, meta ) {
-                          console.log(data);
+                        //   console.log(data);
                           if(type === 'display'){
                               if(row.jenis_pengguna_id==1 && row.row_status==1){
                                   data =

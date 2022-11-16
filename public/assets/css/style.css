@@ -36,7 +36,7 @@ body {
 }
 .side_bar_Container.show {
   width: 16.8%;
-  height: 130vh;
+  height: inherit;
 }
 .side_bar_Container .round_parent {
   width: 7.9%;

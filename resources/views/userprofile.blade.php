@@ -31,10 +31,12 @@
             <div class="row">
                 <div class="col-xl-4 col-lg-4 justify-content-center">
                     <div class="card text-center p-5">
-                        <label class="switch">
-                            <input type="checkbox" checked>
-                            <span class="slider round"></span>
-                        </label>
+                        <div class="col-12 text-end">
+                            <label class="switch">
+                                <input id="active_check" disabled  type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
                         <div class="rounded-circle">
                             <img src="" id="gambar_image" class="border w-25 align-self-center rounded-circle" alt="...">
                         </div>
@@ -43,12 +45,8 @@
                             <br>
                             <label id="user_data_type"></label>
                         </h5>  
-                        <button class="btn btn-success col-lg-6 col-md-3 mb-3 align-self-center" id="active">
-                           <label> Aktif </label>
-                        </button>
-                        <button class="btn btn-danger col-lg-6 col-md-3 mb-3 align-self-center" id="inactive">
-                           <label> Tidak Aktif </label>
-                        </button>
+                           <label class="col-lg-6 col-md-3 mb-3 align-self-center text-success" id="active_label"> Aktif </label>
+                           <label class="col-lg-6 col-md-3 mb-3 align-self-center text-danger" id="inactive_label"> Tidak Aktif </label>
                            
                         <label>Jurutera Awam</label>   
                         <label>Jabatan Pengairan dan Saliran (JPS)</label>
@@ -93,8 +91,8 @@
                                 <input type="text" class="form-control" id="name" name="nama" placeholder="">
                                 </div>
                                 <div class="form-group col-md-6" id="profile">
-                                <label for="no_kod_penganalan" class="text-primary">No. Kad Pengenalan</label>
-                                <input type="text" class="form-control" id="no_kod_penganalan" name="no_kod_penganalan" placeholder="">
+                                <label for="no_kad_Pengenalan" class="text-primary">No. Kad Pengenalan</label>
+                                <input type="text" class="form-control" id="no_kad_Pengenalan" name="no_kad_Pengenalan" placeholder="">
                                 </div>
                             </div>
                             <div class="form-row d-md-flex justify-content-between">
@@ -170,7 +168,7 @@
                                 </div>
                             </div>
                             <div class=" text-center p-3">
-                                <button type="button" class="back btn btn-danger">Kembali</button>
+                                <a href="/userlist"><button type="button" class="back btn btn-danger">Kembali</button></a>
                                 <button type="button" class="save btn btn-primary">Simpan</button>
                             </div>
                         </form>
@@ -260,7 +258,7 @@ $(document).ready(function() {
         url: api_url+"api/lookup/jabatan/list/",
         dataType: 'json',
         success: function (result) { 
-            console.log(result.data)
+            // console.log(result.data)
             if (result) {
                 $.each(result.data, function (key, item) {
 					var opt = item.id;
@@ -281,7 +279,8 @@ $(document).ready(function() {
         type: "GET",
         url: api_url+"api/lookup/bahagian/list/",
         dataType: 'json',
-        success: function (result) { console.log(result)
+        success: function (result) { 
+            // console.log(result)
             if (result) {
                 $.each(result.data, function (key, item) {
 					var opt = item.id;
@@ -302,7 +301,8 @@ $(document).ready(function() {
         type: "GET",
         url: api_url+"api/lookup/negeri/list",
         dataType: 'json',
-        success: function (result) { console.log(result)
+        success: function (result) { 
+            // console.log(result)
             if (result) {
                 $.each(result.data, function (key, item) {
 					var opt = item.id;
@@ -323,7 +323,8 @@ $(document).ready(function() {
         type: "GET",
         url: api_url+"api/lookup/daerah/list",
         dataType: 'json',
-        success: function (result) { console.log(result)
+        success: function (result) { 
+            // console.log(result)
             if (result) {
                 $.each(result.data, function (key, item) {
 					var opt = item.id;
@@ -343,7 +344,8 @@ $(document).ready(function() {
         type: "GET",
         url: api_url+"api/lookup/jawatan/list",
         dataType: 'json',
-        success: function (result) { console.log(result)
+        success: function (result) { 
+            // console.log(result)
             if (result) {
                 $.each(result.data, function (key, item) {
 					var opt = item.id;
@@ -364,7 +366,8 @@ $(document).ready(function() {
         type: "GET",
         url: api_url+"api/lookup/gredjawatan/list",
         dataType: 'json',
-        success: function (result) { console.log(result)
+        success: function (result) { 
+            // console.log(result)
             if (result) {
                 $.each(result.data, function (key, item) {
 					var opt = item.id;
@@ -409,13 +412,15 @@ $(document).ready(function() {
         type: "GET",
         url: list_user_api,
         dataType: 'json',
-        success: function (result) { console.log(result.data)
-            if (result.data) { //console.log(document.getElementById("nama").innerHTML);
+        success: function (result) { 
+            console.log(result.data)
+            if (result) { 
+                //console.log(document.getElementById("nama").innerHTML);
                 document.getElementById("name").value= result.data.user.name;
                 // document.getElementById("nama").innerHTML= result.data.user.name;
                 document.getElementById("no_telefon").value= result.data.user.no_telefon;
                 document.getElementById("emel_rasmi").value= result.data.user.email;
-                document.getElementById("jawatan").value= result.data.user.jawatan_id;
+                document.getElementById("Jawatan").value= result.data.user.jawatan_id;
                 document.getElementById("gred").value= result.data.user.gred_jawatan_id;
                 //document.getElementById("kementerian").value= result.data.kementerian_id;
                 document.getElementById("Jabatan").value= result.data.user.jabatan_id;
@@ -423,21 +428,25 @@ $(document).ready(function() {
                 document.getElementById("negeri").value= result.data.user.negeri_id;
                 document.getElementById("daerah").value= result.data.user.daerah_id;
                 document.getElementById("catatan").value= result.data.user.catatan;
-                document.getElementById("no_kod_penganalan").value= result.data.user.no_ic;
+                document.getElementById("no_kad_Pengenalan").value= result.data.user.no_ic;
 
                 if(result.data.user.status_pengguna_id==1 && result.data.user.row_status==1)
                 {
                     document.getElementById("inputState").value= 1;
-                    document.getElementById("active").style.display = 'block';
-                    document.getElementById("inactive").style.display = 'none';
+                    document.getElementById("active_label").style.display = 'block';
+                    document.getElementById("inactive_label").style.display = 'none';
+                    
+
                 }
                 else
                 {
                     document.getElementById("inputState").value= 0;
-                    document.getElementById("inactive").style.display = 'block';
-                    document.getElementById("active").style.display = 'none';
+                    document.getElementById("inactive_label").style.display = 'block';
+                    document.getElementById("active_label").style.display = 'none';
+                    // $("#active_check").removeAttr(checked);
+                    document.getElementById("active_check").removeAttribute("checked");
                 }
-                document.getElementById("gambar_image").src = api_url+result.data.user.gambar_profil;
+                document.getElementById("gambar_image").src = api_url+result.data.user.profile_url;
                 if(result.data.dokumen_sokungan && result.data.jenis_pengguna_id==0)
                 {
                     document.getElementById("doku_sec").style.display = 'block';
