@@ -19,12 +19,21 @@ var onReturnCallback = function(response) {
     }
           
     }
+
+
+    $('#Pengguna_JPS').click(function(){
+      $('#nonjps_doc').hide();
+    })
+    $('#Agensi_Luar').click(function(){
+      $('#nonjps_doc').show();
+    })
+
+    
 </script>
 
    
 <script>
-        let round = document.querySelector(".round");
-
+let round = document.querySelector(".round");
 let index = document.querySelector("#index");
 let eye_icon = document.querySelector(".eye_icon");
 let password_eye_field = document.querySelector(".password_eye_field");
@@ -32,7 +41,6 @@ let login = document.querySelector("#login");
 let interface_tab_content = document.querySelectorAll(".interface_tab_content");
 let r_input = document.querySelectorAll(".r_container input");
 let input_file = document.querySelector("#Dokumen_Sokongan");
-
 let input_file_btn = document.querySelector(".form_input_file .select_file");
 let userlist_tab_btn = document.querySelectorAll(
   ".userlist_tab_btn_container button"
@@ -198,6 +206,8 @@ $(document).ready(function() {
     $('#submitForgot').submit();
 });
 })
+
+
 
   </script>
 @endpush
@@ -557,7 +567,7 @@ $site_key= config('services.googleCaptcha.site_key');
                             <input
                               type="radio"
                               name="radio"
-                              id="Agensi Luar"
+                              id="Agensi_Luar"
                               checked
                             />
                             <span class="checkmark"></span>
@@ -567,189 +577,6 @@ $site_key= config('services.googleCaptcha.site_key');
                     </div>
                     <div class="interface_tab_content_container">
                       <div class="interface_tab_content">
-                        <form class="login_interface_modal_form" action="" method="post" id="registe_jps_user_form" name="myform1">
-                          <div class="input_container">
-                            <label
-                              for="Nama_Penuh"
-                              class="col-form-label form_label"
-                              >Nama Penuh</label
-                            >
-                            <div class="form_input">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="Nama_Penuh" name="nama"
-                              />
-                            </div>
-                          </div>
-  
-                          <div class="input_container">
-                            <label
-                              for="Kad_Pengenalan"
-                              class="col-form-label form_label"
-                              >No. Kad Pengenalan</label
-                            >
-                            <div class="form_input">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="Kad_Pengenalan" name="no_kod_penganalan"
-                              />
-                            </div>
-                          </div>
-                          <div class="input_container">
-                            <label
-                              for="Email_Rasmi"
-                              class="col-form-label form_label"
-                              >Email Rasmi</label
-                            >
-                            <div class="form_input">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="Email_Rasmi" name="email"
-                              />
-                            </div>
-                          </div>
-                          <div class="input_container">
-                            <label
-                              for="No_Telefon"
-                              class="col-form-label form_label"
-                              >No Telefon</label
-                            >
-                            <div class="form_input">
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="No_Telefon" name="no_telefon"
-                              />
-                            </div>
-                          </div>
-                          <div class="input_container">
-                            <label
-                              for="No_Telefon"
-                              class="col-form-label form_label"
-                              >Jawatan</label
-                            >
-                            <div class="form_input">
-                              <select
-                                type="text"
-                                class="form-control"
-                                id="jawatan" name="jawatan"
-                              >
-                                <option value=""></option>
-                                <option value="">Jawatan</option>
-                                <option value="">Jawatan</option>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="input_container">
-                            <label for="Gred" class="col-form-label form_label">Gred</label>
-                            <div class="form_input">
-                              <select
-                                type="text"
-                                class="form-control"
-                                name="gred" id="gred"
-                              >
-                                <option value=""></option>
-                                <option value="">gred</option>
-                                <option value="">gred</option>
-                              </select>
-                            </div>
-                          </div>
-                          <!-- <div class="input_container">
-                            <label
-                              for="Kementerian"
-                              class="col-form-label form_label"
-                              >Kementerian</label
-                            >
-                            <div class="form_input">
-                              <select
-                                type="text"
-                                class="form-control"
-                                id="Kementerian"
-                              >
-                                <option value=""></option>
-                                <option value="">Jawatan</option>
-                                <option value="">Jawatan</option>
-                              </select>
-                            </div>
-                          </div> -->
-                          <div class="input_container">
-                            <label for="Jabatan" class="col-form-label form_label"
-                              >Jabatan</label
-                            >
-                            <div class="form_input">
-                              <select
-                                type="text"
-                                class="form-control"
-                                name="jabatan" id="Jabatan"
-                              >
-                                <option value=""></option>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="input_container">
-                            <label
-                              for="Bahagian"
-                              class="col-form-label form_label"
-                              >Bahagian</label
-                            >
-                            <div class="form_input">
-                              <select
-                                type="text"
-                                class="form-control"
-                                name="bahagian" id="bahagian"
-                              >
-                                <option value=""></option>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="input_container">
-                            <label
-                              for="Kod_Pengesahan"
-                              class="col-form-label form_label"
-                            >
-                              Kod Pengesahan</label
-                            >
-                            <div class="form_input">
-                              <div
-                                class="g-recaptcha"
-                                data-sitekey={{$site_key}}
-                                data-action="submit"
-                              >
-                                Submit
-                              </div>
-                            </div>
-                          </div>
-                          <div class="input_container m-0">
-                            <label
-                              for="Kod_Pengesahan"
-                              class="col-form-label form_label"
-                            >
-                              Perakuan Pendaftaran</label
-                            >
-                            <div class="form_input">
-                              <div class="form-group form-check form_checker">
-                                <input
-                                  type="checkbox"
-                                  class="form-check-input"
-                                  id="exampleCheck1"
-                                />
-                                <label
-                                  class="form_check_label"
-                                  for="exampleCheck1"
-                                  >Dengan ini saya MENGAKU bahawa semua maklumat
-                                  yang diisikan dalam permohonan ini adalah SAHIH
-                                  dan BENAR.</label
-                                >
-                              </div>
-                            </div>
-                          </div>
-                          <div class="form_btn_container">
-                            <button>KEMBALI</button><button id="submit_jps">DAFTAR</button>
-                          </div>
-                        </form>
 
                       </div>
                       <div class="interface_tab_content">
@@ -891,7 +718,7 @@ $site_key= config('services.googleCaptcha.site_key');
                               </select>
                             </div>
                           </div>
-                          <div class="input_container">
+                          <div class="input_container" id='nonjps_doc'>
                             <div class="file_label d-flex">
                               <label
                                 for="Dokumen_Sokongan"
@@ -916,7 +743,7 @@ $site_key= config('services.googleCaptcha.site_key');
                               </div>
                             </div>
   
-                            <div class="form_input_file">
+                            <div  class="form_input_file">
                               <input
                                 type="file"
                                 class="form-control"

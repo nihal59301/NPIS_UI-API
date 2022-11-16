@@ -18,6 +18,13 @@
     border-left: none !important;
     border-right: none !important;
     border-top:none !important;
+    color: #38afd1 !important;
+}
+.jpsBtn:hover{
+    outline:0 !important;
+}
+.nonjpsBtn:hover{
+    outline: 0 !important;
 }
 
 .nonjpsBtn:focus{
@@ -26,6 +33,7 @@
     border-left: none !important;
     border-right: none !important;
     border-top:none !important;
+    color: #38afd1 !important;
 }
 .jpsBtn:focus{
     border-bottom-width: 3.5px !important;
@@ -33,6 +41,7 @@
     border-left: none !important;
     border-right: none !important;
     border-top:none !important;
+    color: #38afd1 !important;
 }
 
 
@@ -92,6 +101,10 @@ div.dataTables_wrapper div.dataTables_length select {
     border-radius: 5px;
     display: inline-block;
 }
+.btn {
+    --ct-btn-border-width: 0px !important;
+}
+
 /* div.dataTables_wrapper div.dataTables_length select:focus {
     filter:drop-shadow(2px 2px 2px #7adaf5);
 } */
@@ -147,8 +160,8 @@ div.dataTables_wrapper div.dataTables_length select {
 
                                 </div>
                                 <div>
-                                <button id="jpsBtn" style="margin-bottom: -8px;" onclick="jps_user()" class="btn btn-white col-3 col-lg-1  btn-sm  border-bottom jpsBtn active" ><strong><h4>JPS<h4></strong></button>
-                                <button id="nonjpsBtn" style="margin-bottom: -8px;" onclick="agensi_user()" class="btn btn-white btn-sm border-bottom nonjpsBtn"><h4>AGENSI LUAR<h4></button>
+                                <button id="jpsBtn" style="margin-bottom: -8px;" onclick="jps_user()" class="btn btn-white col-3 col-lg-1  btn-sm border-none text-black jpsBtn active" ><strong><h4>JPS<h4></strong></button>
+                                <button id="nonjpsBtn" style="margin-bottom: -8px;" onclick="agensi_user()" class="btn btn-white btn-sm  border-none nonjpsBtn text-black"><h4>AGENSI LUAR<h4></button>
                                 </div>
                                 <hr>
                                 <div id="jps_card" class="card-body pt-0 mb-4">

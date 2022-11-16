@@ -44,28 +44,34 @@ function myFunction() {
                 "Authorization": api_token,
                 }
     });
-    function userData(id){
-            user_id=id
-            // console.log(user_id)
-            $.ajax({
-                    type: "GET",
-                    url: "fectchuser",
-                    contentType: "application/json",
-                    dataType: "json",
-                    header:{
-                        'contentType': "application/json",
-                        'Authorization':api_token
-                    },
-                    data:{id:user_id},
-                    success: function(response) {
-                        if(response){
-                            window.location.href = "user-profile";
-                        }
-                    },
-                    error: function(response) {
-                        console.log(response);
-                    }
-            });
+    // function userData(id){
+    //         user_id=id
+    //         // console.log(user_id)
+    //         $.ajax({
+    //                 type: "GET",
+    //                 url: "fectchuser",
+    //                 contentType: "application/json",
+    //                 dataType: "json",
+    //                 header:{
+    //                     'contentType': "application/json",
+    //                     'Authorization':api_token
+    //                 },
+    //                 data:{id:user_id},
+    //                 success: function(response) {
+    //                     if(response){
+    //                         window.location.href = "user-profile";
+    //                     }
+    //                 },
+    //                 error: function(response) {
+    //                     console.log(response);
+    //                 }
+    //         });
+    // }
+    function loadView(id)
+    {
+        localStorage.setItem("user_id", id);
+        localStorage.setItem("user_type", "temp_user");
+        window.location.href = "{{ url('/user-profile')}}";
     }
   $('#agensi_card').hide()
   
@@ -108,7 +114,7 @@ function myFunction() {
                       targets:0, // Start with the last
                       render: function ( data, type, row, meta ) {
                           if(type === 'display'){
-                              data = '<a value="'+row.id+'" onclick=userData('+row.id+') class="text-dark user_name">'+row.name+'</a>';
+                              data = '<a value="'+row.id+'" onClick="loadView('+row.id+')" class="text-dark user_name">'+row.name+'</a>';
                           }
                           return data;
                       }
