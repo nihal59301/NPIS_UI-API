@@ -8,6 +8,7 @@
 }
 </style>
 
+<a href="{{ url()->previous() }}" id="previous_link" hidden></a>
 <div class="content-page">
     <div class="content">
         <!-- Start Content-->
@@ -168,7 +169,7 @@
                                 </div>
                             </div>
                             <div class=" text-center p-3">
-                                <a href="/userlist"><button type="button" class="back btn btn-danger">Kembali</button></a>
+                                <a id="back_to_list" href=""><button type="button" class="back btn btn-danger">Kembali</button></a>
                                 <button type="button" class="save btn btn-primary">Simpan</button>
                             </div>
                         </form>
@@ -408,6 +409,9 @@ $(document).ready(function() {
     var jsonString = JSON.stringify(data_update);
     console.log(list_user_api)
    //console.log(jsonString);
+   var previous_link=document.getElementById("previous_link").getAttribute("href");
+    // console.log(previous_link);
+    document.getElementById("back_to_list").href = previous_link;
     $.ajax({
         type: "GET",
         url: list_user_api,
@@ -415,10 +419,13 @@ $(document).ready(function() {
         success: function (result) { 
             console.log(result.data)
             if (result) { 
+                var phone_no=result.data.user.no_telefon
+                var no_telefon = phone_no.replace(/\D+/g, '').replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');;
+                // console.log(no_telefon);
                 //console.log(document.getElementById("nama").innerHTML);
                 document.getElementById("name").value= result.data.user.name;
                 // document.getElementById("nama").innerHTML= result.data.user.name;
-                document.getElementById("no_telefon").value= result.data.user.no_telefon;
+                document.getElementById("no_telefon").value=no_telefon;
                 document.getElementById("emel_rasmi").value= result.data.user.email;
                 document.getElementById("Jawatan").value= result.data.user.jawatan_id;
                 document.getElementById("gred").value= result.data.user.gred_jawatan_id;
