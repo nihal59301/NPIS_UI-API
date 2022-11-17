@@ -655,6 +655,24 @@ $(document).ready(function() {
 			return false; 
 		}else{document.getElementById("error_no_telefon").innerHTML="";}
 
+        if(!document.myform.jawatan.value)  { 
+			document.getElementById("error_jawatan").innerHTML="sila pilih jawatan"; 
+			document.getElementById("jawatan").focus();
+			return false; 
+		}else{document.getElementById("error_jawatan").innerHTML="";}
+
+        if(!document.myform.gred.value)  { 
+			document.getElementById("error_gred").innerHTML="sila pilih gred"; 
+			document.getElementById("gred").focus();
+			return false; 
+		}else{document.getElementById("error_gred").innerHTML="";}
+
+        if(!document.myform.jabatan.value)  { 
+			document.getElementById("error_jabatan").innerHTML="sila pilih jabatan"; 
+			document.getElementById("jabatan").focus();
+			return false; 
+		}else{document.getElementById("error_jabatan").innerHTML="";}
+
       if(!document.myform.bahagian.value)  { 
 			document.getElementById("error_bahagian").innerHTML="sila pilih bahagian"; 
 			document.getElementById("bahagian").focus();

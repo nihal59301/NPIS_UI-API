@@ -6,6 +6,10 @@
 .close{
     text-align: end !important;
 }
+
+span.error {
+    color:red;
+}
 </style>
 
 <a href="{{ url()->previous() }}" id="previous_link" hidden></a>
@@ -90,20 +94,24 @@
                                 <div class="form-group col-md-6" id="profile">
                                 <label for="nama" class="text-primary">Nama</label>
                                 <input type="text" class="form-control" id="name" name="nama" placeholder="">
+                                <span class="error" id="error_nama"></span>
                                 </div>
                                 <div class="form-group col-md-6" id="profile">
                                 <label for="no_kad_Pengenalan" class="text-primary">No. Kad Pengenalan</label>
-                                <input type="text" class="form-control" id="no_kad_Pengenalan" name="no_kad_Pengenalan" placeholder="">
+                                <input type="text" class="form-control" id="no_kad_pengenalan" name="no_kad_pengenalan" placeholder="">
+                                <span class="error" id="error_no_kad_pengenalan"></span>
                                 </div>
                             </div>
                             <div class="form-row d-md-flex justify-content-between">
                                 <div class="form-group col-md-6" id="profile">
                                 <label for="no_telefon" class="text-primary">No. Telefon</label>
                                 <input type="text" class="form-control" id="no_telefon" name="no_telefon" placeholder="">
+                                <span class="error" id="error_no_telefon"></span>
                                 </div>
                                 <div class="form-group col-md-6" id="profile">
                                 <label for="emel_rasmi" class="text-primary">Emel Rasmi</label>
                                 <input type="text" class="form-control" id="emel_rasmi" name="emel_rasmi" placeholder="">
+                                <span class="error" id="error_emel_rasmi"></span>
                                 </div>
                             </div>
                             <div class="form-row d-md-flex justify-content-between">
@@ -111,11 +119,13 @@
                                 <label for="Jabatan" class="text-primary">Jabatan</label>
                                 <select id="Jabatan" class="form-control" name="Jabatan">
                                 </select>
+                                <span class="error" id="error_Jabatan"></span>
                                 </div>
                                 <div class="form-group col-md-6" id="profile">
                                 <label for="gred" class="text-primary">Gred</label>
                                 <select id="gred" class="form-control" name="gred">
                                 </select>
+                                <span class="error" id="error_gred"></span>
                                 </div>
                             </div>
                             <!-- <div class="form-group" style="padding-right:15px; margin-bottom:12px;">
@@ -128,11 +138,13 @@
                                 <label for="Jawatan" class="text-primary">Jawatan</label>
                                 <select id="Jawatan" class="form-control" name="Jawatan">
                                 </select>
+                                <span class="error" id="error_Jawatan"></span>
                                 </div>
                                 <div class="form-group col-md-6" id="profile">
                                     <label for="bahagian" class="text-primary">Bahagian</label>
                                     <select id="bahagian" class="form-control" name="bahagian">
                                     </select>
+                                    <span class="error" id="error_bahagian"></span>
                                 </div>
                             </div>
                             <div class="form-row d-md-flex justify-content-between">
@@ -140,11 +152,13 @@
                                 <label for="negeri" class="text-primary">Negeri</label>
                                 <select id="negeri" class="form-control" name="negeri">
                                 </select>
+                                <span class="error" id="error_negeri"></span>
                                 </div>
                                 <div class="form-group col-md-6" id="profile">
                                 <label for="daerah" class="text-primary">Daerah</label>
                                 <select id="daerah" class="form-control" name="daerah">
                                 </select>
+                                <span class="error" id="error_daerah"></span>
                                 </div>
                             </div>
                             <div class="form-row d-md-flex justify-content-between">
@@ -158,6 +172,7 @@
                                 <div class="form-group col-md-6" id="profile">
                                 <label for="catatan" class="text-primary">Catatan</label>
                                 <textarea class="form-control" rows="5" id="catatan" name="catatan"></textarea>
+                                <span class="error" id="error_catatan"></span>                               
                                 </div>
                             </div>
                             <div class="form-row d-md-flex justify-content-between" id="doku_sec" style="display:none !important;">
@@ -473,7 +488,76 @@ $(document).ready(function() {
         }
     });
 
-    $('.save').click(function(){ console.log(data_update);
+    $('.save').click(function(){ console.log(document.myform.nama.value);
+        if(!document.myform.nama.value)  { 
+			document.getElementById("error_nama").innerHTML="medan nama diperlukan"; 
+			document.getElementById("name").focus();
+			return false; 
+		}
+		else{
+			document.getElementById("error_nama").innerHTML=""; }
+        
+            if(!document.myform.no_kad_pengenalan.value)  { 
+			document.getElementById("error_no_kad_pengenalan").innerHTML="medan no kad pengenalan diperlukan"; 
+			document.getElementById("no_kad_pengenalan").focus();
+			return false; 
+		}else { document.getElementById("error_no_kad_pengenalan").innerHTML=""; }
+
+        
+		if(!document.myform.no_telefon.value)  { 
+			document.getElementById("error_no_telefon").innerHTML="medan no telefon diperlukan"; 
+			document.getElementById("no_telefon").focus();
+			return false; 
+		}else{document.getElementById("error_no_telefon").innerHTML="";}
+
+		if(!document.myform.emel_rasmi.value)  { 
+			document.getElementById("error_emel_rasmi").innerHTML="medan emel rasmi diperlukan"; 
+			document.getElementById("emel_rasmi").focus();
+			return false; 
+		}else{ document.getElementById("error_emel_rasmi").innerHTML="";}
+
+        if(!document.myform.Jabatan.value)  { 
+			document.getElementById("error_Jabatan").innerHTML="sila pilih Jabatan"; 
+			document.getElementById("Jabatan").focus();
+			return false; 
+		}else{document.getElementById("error_Jabatan").innerHTML="";}
+
+        if(!document.myform.gred.value)  { 
+			document.getElementById("error_gred").innerHTML="sila pilih gred"; 
+			document.getElementById("gred").focus();
+			return false; 
+		}else{document.getElementById("error_gred").innerHTML="";}
+
+        if(!document.myform.Jawatan.value)  { 
+			document.getElementById("error_Jawatan").innerHTML="sila pilih Jawatan"; 
+			document.getElementById("Jawatan").focus();
+			return false; 
+		}else{document.getElementById("error_Jawatan").innerHTML="";}
+
+      if(!document.myform.bahagian.value)  { 
+			document.getElementById("error_bahagian").innerHTML="sila pilih bahagian"; 
+			document.getElementById("bahagian").focus();
+			return false; 
+		}else{document.getElementById("error_bahagian").innerHTML="";}
+
+      if(!document.myform.negeri.value)  { 
+			document.getElementById("error_negeri").innerHTML="sila pilih negeri"; 
+			document.getElementById("negeri").focus();
+			return false; 
+		}else{document.getElementById("error_negeri").innerHTML="";}
+
+        if(!document.myform.daerah.value)  { 
+			document.getElementById("error_daerah").innerHTML="sila pilih daerah"; 
+			document.getElementById("daerah").focus();
+			return false; 
+		}else{document.getElementById("error_daerah").innerHTML="";}
+
+        if(!document.myform.catatan.value)  { 
+			document.getElementById("error_catatan").innerHTML="medan catatan diperlukan"; 
+			document.getElementById("catatan").focus();
+			return false; 
+		}else{document.getElementById("error_catatan").innerHTML="";}
+
         $.ajax({
             type: 'POST',
             url: update_user_api,
