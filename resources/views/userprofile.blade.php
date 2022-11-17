@@ -450,7 +450,7 @@ $(document).ready(function() {
                 document.getElementById("negeri").value= result.data.user.negeri_id;
                 document.getElementById("daerah").value= result.data.user.daerah_id;
                 document.getElementById("catatan").value= result.data.user.catatan;
-                document.getElementById("no_kad_Pengenalan").value= result.data.user.no_ic;
+                document.getElementById("no_kad_pengenalan").value= result.data.user.no_ic;
 
                 if(result.data.user.status_pengguna_id==1 && result.data.user.row_status==1)
                 {
