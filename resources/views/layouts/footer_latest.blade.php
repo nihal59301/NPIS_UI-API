@@ -299,9 +299,7 @@ function myFunction() {
                           }
                           return data;
                       }
-                  }
-                  
-
+                  }                  
               ] ,
           columns: [
               { data: 'name' },
@@ -338,10 +336,10 @@ function myFunction() {
       $("#jpsBtn").addClass("jpsBtn");
       $("#nonjpsBtn").removeClass("nonjpsBtn");
   }
-  let userlist_tab_btn = document.querySelectorAll(
-  ".userlist_tab_btn_container button"
-);
-let userlist_tab_content = document.querySelectorAll(".userlist_tab_content ");
+//   let userlist_tab_btn = document.querySelectorAll(
+//   ".userlist_tab_btn_container button"
+//);
+//let userlist_tab_content = document.querySelectorAll(".userlist_tab_content ");
   
 
 </script>

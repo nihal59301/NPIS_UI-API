@@ -4,7 +4,9 @@
   }
   .side_bar_Container .NPIS_logo_container {
     padding-bottom: 1.8rem;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
   .side_bar_Container .NPIS_logo_container .NPIS_logo {
     cursor: pointer;
@@ -72,7 +74,9 @@
     font-size: 0.8rem;
   }
   .Mainbody_conatiner header nav .nav_bar .Nav_right_content .Nav_right_img_content {
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     gap: 2rem;
     padding: 0 1.4rem;
   }
@@ -83,8 +87,12 @@
     width: 60px;
   }
   .Mainbody_conatiner header nav .nav_bar .Nav_right_content .Nav_right_img_content .icons_contains {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     gap: 1.8rem;
   }
   .Mainbody_conatiner header nav .nav_bar .Nav_right_content .Nav_right_img_content .icons_contains img:nth-child(1) {
@@ -110,6 +118,7 @@
     font-size: 0.69rem;
   }
 }
+
 @media (max-width: 1366px) {
   .side_bar_Container {
     padding: 1.4% 0.5% 1.4% 1.2%;
@@ -183,7 +192,9 @@
     font-size: 0.7rem;
   }
   .Mainbody_conatiner header nav .nav_bar .Nav_right_content .Nav_right_img_content {
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     gap: 2rem;
     padding: 0 1.4rem;
   }
@@ -194,8 +205,12 @@
     width: 50px;
   }
   .Mainbody_conatiner header nav .nav_bar .Nav_right_content .Nav_right_img_content .icons_contains {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     gap: 1.8rem;
   }
   .Mainbody_conatiner header nav .nav_bar .Nav_right_content .Nav_right_img_content .icons_contains img:nth-child(1) {
@@ -220,4 +235,5 @@
   .Mainbody_conatiner header nav .nav_bar .Nav_right_content .profile_container .profile_content p {
     font-size: 0.63rem;
   }
-}/*# sourceMappingURL=Mediaquery.css.map */
+}
+/*# sourceMappingURL=Mediaquery.css.map */
